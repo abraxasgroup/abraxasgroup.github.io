@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Boutique Salón | Reserva tu turno con seña</title>
+  <style>
+    :root {
+      --bg-gradient: radial-gradient(circle at 20% 20%, #fff7fa 0%, #ffeef5 40%, #ffe6ee 70%, #ffdfe9 100%);
+      --color-primary: #d63384;
+      --color-primary-soft: #f8d8e7;
+      --color-dark: #2b2b2b;
+      --color-text: #4a4a4a;
+      --radius-card: 18px;
+      --shadow-card: 0 20px 40px rgba(214,51,132,0.12);
+      --border-light: 1px solid rgba(214,51,132,0.15);
+      --font-stack: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-stack);
+      background: var(--bg-gradient);
+      color: var(--color-text);
+      line-height: 1.45;
+    }
+
+    .max {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+
+    header.hero-box {
+      background: #ffffffaa;
+      backdrop-filter: blur(6px);
+      border-radius: var(--radius-card);
+      border: var(--border-light);
+      box-shadow: var(--shadow-card);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .brand {
+      color: var(--color-dark);
+      font-weight: 600;
+      font-size: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .tagline {
+      color: var(--color-primary);
+      font-size: .9rem;
+      font-weight: 500;
+      margin-top: .4rem;
+    }
+
+    .hero-h1 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      line-height: 1.3;
+      letter-spacing: -0.03em;
+      margin-top: 1rem;
+    }
+
+    .hero-p {
+      font-size: .95rem;
+      max-width: 500px;
+      margin: .75rem auto 1.25rem;
+      color: var(--color-text);
+    }
+
+    .cta-main {
+      display: inline-block;
+      background: var(--color-primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: .9rem;
+      text-decoration: none;
+      padding: .8rem 1.1rem;
+      border-radius: 10px;
+      box-shadow: 0 16px 32px rgba(214,51,132,.4);
+    }
+
+    .safety-pill {
+      display:inline-flex;
+      align-items:flex-start;
+      gap:.5rem;
+      background: var(--color-primary-soft);
+      color: var(--color-primary);
+      font-size: .8rem;
+      font-weight:500;
+      border-radius:999px;
+      border:1px solid rgba(214,51,132,.2);
+      line-height:1.3;
+      padding:.5rem .9rem;
+      box-shadow:0 10px 18px rgba(214,51,132,.18);
+      margin-top:1rem;
+    }
+
+    /* SERVICES GRID */
+    section#servicios {
+      margin-top:3rem;
+    }
+
+    .sec-title {
+      text-align:center;
+      font-size:1rem;
+      font-weight:600;
+      color:var(--color-dark);
+      letter-spacing:-0.03em;
+      margin-bottom:1rem;
+    }
+
+    .services-grid {
+      display:grid;
+      gap:1rem;
+      grid-template-columns: repeat(auto-fit,minmax(min(260px,100%),1fr));
+    }
+
+    .service-card {
+      background:#fff;
+      border-radius: var(--radius-card);
+      border: var(--border-light);
+      box-shadow: var(--shadow-card);
+      padding:1rem 1rem 1.25rem;
+      position:relative;
+    }
+
+    .service-head-row {
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:.5rem;
+      margin-bottom:.5rem;
+      align-items:flex-start;
+    }
+
+    .service-name {
+      font-weight:600;
+      font-size:.95rem;
+      color:var(--color-dark);
+      letter-spacing:-0.03em;
+    }
+
+    .price-pill {
+      background:var(--color-primary-soft);
+      color:var(--color-primary);
+      font-size:.8rem;
+      font-weight:600;
+      border-radius:999px;
+      padding:.35rem .6rem;
+      border:1px solid rgba(214,51,132,.25);
+      line-height:1.2;
+      white-space:nowrap;
+    }
+
+    .service-desc {
+      font-size:.8rem;
+      line-height:1.45;
+      color:var(--color-text);
+      min-height:3em;
+    }
+
+    .service-extra {
+      font-size:.75rem;
+      color:#666;
+      margin-top:.75rem;
+      line-height:1.4;
+    }
+
+    /* COMO FUNCIONA */
+    section#como-funciona {
+      margin-top:3rem;
+    }
+    .how-grid {
+      display:grid;
+      gap:1rem;
+      grid-template-columns: repeat(auto-fit,minmax(min(260px,100%),1fr));
+    }
+    .how-card {
+      background:#fff;
+      border-radius: var(--radius-card);
+      border: var(--border-light);
+      box-shadow: var(--shadow-card);
+      padding:1rem 1rem 1.25rem;
+      font-size:.85rem;
+      line-height:1.45;
+      color:var(--color-text);
+    }
+    .how-num {
+      font-weight:600;
+      color:var(--color-primary);
+      font-size:.8rem;
+      margin-bottom:.4rem;
+    }
+    .how-tit {
+      font-weight:600;
+      color:var(--color-dark);
+      font-size:.9rem;
+      margin-bottom:.4rem;
+      letter-spacing:-0.03em;
+    }
+    .how-p {
+      font-size:.8rem;
+      color:var(--color-text);
+      line-height:1.4;
+    }
+
+    /* TESTIMONIO / NO-SHOW */
+    section#confianza {
+      margin-top:3rem;
+    }
+
+    .testi-card {
+      background:#fff;
+      border-radius: var(--radius-card);
+      border: var(--border-light);
+      box-shadow: var(--shadow-card);
+      padding:1rem 1rem 1.25rem;
+      font-size:.85rem;
+      line-height:1.5;
+      color:var(--color-text);
+      max-width:800px;
+      margin:0 auto;
+      text-align:center;
+    }
+
+    .testi-quote {
+      font-size:.9rem;
+      color:var(--color-dark);
+      font-weight:500;
+      line-height:1.4;
+    }
+
+    .testi-note {
+      margin-top:1rem;
+      font-size:.7rem;
+      color:#888;
+      line-height:1.4;
+    }
+
+    /* FAQ */
+    section#faq {
+      margin-top:3rem;
+    }
+
+    .faq-grid {
+      display:grid;
+      gap:1rem;
+      grid-template-columns: repeat(auto-fit,minmax(min(320px,100%),1fr));
+    }
+
+    .faq-card {
+      background:#fff;
+      border-radius:var(--radius-card);
+      border:var(--border-light);
+      box-shadow:var(--shadow-card);
+      padding:1rem 1rem 1.25rem;
+    }
+
+    .faq-q {
+      font-size:.9rem;
+      font-weight:600;
+      color:var(--color-dark);
+      letter-spacing:-0.03em;
+      margin-bottom:.4rem;
+    }
+
+    .faq-a {
+      font-size:.8rem;
+      color:var(--color-text);
+      line-height:1.4;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align:center;
+      font-size:.7rem;
+      color:#777;
+      line-height:1.4;
+      padding:3rem 1rem 4rem;
+    }
+
+    .footer-cta {
+      margin-bottom:1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="max">
+
+    <!-- HERO -->
+    <header class="hero-box">
+      <div class="brand">Boutique Salón</div>
+      <div class="tagline">Agenda oficial con seña</div>
+
+      <h1 class="hero-h1">
+        Tu turno en 2 clics.<br/>
+        Tu seña pagada.<br/>
+        Tu agenda asegurada.
+      </h1>
+
+      <p class="hero-p">
+        Reservá tu servicio beauty ahora mismo. Elegís el horario, pagás una seña chiquita
+        y listo: ese espacio queda bloqueado sólo para vos 💖
+      </p>
+
+      <a class="cta-main" href="./booking.html">
+        Reservar mi turno ahora
+      </a>
+
+      <div class="safety-pill">
+        <span>💅</span>
+        <span>Sin seña no se confirma. Cuidamos tu lugar y el tiempo de nuestras profesionales.</span>
+      </div>
+    </header>
+
+    <!-- SERVICIOS -->
+    <section id="servicios">
+      <div class="sec-title">Nuestros servicios más pedidos</div>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-head-row">
+            <div class="service-name">Uñas esculpidas</div>
+            <div class="price-pill">Desde $30.000</div>
+          </div>
+          <div class="service-desc">
+            Uñas definidas, resistentes, con terminación prolija y elegante.
+          </div>
+          <div class="service-extra">
+            Seña desde $5.000 · Duración aprox 60 min
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-head-row">
+            <div class="service-name">Extensión de pestañas</div>
+            <div class="price-pill">Desde $35.000</div>
+          </div>
+          <div class="service-desc">
+            Mirada intensa sin máscara. Volumen, curva y definición.
+          </div>
+          <div class="service-extra">
+            Seña desde $6.000 · Duración aprox 75 min
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-head-row">
+            <div class="service-name">Lifting Pestañas y Cejas</div>
+            <div class="price-pill">Desde $22.000</div>
+          </div>
+          <div class="service-desc">
+            Levanta y ordena tu mirada de forma natural, sin maquillaje.
+          </div>
+          <div class="service-extra">
+            Seña desde $4.000 · Duración aprox 50 min
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-head-row">
+            <div class="service-name">Microblading</div>
+            <div class="price-pill">Desde $50.000</div>
+          </div>
+          <div class="service-desc">
+            Cejas con forma y relleno efecto make-up 24/7.
+          </div>
+          <div class="service-extra">
+            Seña desde $10.000 · Duración aprox 90 min
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-head-row">
+            <div class="service-name">Belleza de pies</div>
+            <div class="price-pill">Desde $18.000</div>
+          </div>
+          <div class="service-desc">
+            Limpieza, forma, cutículas y esmaltado impecable.
+          </div>
+          <div class="service-extra">
+            Seña desde $3.000 · Duración aprox 45 min
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-head-row">
+            <div class="service-name">Depilación definitiva</div>
+            <div class="price-pill">Desde $26.000</div>
+          </div>
+          <div class="service-desc">
+            Piel suave y sin vello. Sesiones rápidas, resultado duradero.
+          </div>
+          <div class="service-extra">
+            Seña desde $5.000 · Duración aprox 30 min
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section id="como-funciona">
+      <div class="sec-title">¿Cómo funciona?</div>
+
+      <div class="how-grid">
+
+        <div class="how-card">
+          <div class="how-num">01</div>
+          <div class="how-tit">Elegís tu servicio y tu horario</div>
+          <div class="how-p">
+            Uñas, pestañas, cejas, depilación... Lo que quieras. Vemos nuestra disponibilidad real.
+          </div>
+        </div>
+
+        <div class="how-card">
+          <div class="how-num">02</div>
+          <div class="how-tit">Pagás una seña chiquita</div>
+          <div class="how-p">
+            Pagás la reserva con el link seguro (Mercado Pago / Ala / Grubag).
+            Esa seña asegura tu lugar.
+          </div>
+        </div>
+
+        <div class="how-card">
+          <div class="how-num">03</div>
+          <div class="how-tit">Tu turno queda bloqueado</div>
+          <div class="how-p">
+            Ese horario pasa a ser exclusivamente tuyo 💖
+            Nadie más puede tomarlo.
+          </div>
+        </div>
+
+        <div class="how-card">
+          <div class="how-num">04</div>
+          <div class="how-tit">Te recordamos por WhatsApp</div>
+          <div class="how-p">
+            Te llega recordatorio antes del turno, así no te lo olvidás.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONFIANZA / TESTIMONIO -->
+    <section id="confianza">
+      <div class="sec-title">Cuidamos tu tiempo (y el nuestro)</div>
+      <div class="testi-card">
+        <div class="testi-quote">
+          “Antes la gente reservaba y no venía, perdíamos horas enteras.
+          Ahora cada turno llega confirmado. Nuestro tiempo vale, y el tuyo también.”
+        </div>
+        <div class="testi-note">
+          Boutique Salón · Turnos con seña
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="sec-title">Preguntas frecuentes</div>
+
+      <div class="faq-grid">
+        <div class="faq-card">
+          <div class="faq-q">¿Por qué debo pagar seña?</div>
+          <div class="faq-a">
+            Porque bloqueamos una profesional, una cabina y un horario sólo para vos 💅.
+            Sin seña el turno no se confirma.
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <div class="faq-q">¿Pierdo la seña si no voy?</div>
+          <div class="faq-a">
+            Si no venís o cancelás tarde, sí. La seña cubre el tiempo perdido
+            de la profesional que te estaba esperando.
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <div class="faq-q">¿Puedo cambiar el horario?</div>
+          <div class="faq-a">
+            Sí, si nos avisás con tiempo y hay lugar libre. Te lo reprogramamos.
+          </div>
+        </div>
+
+        <div class="faq-card">
+          <div class="faq-q">¿Cómo pago la seña?</div>
+          <div class="faq-a">
+            Te mandamos un link de pago seguro (Mercado Pago / Ala / Grubag según la sucursal).
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-cta">
+      <a class="cta-main" href="./booking.html">
+        Reservar mi turno ahora
+      </a>
+    </div>
+    Boutique Salón · Turnos con seña 💖
+  </footer>
+
+</body>
+</html>
