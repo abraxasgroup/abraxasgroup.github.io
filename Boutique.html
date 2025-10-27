@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Boutique Salón | Tu turno en 2 clics</title>
+
+  <style>
+    /* ------------------
+       VARIABLES DE ESTILO
+    ------------------ */
+    :root {
+      --bg-gradient: radial-gradient(circle at 20% 20%, #fff7fa 0%, #ffeef5 40%, #ffe6ee 70%, #ffdfe9 100%);
+      --color-primary: #d63384;      /* rosa intenso elegante */
+      --color-primary-soft: #f8d8e7; /* rosa claro */
+      --color-dark: #2b2b2b;
+      --color-text: #4a4a4a;
+      --radius-card: 18px;
+      --radius-btn: 10px;
+      --shadow-card: 0 20px 40px rgba(214,51,132,0.12);
+      --shadow-btn: 0 10px 20px rgba(214,51,132,0.25);
+      --border-light: 1px solid rgba(214,51,132,0.15);
+      --font-stack: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    /* ------------------
+       RESETEO SUAVE
+    ------------------ */
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+    body {
+      margin: 0;
+      font-family: var(--font-stack);
+      background: var(--bg-gradient);
+      color: var(--color-text);
+      line-height: 1.4;
+      padding: 2rem 1rem 6rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ------------------
+       CONTENEDOR PRINCIPAL
+    ------------------ */
+    .app-shell {
+      width: 100%;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 2rem;
+    }
+
+    /* Responsivo para celular */
+    @media (max-width: 900px) {
+      .app-shell {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ------------------
+       HERO / CABECERA
+    ------------------ */
+    .hero-card {
+      background: #ffffffaa;
+      backdrop-filter: blur(6px);
+      border-radius: var(--radius-card);
+      border: var(--border-light);
+      box-shadow: var(--shadow-card);
+      padding: 1.5rem 1.5rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .brand-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-left {
+      min-width: 200px;
+    }
+
+    .brand-name {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      letter-spacing: -0.03em;
+    }
+
+    .brand-sub {
+      font-size: 0.9rem;
+      color: var(--color-primary);
+      font-weight: 500;
+    }
+
+    .slogan {
+      margin-top: .75rem;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: var(--color-dark);
+      font-weight: 500;
+    }
+
+    .pill-security {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--color-primary-soft);
+      color: var(--color-primary);
+      font-size: .8rem;
+      font-weight: 500;
+      border-radius: 999px;
+      padding: .5rem .9rem;
+      border: 1px solid rgba(214,51,132,.2);
+      box-shadow: 0 10px 18px rgba(214,51,132,.18);
+      line-height: 1.2;
+    }
+
+    /* ------------------
+       CARD DEL FLOW (PASOS)
+    ------------------ */
+    .flow-card {
+      background: #fff;
+      border-radius: var(--radius-card);
+      border: var(--border-light);
+      box-shadow: var(--shadow-card);
+      padding: 1.5rem;
+    }
+
+    .flow-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    .flow-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      letter-spacing: -0.03em;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .step-indicator {
+      display: flex;
+      gap: .4rem;
+    }
+
+    .step-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ffd9ec;
+      border: 1px solid rgba(214,51,132,.4);
+    }
+    .step-dot.active {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      box-shadow: 0 0 12px rgba(214,51,132,.6);
+    }
+
+    hr.line {
+      border: 0;
+      border-top: 1px solid rgba(214,51,132,.15);
+      margin: 1rem 0 1.5rem;
+    }
+
+    /* ------------------
+       LISTA DE SERVICIOS
+    ------------------ */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(min(240px,100%),1fr));
+      gap: 1rem;
+    }
+
+    .service-card {
+      border-radius: var(--radius-card);
+      border: var(--border-light);
+      background: #fff;
+      box-shadow: var(--shadow-card);
+      padding: 1rem 1rem 0.9rem;
+      cursor: pointer;
+      position: relative;
+      transition: all .15s;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 24px 40px rgba(214,51,132,.18);
+      transform: translateY(-2px);
+    }
+
+    .service-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: .5rem;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    .service-name {
+      font-weight: 600;
+      font-size: .95rem;
+      color: var(--color-dark);
+      letter-spacing: -0.03em;
+    }
+
+    .badge-price {
+      background: var(--color-primary-soft);
+      color: var(--color-primary);
+      font-size: .8rem;
+      font-weight: 600;
+      border-radius: 999px;
+      padding: .35rem .6rem;
+      border: 1px solid rgba(214,51,132,.25);
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .service-desc {
+      font-size: .8rem;
+      line-height: 1.45;
+      color: var(--color-text);
+      min-height: 3em;
+    }
+
+    .service-meta-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: .75rem;
+      font-size: .75rem;
+      color: var(--color-text);
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    .mini-label {
+      font-weight: 500;
+      color: var(--color-dark);
+    }
+
+    .choose-btn {
+      border: none;
+      background: var(--color-primary);
+      color: #fff;
+      font-size: .8rem;
+      font-weight: 600;
+      width: 100%;
+      border-radius: var(--radius-btn);
+      padding: .7rem .9rem;
+      margin-top: 1rem;
+      box-shadow: var(--shadow-btn);
+      cursor: pointer;
+      line-height: 1.2;
+      transition: box-shadow .15s, transform .15s;
+    }
+
+    .choose-btn:hover {
+      box-shadow: 0 16px 32px rgba(214,51,132,.4);
+      transform: translateY(-1px) scale(1.01);
+    }
+
+    /* ------------------
+       PASO 2: FECHA Y HORA
+    ------------------ */
+    .hidden {
+      display: none !important;
+    }
+
+    .calendar-wrap {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width:600px){
+      .calendar-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .date-select-card,
+    .time-select-card {
+      border-radius: var(--radius-card);
+      border: var(--border-light);
+      background:#fff;
+      box-shadow: var(--shadow-card);
+      padding: 1rem;
+    }
+
+    .block-title {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin-bottom: .75rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap:.5rem;
+    }
+
+    .date-input,
+    .time-slot-btn,
+    .input-field {
+      font-family: inherit;
+      font-size: .9rem;
+    }
+
+    .date-input {
+      width: 100%;
+      padding: .7rem .8rem;
+      border-radius: var(--radius-btn);
+      border: 1px solid rgba(214,51,132,.3);
+      outline: none;
+      color: var(--color-dark);
+      background:#fff;
+      line-height:1.2;
+    }
+
+    .times-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(min(90px,100%),1fr));
+      gap: .5rem;
+    }
+
+    .time-slot-btn {
+      border-radius: var(--radius-btn);
+      border: 1px solid rgba(214,51,132,.3);
+      background:#fff;
+      color: var(--color-dark);
+      padding: .6rem .5rem;
+      font-size: .8rem;
+      font-weight: 500;
+      cursor: pointer;
+      line-height:1.2;
+      text-align:center;
+    }
+    .time-slot-btn.active {
+      background: var(--color-primary);
+      color: #fff;
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-btn);
+    }
+
+    /* ------------------
+       PASO 3: DATOS CLIENTA
+    ------------------ */
+    .client-card {
+      border-radius: var(--radius-card);
+      border: var(--border-light);
+      background:#fff;
+      box-shadow: var(--shadow-card);
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    .input-label {
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--color-dark);
+      margin-bottom: .4rem;
+      display:block;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: .7rem .8rem;
+      border-radius: var(--radius-btn);
+      border: 1px solid rgba(214,51,132,.3);
+      outline: none;
+      color: var(--color-dark);
+      background:#fff;
+      line-height:1.2;
+    }
+
+    .small-hint {
+      font-size: .7rem;
+      line-height:1.4;
+      color: #888;
+      margin-top: .4rem;
+    }
+
+    .confirm-btn {
+      border: none;
+      background: var(--color-primary);
+      color: #fff;
+      font-size: .9rem;
+      font-weight: 600;
+      width: 100%;
+      border-radius: var(--radius-btn);
+      padding: .8rem 1rem;
+      margin-top: 1rem;
+      box-shadow: var(--shadow-btn);
+      cursor: pointer;
+      line-height: 1.2;
+      transition: box-shadow .15s, transform .15s;
+    }
+    .confirm-btn:hover {
+      box-shadow: 0 16px 32px rgba(214,51,132,.4);
+      transform: translateY(-1px) scale(1.01);
+    }
+
+    /* ------------------
+       PASO 4: RESUMEN + PAGO
+    ------------------ */
+    .final-card {
+      border-radius: var(--radius-card);
+      border: var(--border-light);
+      background:#fff;
+      box-shadow: var(--shadow-card);
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    .summary-line {
+      font-size: .8rem;
+      margin-bottom: .5rem;
+      line-height:1.4;
+    }
+    .summary-strong {
+      color: var(--color-dark);
+      font-weight: 600;
+    }
+
+    .deposit-box {
+      border-radius: var(--radius-card);
+      background: var(--color-primary-soft);
+      border: 1px solid rgba(214,51,132,.25);
+      box-shadow: var(--shadow-card);
+      padding: .9rem 1rem;
+      margin-top: 1rem;
+      font-size: .8rem;
+      line-height:1.5;
+      color: var(--color-dark);
+    }
+
+    .pay-btn {
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+      background: var(--color-primary);
+      color:#fff;
+      font-size:.9rem;
+      font-weight:600;
+      border-radius: var(--radius-btn);
+      padding:.8rem 1rem;
+      width:100%;
+      box-shadow: var(--shadow-btn);
+      margin-top:1rem;
+    }
+
+    .whatsapp-preview {
+      background:#000;
+      color:#0f0;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size:.7rem;
+      line-height:1.4;
+      border-radius: var(--radius-card);
+      padding:1rem;
+      margin-top:1rem;
+      white-space:pre-wrap;
+      word-break:break-word;
+      border:2px solid #0f0;
+      box-shadow:0 20px 40px rgba(0,255,0,.15);
+    }
+
+    /* ------------------
+       PANEL RESUMEN (COLUMNA DERECHA)
+    ------------------ */
+    .side-panel {
+      position: relative;
+      background:#fff;
+      border-radius: var(--radius-card);
+      border: var(--border-light);
+      box-shadow: var(--shadow-card);
+      padding:1.25rem 1.25rem 5rem;
+      display:flex;
+      flex-direction:column;
+      gap:1rem;
+      min-height:320px;
+    }
+
+    .side-title {
+      font-size:.9rem;
+      font-weight:600;
+      color:var(--color-dark);
+      letter-spacing:-0.03em;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:.5rem;
+    }
+
+    .side-summary-line {
+      font-size:.8rem;
+      line-height:1.4;
+      color:var(--color-text);
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:.5rem;
+    }
+
+    .side-hint {
+      font-size:.7rem;
+      color:#888;
+      line-height:1.4;
+    }
+
+    .footer-note {
+      font-size:.7rem;
+      line-height:1.4;
+      color:#777;
+      text-align:center;
+      margin-top:auto;
+      opacity:.8;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="app-shell">
+
+    <!-- Columna Izquierda: Flujo de Reserva -->
+    <section>
+      <!-- HERO / Marca -->
+      <article class="hero-card">
+        <div class="brand-row">
+          <div class="brand-left">
+            <div class="brand-name">Boutique Salón</div>
+            <div class="brand-sub">Agenda oficial</div>
+            <div class="slogan">
+              Tu turno en 2 clics. Tu seña pagada. Tu agenda asegurada.
+            </div>
+          </div>
+
+          <div class="pill-security">
+            <span>💖</span>
+            <span>Sin seña no se confirma. Cuidamos tu lugar y el tiempo de nuestras profesionales.</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD DEL FLUJO -->
+      <article class="flow-card">
+
+        <header class="flow-header">
+          <div class="flow-title">
+            <span id="flowTitleText">Paso 1 · Elegí tu servicio</span>
+          </div>
+
+          <div class="step-indicator">
+            <div class="step-dot step-dot-1 active"></div>
+            <div class="step-dot step-dot-2"></div>
+            <div class="step-dot step-dot-3"></div>
+            <div class="step-dot step-dot-4"></div>
+          </div>
+        </header>
+
+        <hr class="line" />
+
+        <!-- PASO 1: Servicios -->
+        <section id="step1_services">
+          <div class="services-grid" id="servicesGrid">
+            <!-- Cards de servicios generadas por JS -->
+          </div>
+        </section>
+
+        <!-- PASO 2: Fecha y Hora -->
+        <section id="step2_datetime" class="hidden">
+          <div class="calendar-wrap">
+            <div class="date-select-card">
+              <div class="block-title">
+                <span>Elegí la fecha</span>
+                <small id="chosenServiceLabel" style="font-size:.7rem;color:var(--color-primary);font-weight:600;"></small>
+              </div>
+              <input
+                id="dateInput"
+                class="date-input"
+                type="date"
+              />
+              <div class="small-hint">
+                Solo se muestran los horarios disponibles para esa fecha.
+              </div>
+            </div>
+
+            <div class="time-select-card">
+              <div class="block-title">
+                <span>Horarios disponibles</span>
+                <small style="font-size:.7rem;color:#888;font-weight:500;">Elegí uno</small>
+              </div>
+              <div class="times-grid" id="timesGrid">
+                <!-- Horarios generados por JS -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PASO 3: Datos de la clienta -->
+        <section id="step3_client" class="hidden">
+          <div class="client-card">
+            <label class="input-label" for="clientName">Tu nombre</label>
+            <input id="clientName" class="input-field" placeholder="Ej: Sofía González" />
+
+            <label class="input-label" for="clientPhone" style="margin-top:1rem;">Tu WhatsApp</label>
+            <input id="clientPhone" class="input-field" placeholder="Ej: +54 9 341 555 0000" />
+
+            <div class="small-hint">
+              Te vamos a confirmar tu turno y recordarte el día anterior 💕
+            </div>
+
+            <button class="confirm-btn" id="btnConfirmClient">
+              Confirmar mis datos
+            </button>
+          </div>
+        </section>
+
+        <!-- PASO 4: Pago de seña + Resumen -->
+        <section id="step4_done" class="hidden">
+          <div class="final-card">
+            <div class="summary-line">
+              <span class="summary-strong">Servicio:</span>
+              <span id="sumServicio"></span>
+            </div>
+
+            <div class="summary-line">
+              <span class="summary-strong">Profesional:</span>
+              <span id="sumPro"></span>
+            </div>
+
+            <div class="summary-line">
+              <span class="summary-strong">Fecha y hora:</span>
+              <span id="sumFechaHora"></span>
+            </div>
+
+            <div class="summary-line">
+              <span class="summary-strong">Tu nombre:</span>
+              <span id="sumNombre"></span>
+            </div>
+
+            <div class="summary-line">
+              <span class="summary-strong">Tu WhatsApp:</span>
+              <span id="sumTel"></span>
+            </div>
+
+            <div class="deposit-box">
+              Para asegurar este turno necesitás abonar tu seña de:
+              <div style="font-size:1rem;font-weight:600;color:var(--color-primary);margin-top:.4rem;" id="sumSena"></div>
+
+              <div style="font-size:.7rem;color:#555;margin-top:.5rem;line-height:1.4;">
+                Pagás ahora, y listo. Ese horario queda bloqueado exclusivamente para vos 🩷
+              </div>
+            </div>
+
+            <!-- Este link simula el botón de Mercado Pago / Ala / Grubag -->
+            <a class="pay-btn" id="payBtn" href="#" target="_blank" rel="noopener noreferrer">
+              Pagar mi seña ahora
+            </a>
+
+            <div class="small-hint" style="margin-top:1rem;">
+              Guardá tu comprobante. Si no se acredita la seña, el turno se libera automáticamente.
+            </div>
+
+            <div class="whatsapp-preview" id="waPreview">
+              <!-- Mensaje WhatsApp generado por JS -->
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </section>
+
+    <!-- Columna Derecha: Resumen en vivo -->
+    <aside class="side-panel">
+      <div class="side-title">
+        <span>Resumen en vivo</span>
+        <span style="font-size:.7rem;color:var(--color-primary);font-weight:600;">Boutique Salón</span>
+      </div>
+
+      <div class="side-summary-line">
+        <span>Servicio</span>
+        <span id="liveServicio">—</span>
+      </div>
+
+      <div class="side-summary-line">
+        <span>Profesional</span>
+        <span id="livePro">—</span>
+      </div>
+
+      <div class="side-summary-line">
+        <span>Seña requerida</span>
+        <span id="liveSena">—</span>
+      </div>
+
+      <div class="side-summary-line">
+        <span>Fecha</span>
+        <span id="liveFecha">—</span>
+      </div>
+
+      <div class="side-summary-line">
+        <span>Hora</span>
+        <span id="liveHora">—</span>
+      </div>
+
+      <div class="side-summary-line">
+        <span>Nombre</span>
+        <span id="liveNombre">—</span>
+      </div>
+
+      <div class="side-summary-line">
+        <span>WhatsApp</span>
+        <span id="liveTel">—</span>
+      </div>
+
+      <div class="side-hint">
+        Importante: si la clienta no paga la seña dentro de los próximos minutos, el turno se libera solo.
+      </div>
+
+      <div class="footer-note">
+        Boutique Salón · Turnos con seña 💖
+      </div>
+    </aside>
+
+  </main>
+
+  <script>
+    // -------------------------
+    // DATA BASE DEL PRODUCTO
+    // -------------------------
+    const servicios = [
+      {
+        id: "unas_esculpidas",
+        nombre: "Uñas esculpidas",
+        desc: "Uñas definidas, resistentes, terminación prolija y elegante.",
+        duracion: "60 min",
+        profesional: "Carla",
+        precioTotal: 30000,
+        sena: 5000,
+        linkPago: "https://pago.ejemplo/unas-esculpidas"
+      },
+      {
+        id: "extension_pestanas",
+        nombre: "Extensión de pestañas",
+        desc: "Volumen, curva y definición sin máscara.",
+        duracion: "75 min",
+        profesional: "Sofi",
+        precioTotal: 35000,
+        sena: 6000,
+        linkPago: "https://pago.ejemplo/extension-pestanas"
+      },
+      {
+        id: "lifting_pestanas_cejas",
+        nombre: "Lifting Pestañas y Cejas",
+        desc: "Levanta y ordena tu mirada de forma natural.",
+        duracion: "50 min",
+        profesional: "Sofi",
+        precioTotal: 22000,
+        sena: 4000,
+        linkPago: "https://pago.ejemplo/lifting"
+      },
+      {
+        id: "microblading",
+        nombre: "Microblading",
+        desc: "Cejas con forma y relleno efecto make-up 24/7.",
+        duracion: "90 min",
+        profesional: "Belu",
+        precioTotal: 50000,
+        sena: 10000,
+        linkPago: "https://pago.ejemplo/microblading"
+      },
+      {
+        id: "belleza_pies",
+        nombre: "Belleza de pies",
+        desc: "Limpieza, forma, cutículas y esmaltado impecable.",
+        duracion: "45 min",
+        profesional: "Carla",
+        precioTotal: 18000,
+        sena: 3000,
+        linkPago: "https://pago.ejemplo/belleza-pies"
+      },
+      {
+        id: "depilacion_definitiva",
+        nombre: "Depilación definitiva",
+        desc: "Piel suave y sin vello. Sesiones rápidas, resultado duradero.",
+        duracion: "30 min",
+        profesional: "Lau",
+        precioTotal: 26000,
+        sena: 5000,
+        linkPago: "https://pago.ejemplo/depilacion-definitiva"
+      }
+    ];
+
+    // Horarios ejemplo disponibles
+    const horariosDisponibles = ["10:00", "11:30", "14:00", "15:30", "17:00"];
+
+    // Estado temporal de la reserva en curso
+    const state = {
+      servicioId: null,
+      fecha: "",
+      hora: "",
+      nombre: "",
+      tel: ""
+    };
+
+    // -------------------------
+    // HELPERS
+    // -------------------------
+    function $(id) { return document.getElementById(id); }
+
+    function setStep(activeStep) {
+      // Ocultar/mostrar secciones
+      $("step1_services").classList.add("hidden");
+      $("step2_datetime").classList.add("hidden");
+      $("step3_client").classList.add("hidden");
+      $("step4_done").classList.add("hidden");
+
+      if (activeStep === 1) {
+        $("step1_services").classList.remove("hidden");
+        $("flowTitleText").textContent = "Paso 1 · Elegí tu servicio";
+      }
+      if (activeStep === 2) {
+        $("step2_datetime").classList.remove("hidden");
+        $("flowTitleText").textContent = "Paso 2 · Elegí la fecha y el horario";
+      }
+      if (activeStep === 3) {
+        $("step3_client").classList.remove("hidden");
+        $("flowTitleText").textContent = "Paso 3 · Tus datos de contacto";
+      }
+      if (activeStep === 4) {
+        $("step4_done").classList.remove("hidden");
+        $("flowTitleText").textContent = "Listo 💖 Pagá tu seña para confirmar";
+      }
+
+      // Actualizar dots
+      document.querySelectorAll(".step-dot").forEach((dot, index) => {
+        if (index < activeStep) {
+          dot.classList.add("active");
+        } else {
+          dot.classList.remove("active");
+        }
+      });
+    }
+
+    function getServicioSel() {
+      return servicios.find(s => s.id === state.servicioId);
+    }
+
+    function formatearPrecio(num) {
+      // Ej: $ 30.000
+      return "$ " + num.toLocaleString("es-AR");
+    }
+
+    // Llenar resumen lateral
+    function syncSidePanel() {
+      const srv = getServicioSel();
+      $("liveServicio").textContent = srv ? srv.nombre : "—";
+      $("livePro").textContent = srv ? srv.profesional : "—";
+      $("liveSena").textContent = srv ? formatearPrecio(srv.sena) : "—";
+      $("liveFecha").textContent = state.fecha || "—";
+      $("liveHora").textContent = state.hora || "—";
+      $("liveNombre").textContent = state.nombre || "—";
+      $("liveTel").textContent = state.tel || "—";
+    }
+
+    // Generar vista final paso 4
+    function renderPaso4() {
+      const srv = getServicioSel();
+      if (!srv) return;
+      $("sumServicio").textContent = srv.nombre;
+      $("sumPro").textContent = srv.profesional;
+      $("sumFechaHora").textContent = `${state.fecha} ${state.hora}`;
+      $("sumNombre").textContent = state.nombre;
+      $("sumTel").textContent = state.tel;
+      $("sumSena").textContent = formatearPrecio(srv.sena);
+
+      // Simulamos link de pago según servicio
+      $("payBtn").setAttribute("href", srv.linkPago);
+
+      // Previsualización mensaje WhatsApp (el que le enviaría el sistema)
+      const msg = [
+        `Hola ${state.nombre} 💕`,
+        `Tu turno quedó reservado en Boutique Salón:`,
+        `• Servicio: ${srv.nombre}`,
+        `• Profesional: ${srv.profesional}`,
+        `• Día y hora: ${state.fecha} ${state.hora}`,
+        ``,
+        `Para confirmarlo necesitás abonar la seña de ${formatearPrecio(srv.sena)}:`,
+        srv.linkPago,
+        ``,
+        `IMPORTANTE: Si la seña no se acredita pronto, el turno se libera automáticamente.`,
+        `Gracias por elegirnos 🩷`
+      ].join("\n");
+
+      $("waPreview").textContent = msg;
+    }
+
+    // -------------------------
+    // RENDER PASO 1 (SERVICIOS)
+    // -------------------------
+    function renderServicios() {
+      const cont = $("servicesGrid");
+      cont.innerHTML = "";
+      servicios.forEach(srv => {
+        const card = document.createElement("div");
+        card.className = "service-card";
+        card.innerHTML = `
+          <div class="service-header-row">
+            <div class="service-name">${srv.nombre}</div>
+            <div class="badge-price">${formatearPrecio(srv.precioTotal)}</div>
+          </div>
+
+          <div class="service-desc">${srv.desc}</div>
+
+          <div class="service-meta-row">
+            <div><span class="mini-label">${srv.duracion}</span> aprox</div>
+            <div>Seña ${formatearPrecio(srv.sena)}</div>
+          </div>
+
+          <button class="choose-btn" data-id="${srv.id}">
+            Elegir este servicio
+          </button>
+        `;
+        cont.appendChild(card);
+      });
+
+      // Listeners de cada botón
+      cont.querySelectorAll(".choose-btn").forEach(btn => {
+        btn.addEventListener("click", e => {
+          const idSel = e.currentTarget.getAttribute("data-id");
+          state.servicioId = idSel;
+          state.fecha = "";
+          state.hora = "";
+          syncSidePanel();
+
+          // actualizar etiqueta arriba del paso 2
+          const srv = getServicioSel();
+          $("chosenServiceLabel").textContent = srv ? srv.nombre : "";
+
+          // limpiar selección de hora
+          renderHorarios();
+          $("dateInput").value = "";
+
+          setStep(2);
+        });
+      });
+    }
+
+    // -------------------------
+    // PASO 2 (FECHA Y HORA)
+    // -------------------------
+    function renderHorarios() {
+      const wrap = $("timesGrid");
+      wrap.innerHTML = "";
+      horariosDisponibles.forEach(h => {
+        const b = document.createElement("button");
+        b.className = "time-slot-btn";
+        b.textContent = h;
+        b.addEventListener("click", () => {
+          // marcar activo
+          document.querySelectorAll(".time-slot-btn").forEach(x => x.classList.remove("active"));
+          b.classList.add("active");
+
+          state.hora = h;
+          syncSidePanel();
+
+          // si ya hay fecha elegida, pasamos a paso 3
+          if (state.fecha) {
+            setStep(3);
+          }
+        });
+        wrap.appendChild(b);
+      });
+    }
+
+    $("dateInput").addEventListener("change", (e)=>{
+      state.fecha = e.target.value;
+      syncSidePanel();
+      // si ya hay hora elegida, pasamos a paso 3
+      if (state.hora) {
+        setStep(3);
+      }
+    });
+
+    // -------------------------
+    // PASO 3 (CLIENTA)
+    // -------------------------
+    $("btnConfirmClient").addEventListener("click", ()=>{
+      const nombre = $("clientName").value.trim();
+      const tel = $("clientPhone").value.trim();
+
+      state.nombre = nombre || state.nombre;
+      state.tel = tel || state.tel;
+
+      syncSidePanel();
+      renderPaso4();
+      setStep(4);
+    });
+
+    // -------------------------
+    // INIT
+    // -------------------------
+    renderServicios();
+    renderHorarios();
+    syncSidePanel();
+    setStep(1);
+  </script>
+</body>
+</html>
