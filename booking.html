@@ -3,47 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Boutique Salón | Tu turno en 2 clics</title>
+  <title>Boutique Salón | Reservar turno</title>
 
   <style>
-    /* ------------------
-       VARIABLES DE ESTILO
-    ------------------ */
     :root {
-      --bg-gradient: radial-gradient(circle at 20% 20%, #fff7fa 0%, #ffeef5 40%, #ffe6ee 70%, #ffdfe9 100%);
-      --color-primary: #d63384;      /* rosa intenso elegante */
-      --color-primary-soft: #f8d8e7; /* rosa claro */
+      --color-primary: #d63384;
+      --color-primary-soft: rgba(214,51,132,0.12);
+      --color-card-bg: rgba(255,255,255,0.9);
+      --color-card-border: rgba(255,255,255,0.7);
       --color-dark: #2b2b2b;
-      --color-text: #4a4a4a;
+      --color-text: #444;
       --radius-card: 18px;
       --radius-btn: 10px;
-      --shadow-card: 0 20px 40px rgba(214,51,132,0.12);
-      --shadow-btn: 0 10px 20px rgba(214,51,132,0.25);
-      --border-light: 1px solid rgba(214,51,132,0.15);
+      --shadow-card: 0 28px 48px rgba(0,0,0,.5);
+      --border-light: 1px solid rgba(255,255,255,.7);
       --font-stack: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
-    /* ------------------
-       RESETEO SUAVE
-    ------------------ */
     * {
       box-sizing: border-box;
       -webkit-font-smoothing: antialiased;
     }
+
     body {
       margin: 0;
       font-family: var(--font-stack);
-      background: var(--bg-gradient);
       color: var(--color-text);
       line-height: 1.4;
       padding: 2rem 1rem 6rem;
       display: flex;
       justify-content: center;
+
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.7) 100%),
+        url("./img/bg-booking.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
 
-    /* ------------------
-       CONTENEDOR PRINCIPAL
-    ------------------ */
     .app-shell {
       width: 100%;
       max-width: 1200px;
@@ -51,20 +49,16 @@
       grid-template-columns: 1fr 380px;
       gap: 2rem;
     }
-
-    /* Responsivo para celular */
     @media (max-width: 900px) {
       .app-shell {
         grid-template-columns: 1fr;
       }
     }
 
-    /* ------------------
-       HERO / CABECERA
-    ------------------ */
+    /* HERO / CABECERA */
     .hero-card {
-      background: #ffffffaa;
-      backdrop-filter: blur(6px);
+      background: var(--color-card-bg);
+      backdrop-filter: blur(10px);
       border-radius: var(--radius-card);
       border: var(--border-light);
       box-shadow: var(--shadow-card);
@@ -79,10 +73,7 @@
       justify-content: space-between;
       gap: 1rem;
     }
-
-    .brand-left {
-      min-width: 200px;
-    }
+    .brand-left { min-width: 200px; }
 
     .brand-name {
       font-size: 1.4rem;
@@ -90,13 +81,11 @@
       color: var(--color-dark);
       letter-spacing: -0.03em;
     }
-
     .brand-sub {
       font-size: 0.9rem;
       color: var(--color-primary);
       font-weight: 500;
     }
-
     .slogan {
       margin-top: .75rem;
       font-size: 0.95rem;
@@ -115,20 +104,19 @@
       font-weight: 500;
       border-radius: 999px;
       padding: .5rem .9rem;
-      border: 1px solid rgba(214,51,132,.2);
-      box-shadow: 0 10px 18px rgba(214,51,132,.18);
+      border: 1px solid rgba(214,51,132,.3);
+      box-shadow: 0 20px 40px rgba(214,51,132,.4);
       line-height: 1.2;
     }
 
-    /* ------------------
-       CARD DEL FLOW (PASOS)
-    ------------------ */
+    /* CARD FLUJO */
     .flow-card {
-      background: #fff;
+      background: var(--color-card-bg);
       border-radius: var(--radius-card);
       border: var(--border-light);
       box-shadow: var(--shadow-card);
       padding: 1.5rem;
+      backdrop-filter: blur(10px);
     }
 
     .flow-header {
@@ -138,7 +126,6 @@
       flex-wrap: wrap;
       gap: .5rem;
     }
-
     .flow-title {
       font-size: 1rem;
       font-weight: 600;
@@ -149,33 +136,27 @@
       gap: .5rem;
     }
 
-    .step-indicator {
-      display: flex;
-      gap: .4rem;
-    }
-
+    .step-indicator { display: flex; gap: .4rem; }
     .step-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #ffd9ec;
-      border: 1px solid rgba(214,51,132,.4);
+      background: rgba(214,51,132,.25);
+      border: 1px solid rgba(214,51,132,.6);
     }
     .step-dot.active {
       background: var(--color-primary);
       border-color: var(--color-primary);
-      box-shadow: 0 0 12px rgba(214,51,132,.6);
+      box-shadow: 0 0 12px rgba(214,51,132,.9);
     }
 
     hr.line {
       border: 0;
-      border-top: 1px solid rgba(214,51,132,.15);
+      border-top: 1px solid rgba(214,51,132,.3);
       margin: 1rem 0 1.5rem;
     }
 
-    /* ------------------
-       LISTA DE SERVICIOS
-    ------------------ */
+    /* SERVICIOS GRID */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit,minmax(min(240px,100%),1fr));
@@ -185,16 +166,15 @@
     .service-card {
       border-radius: var(--radius-card);
       border: var(--border-light);
-      background: #fff;
+      background: rgba(255,255,255,0.95);
       box-shadow: var(--shadow-card);
       padding: 1rem 1rem 0.9rem;
       cursor: pointer;
       position: relative;
       transition: all .15s;
     }
-
     .service-card:hover {
-      box-shadow: 0 24px 40px rgba(214,51,132,.18);
+      box-shadow: 0 24px 40px rgba(214,51,132,.45);
       transform: translateY(-2px);
     }
 
@@ -215,15 +195,15 @@
     }
 
     .badge-price {
-      background: var(--color-primary-soft);
-      color: var(--color-primary);
+      background: var(--color-primary);
+      color: #fff;
       font-size: .8rem;
       font-weight: 600;
       border-radius: 999px;
       padding: .35rem .6rem;
-      border: 1px solid rgba(214,51,132,.25);
       line-height: 1.2;
       white-space: nowrap;
+      box-shadow: 0 16px 32px rgba(214,51,132,.4);
     }
 
     .service-desc {
@@ -258,23 +238,17 @@
       border-radius: var(--radius-btn);
       padding: .7rem .9rem;
       margin-top: 1rem;
-      box-shadow: var(--shadow-btn);
+      box-shadow: 0 16px 32px rgba(214,51,132,.4);
       cursor: pointer;
       line-height: 1.2;
       transition: box-shadow .15s, transform .15s;
     }
-
     .choose-btn:hover {
-      box-shadow: 0 16px 32px rgba(214,51,132,.4);
       transform: translateY(-1px) scale(1.01);
     }
 
-    /* ------------------
-       PASO 2: FECHA Y HORA
-    ------------------ */
-    .hidden {
-      display: none !important;
-    }
+    /* PASO 2 FECHA/HORA */
+    .hidden { display: none !important; }
 
     .calendar-wrap {
       display: grid;
@@ -282,16 +256,14 @@
       grid-template-columns: 1fr 1fr;
     }
     @media (max-width:600px){
-      .calendar-wrap {
-        grid-template-columns: 1fr;
-      }
+      .calendar-wrap { grid-template-columns: 1fr; }
     }
 
     .date-select-card,
     .time-select-card {
       border-radius: var(--radius-card);
       border: var(--border-light);
-      background:#fff;
+      background: rgba(255,255,255,0.95);
       box-shadow: var(--shadow-card);
       padding: 1rem;
     }
@@ -318,7 +290,7 @@
       width: 100%;
       padding: .7rem .8rem;
       border-radius: var(--radius-btn);
-      border: 1px solid rgba(214,51,132,.3);
+      border: 1px solid rgba(214,51,132,.4);
       outline: none;
       color: var(--color-dark);
       background:#fff;
@@ -333,7 +305,7 @@
 
     .time-slot-btn {
       border-radius: var(--radius-btn);
-      border: 1px solid rgba(214,51,132,.3);
+      border: 1px solid rgba(214,51,132,.4);
       background:#fff;
       color: var(--color-dark);
       padding: .6rem .5rem;
@@ -347,16 +319,21 @@
       background: var(--color-primary);
       color: #fff;
       border-color: var(--color-primary);
-      box-shadow: var(--shadow-btn);
+      box-shadow: 0 16px 32px rgba(214,51,132,.4);
     }
 
-    /* ------------------
-       PASO 3: DATOS CLIENTA
-    ------------------ */
+    .small-hint {
+      font-size: .7rem;
+      line-height:1.4;
+      color: #666;
+      margin-top: .4rem;
+    }
+
+    /* PASO 3 CLIENTA */
     .client-card {
       border-radius: var(--radius-card);
       border: var(--border-light);
-      background:#fff;
+      background: rgba(255,255,255,0.95);
       box-shadow: var(--shadow-card);
       padding: 1rem;
       margin-top: 1rem;
@@ -374,18 +351,11 @@
       width: 100%;
       padding: .7rem .8rem;
       border-radius: var(--radius-btn);
-      border: 1px solid rgba(214,51,132,.3);
+      border: 1px solid rgba(214,51,132,.4);
       outline: none;
       color: var(--color-dark);
       background:#fff;
       line-height:1.2;
-    }
-
-    .small-hint {
-      font-size: .7rem;
-      line-height:1.4;
-      color: #888;
-      margin-top: .4rem;
     }
 
     .confirm-btn {
@@ -398,23 +368,20 @@
       border-radius: var(--radius-btn);
       padding: .8rem 1rem;
       margin-top: 1rem;
-      box-shadow: var(--shadow-btn);
+      box-shadow: 0 16px 32px rgba(214,51,132,.4);
       cursor: pointer;
       line-height: 1.2;
       transition: box-shadow .15s, transform .15s;
     }
     .confirm-btn:hover {
-      box-shadow: 0 16px 32px rgba(214,51,132,.4);
       transform: translateY(-1px) scale(1.01);
     }
 
-    /* ------------------
-       PASO 4: RESUMEN + PAGO
-    ------------------ */
+    /* PASO 4 FINAL */
     .final-card {
       border-radius: var(--radius-card);
       border: var(--border-light);
-      background:#fff;
+      background: rgba(255,255,255,0.95);
       box-shadow: var(--shadow-card);
       padding: 1rem;
       margin-top: 1rem;
@@ -433,8 +400,8 @@
     .deposit-box {
       border-radius: var(--radius-card);
       background: var(--color-primary-soft);
-      border: 1px solid rgba(214,51,132,.25);
-      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(214,51,132,.3);
+      box-shadow: 0 24px 40px rgba(214,51,132,.4);
       padding: .9rem 1rem;
       margin-top: 1rem;
       font-size: .8rem;
@@ -453,7 +420,7 @@
       border-radius: var(--radius-btn);
       padding:.8rem 1rem;
       width:100%;
-      box-shadow: var(--shadow-btn);
+      box-shadow:0 16px 32px rgba(214,51,132,.4);
       margin-top:1rem;
     }
 
@@ -469,18 +436,17 @@
       white-space:pre-wrap;
       word-break:break-word;
       border:2px solid #0f0;
-      box-shadow:0 20px 40px rgba(0,255,0,.15);
+      box-shadow:0 20px 40px rgba(0,255,0,.25);
     }
 
-    /* ------------------
-       PANEL RESUMEN (COLUMNA DERECHA)
-    ------------------ */
+    /* PANEL DERECHA */
     .side-panel {
       position: relative;
-      background:#fff;
+      background: var(--color-card-bg);
       border-radius: var(--radius-card);
       border: var(--border-light);
       box-shadow: var(--shadow-card);
+      backdrop-filter: blur(10px);
       padding:1.25rem 1.25rem 5rem;
       display:flex;
       flex-direction:column;
@@ -511,17 +477,16 @@
 
     .side-hint {
       font-size:.7rem;
-      color:#888;
+      color:#666;
       line-height:1.4;
     }
 
     .footer-note {
       font-size:.7rem;
       line-height:1.4;
-      color:#777;
+      color:#555;
       text-align:center;
       margin-top:auto;
-      opacity:.8;
     }
   </style>
 </head>
@@ -529,14 +494,14 @@
 <body>
   <main class="app-shell">
 
-    <!-- Columna Izquierda: Flujo de Reserva -->
+    <!-- Columna Izquierda -->
     <section>
-      <!-- HERO / Marca -->
+      <!-- HERO -->
       <article class="hero-card">
         <div class="brand-row">
           <div class="brand-left">
             <div class="brand-name">Boutique Salón</div>
-            <div class="brand-sub">Agenda oficial</div>
+            <div class="brand-sub">Agenda oficial con seña</div>
             <div class="slogan">
               Tu turno en 2 clics. Tu seña pagada. Tu agenda asegurada.
             </div>
@@ -544,12 +509,15 @@
 
           <div class="pill-security">
             <span>💖</span>
-            <span>Sin seña no se confirma. Cuidamos tu lugar y el tiempo de nuestras profesionales.</span>
+            <span>
+              Sin seña no se confirma. Pagás por Mercado Pago / Ualá / Brubank / Naranja,
+              y tu horario queda bloqueado sólo para vos.
+            </span>
           </div>
         </div>
       </article>
 
-      <!-- CARD DEL FLUJO -->
+      <!-- FLUJO -->
       <article class="flow-card">
 
         <header class="flow-header">
@@ -567,14 +535,12 @@
 
         <hr class="line" />
 
-        <!-- PASO 1: Servicios -->
+        <!-- PASO 1 -->
         <section id="step1_services">
-          <div class="services-grid" id="servicesGrid">
-            <!-- Cards de servicios generadas por JS -->
-          </div>
+          <div class="services-grid" id="servicesGrid"></div>
         </section>
 
-        <!-- PASO 2: Fecha y Hora -->
+        <!-- PASO 2 -->
         <section id="step2_datetime" class="hidden">
           <div class="calendar-wrap">
             <div class="date-select-card">
@@ -582,29 +548,23 @@
                 <span>Elegí la fecha</span>
                 <small id="chosenServiceLabel" style="font-size:.7rem;color:var(--color-primary);font-weight:600;"></small>
               </div>
-              <input
-                id="dateInput"
-                class="date-input"
-                type="date"
-              />
+              <input id="dateInput" class="date-input" type="date" />
               <div class="small-hint">
-                Solo se muestran los horarios disponibles para esa fecha.
+                Sólo mostramos los horarios libres ese día.
               </div>
             </div>
 
             <div class="time-select-card">
               <div class="block-title">
                 <span>Horarios disponibles</span>
-                <small style="font-size:.7rem;color:#888;font-weight:500;">Elegí uno</small>
+                <small style="font-size:.7rem;color:#666;font-weight:500;">Elegí uno</small>
               </div>
-              <div class="times-grid" id="timesGrid">
-                <!-- Horarios generados por JS -->
-              </div>
+              <div class="times-grid" id="timesGrid"></div>
             </div>
           </div>
         </section>
 
-        <!-- PASO 3: Datos de la clienta -->
+        <!-- PASO 3 -->
         <section id="step3_client" class="hidden">
           <div class="client-card">
             <label class="input-label" for="clientName">Tu nombre</label>
@@ -614,7 +574,7 @@
             <input id="clientPhone" class="input-field" placeholder="Ej: +54 9 341 555 0000" />
 
             <div class="small-hint">
-              Te vamos a confirmar tu turno y recordarte el día anterior 💕
+              Te confirmamos tu turno y te recordamos el día anterior 💕
             </div>
 
             <button class="confirm-btn" id="btnConfirmClient">
@@ -623,7 +583,7 @@
           </div>
         </section>
 
-        <!-- PASO 4: Pago de seña + Resumen -->
+        <!-- PASO 4 -->
         <section id="step4_done" class="hidden">
           <div class="final-card">
             <div class="summary-line">
@@ -652,33 +612,31 @@
             </div>
 
             <div class="deposit-box">
-              Para asegurar este turno necesitás abonar tu seña de:
+              Para asegurar este turno necesitás abonar tu seña:
               <div style="font-size:1rem;font-weight:600;color:var(--color-primary);margin-top:.4rem;" id="sumSena"></div>
 
-              <div style="font-size:.7rem;color:#555;margin-top:.5rem;line-height:1.4;">
-                Pagás ahora, y listo. Ese horario queda bloqueado exclusivamente para vos 🩷
+              <div style="font-size:.7rem;color:#444;margin-top:.5rem;line-height:1.4;">
+                Pagás ahora por Mercado Pago / Ualá / Brubank / Naranja.
+                Ese horario queda bloqueado exclusivamente para vos 🩷
               </div>
             </div>
 
-            <!-- Este link simula el botón de Mercado Pago / Ala / Grubag -->
             <a class="pay-btn" id="payBtn" href="#" target="_blank" rel="noopener noreferrer">
               Pagar mi seña ahora
             </a>
 
-            <div class="small-hint" style="margin-top:1rem;">
-              Guardá tu comprobante. Si no se acredita la seña, el turno se libera automáticamente.
+            <div class="small-hint" style="margin-top:1rem;color:#666;">
+              Guardá tu comprobante. Si la seña no se acredita, el turno se libera automáticamente.
             </div>
 
-            <div class="whatsapp-preview" id="waPreview">
-              <!-- Mensaje WhatsApp generado por JS -->
-            </div>
+            <div class="whatsapp-preview" id="waPreview"></div>
           </div>
         </section>
 
       </article>
     </section>
 
-    <!-- Columna Derecha: Resumen en vivo -->
+    <!-- Columna Derecha -->
     <aside class="side-panel">
       <div class="side-title">
         <span>Resumen en vivo</span>
@@ -721,7 +679,7 @@
       </div>
 
       <div class="side-hint">
-        Importante: si la clienta no paga la seña dentro de los próximos minutos, el turno se libera solo.
+        Si la clienta no paga la seña en unos minutos, el turno se libera solo.
       </div>
 
       <div class="footer-note">
@@ -733,7 +691,7 @@
 
   <script>
     // -------------------------
-    // DATA BASE DEL PRODUCTO
+    // DATA DE SERVICIOS
     // -------------------------
     const servicios = [
       {
@@ -798,10 +756,9 @@
       }
     ];
 
-    // Horarios ejemplo disponibles
+    // horarios dummy
     const horariosDisponibles = ["10:00", "11:30", "14:00", "15:30", "17:00"];
 
-    // Estado temporal de la reserva en curso
     const state = {
       servicioId: null,
       fecha: "",
@@ -810,13 +767,9 @@
       tel: ""
     };
 
-    // -------------------------
-    // HELPERS
-    // -------------------------
-    function $(id) { return document.getElementById(id); }
+    function $(id){ return document.getElementById(id); }
 
     function setStep(activeStep) {
-      // Ocultar/mostrar secciones
       $("step1_services").classList.add("hidden");
       $("step2_datetime").classList.add("hidden");
       $("step3_client").classList.add("hidden");
@@ -839,7 +792,6 @@
         $("flowTitleText").textContent = "Listo 💖 Pagá tu seña para confirmar";
       }
 
-      // Actualizar dots
       document.querySelectorAll(".step-dot").forEach((dot, index) => {
         if (index < activeStep) {
           dot.classList.add("active");
@@ -854,11 +806,9 @@
     }
 
     function formatearPrecio(num) {
-      // Ej: $ 30.000
       return "$ " + num.toLocaleString("es-AR");
     }
 
-    // Llenar resumen lateral
     function syncSidePanel() {
       const srv = getServicioSel();
       $("liveServicio").textContent = srv ? srv.nombre : "—";
@@ -870,7 +820,6 @@
       $("liveTel").textContent = state.tel || "—";
     }
 
-    // Generar vista final paso 4
     function renderPaso4() {
       const srv = getServicioSel();
       if (!srv) return;
@@ -880,11 +829,8 @@
       $("sumNombre").textContent = state.nombre;
       $("sumTel").textContent = state.tel;
       $("sumSena").textContent = formatearPrecio(srv.sena);
-
-      // Simulamos link de pago según servicio
       $("payBtn").setAttribute("href", srv.linkPago);
 
-      // Previsualización mensaje WhatsApp (el que le enviaría el sistema)
       const msg = [
         `Hola ${state.nombre} 💕`,
         `Tu turno quedó reservado en Boutique Salón:`,
@@ -895,16 +841,15 @@
         `Para confirmarlo necesitás abonar la seña de ${formatearPrecio(srv.sena)}:`,
         srv.linkPago,
         ``,
-        `IMPORTANTE: Si la seña no se acredita pronto, el turno se libera automáticamente.`,
+        `Podés pagar por Mercado Pago / Ualá / Brubank / Naranja.`,
+        ``,
+        `IMPORTANTE: si la seña no se acredita pronto, el turno se libera automáticamente.`,
         `Gracias por elegirnos 🩷`
       ].join("\n");
 
       $("waPreview").textContent = msg;
     }
 
-    // -------------------------
-    // RENDER PASO 1 (SERVICIOS)
-    // -------------------------
     function renderServicios() {
       const cont = $("servicesGrid");
       cont.innerHTML = "";
@@ -931,7 +876,6 @@
         cont.appendChild(card);
       });
 
-      // Listeners de cada botón
       cont.querySelectorAll(".choose-btn").forEach(btn => {
         btn.addEventListener("click", e => {
           const idSel = e.currentTarget.getAttribute("data-id");
@@ -940,22 +884,16 @@
           state.hora = "";
           syncSidePanel();
 
-          // actualizar etiqueta arriba del paso 2
           const srv = getServicioSel();
           $("chosenServiceLabel").textContent = srv ? srv.nombre : "";
 
-          // limpiar selección de hora
           renderHorarios();
           $("dateInput").value = "";
-
           setStep(2);
         });
       });
     }
 
-    // -------------------------
-    // PASO 2 (FECHA Y HORA)
-    // -------------------------
     function renderHorarios() {
       const wrap = $("timesGrid");
       wrap.innerHTML = "";
@@ -964,14 +902,12 @@
         b.className = "time-slot-btn";
         b.textContent = h;
         b.addEventListener("click", () => {
-          // marcar activo
           document.querySelectorAll(".time-slot-btn").forEach(x => x.classList.remove("active"));
           b.classList.add("active");
 
           state.hora = h;
           syncSidePanel();
 
-          // si ya hay fecha elegida, pasamos a paso 3
           if (state.fecha) {
             setStep(3);
           }
@@ -983,15 +919,11 @@
     $("dateInput").addEventListener("change", (e)=>{
       state.fecha = e.target.value;
       syncSidePanel();
-      // si ya hay hora elegida, pasamos a paso 3
       if (state.hora) {
         setStep(3);
       }
     });
 
-    // -------------------------
-    // PASO 3 (CLIENTA)
-    // -------------------------
     $("btnConfirmClient").addEventListener("click", ()=>{
       const nombre = $("clientName").value.trim();
       const tel = $("clientPhone").value.trim();
@@ -1004,9 +936,6 @@
       setStep(4);
     });
 
-    // -------------------------
-    // INIT
-    // -------------------------
     renderServicios();
     renderHorarios();
     syncSidePanel();
