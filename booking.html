@@ -3,20 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Boutique Salón | Reservar turno</title>
+  <title>Boutique Salón | Reservá tu turno VIP con seña</title>
+
+  <meta name="description" content="Reserva tu turno en Boutique Salón. Elegís servicio, horario y pagás tu seña por Mercado Pago / Ualá / Brubank / Naranja. Tu horario queda blindado. Sin plantones, sólo reinas.">
+  <meta name="keywords" content="reserva turno belleza, seña Mercado Pago, pestañas, uñas esculpidas, depilación definitiva, agenda VIP, sin plantones, Boutique Salón">
+  <meta property="og:title" content="Agenda VIP Boutique Salón 👑">
+  <meta property="og:description" content="Pagás tu seña y tu horario queda bloqueado. Reina total.">
 
   <style>
     :root {
-      --color-primary: #d63384;
-      --color-primary-soft: rgba(214,51,132,0.12);
-      --color-card-bg: rgba(255,255,255,0.9);
-      --color-card-border: rgba(255,255,255,0.7);
-      --color-dark: #2b2b2b;
-      --color-text: #444;
-      --radius-card: 18px;
+      --color-bg-overlay-dark: radial-gradient(circle at 20% 20%, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.8) 60%, rgba(0,0,0,0.9) 100%);
+      --color-card-bg: rgba(10,10,10,0.8);
+      --color-card-border: rgba(212,175,55,0.4);
+      --color-card-shadow: 0 30px 60px rgba(0,0,0,.9);
+
+      --color-gold-main: #d4af37;
+      --color-gold-soft: rgba(212,175,55,.15);
+
+      --color-text-strong: #fff;
+      --color-text-body: #ddd;
+      --color-text-dim: #888;
+
+      --btn-grad-1: #d4af37;
+      --btn-grad-2: #b68a00;
+
+      --radius-card: 20px;
       --radius-btn: 10px;
-      --shadow-card: 0 28px 48px rgba(0,0,0,.5);
-      --border-light: 1px solid rgba(255,255,255,.7);
       --font-stack: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
@@ -28,14 +40,14 @@
     body {
       margin: 0;
       font-family: var(--font-stack);
-      color: var(--color-text);
+      color: var(--color-text-body);
       line-height: 1.4;
       padding: 2rem 1rem 6rem;
       display: flex;
       justify-content: center;
 
       background:
-        radial-gradient(circle at 20% 20%, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.7) 100%),
+        var(--color-bg-overlay-dark),
         url("./img/bg-booking.jpg");
       background-size: cover;
       background-position: center;
@@ -50,18 +62,16 @@
       gap: 2rem;
     }
     @media (max-width: 900px) {
-      .app-shell {
-        grid-template-columns: 1fr;
-      }
+      .app-shell { grid-template-columns: 1fr; }
     }
 
-    /* HERO / CABECERA */
+    /* HERO */
     .hero-card {
       background: var(--color-card-bg);
       backdrop-filter: blur(10px);
       border-radius: var(--radius-card);
-      border: var(--border-light);
-      box-shadow: var(--shadow-card);
+      border: 1px solid var(--color-card-border);
+      box-shadow: var(--color-card-shadow),0 0 30px rgba(212,175,55,.15);
       padding: 1.5rem 1.5rem 1rem;
       margin-bottom: 1.5rem;
     }
@@ -78,19 +88,22 @@
     .brand-name {
       font-size: 1.4rem;
       font-weight: 600;
-      color: var(--color-dark);
+      color: var(--color-text-strong);
       letter-spacing: -0.03em;
+      text-shadow:0 0 10px rgba(212,175,55,.4);
     }
     .brand-sub {
       font-size: 0.9rem;
-      color: var(--color-primary);
+      color: var(--color-gold-main);
       font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .04em;
     }
     .slogan {
       margin-top: .75rem;
       font-size: 0.95rem;
       line-height: 1.4;
-      color: var(--color-dark);
+      color: var(--color-text-body);
       font-weight: 500;
     }
 
@@ -98,23 +111,24 @@
       display: flex;
       align-items: center;
       gap: .5rem;
-      background: var(--color-primary-soft);
-      color: var(--color-primary);
+      background: rgba(10,10,10,0.6);
+      color: var(--color-gold-main);
       font-size: .8rem;
       font-weight: 500;
       border-radius: 999px;
-      padding: .5rem .9rem;
-      border: 1px solid rgba(214,51,132,.3);
-      box-shadow: 0 20px 40px rgba(214,51,132,.4);
-      line-height: 1.2;
+      padding: .7rem 1rem;
+      border: 1px solid var(--color-card-border);
+      box-shadow: var(--color-card-shadow),0 0 20px rgba(212,175,55,.4);
+      line-height: 1.3;
+      text-align:left;
     }
 
-    /* CARD FLUJO */
+    /* FLOW CARD */
     .flow-card {
       background: var(--color-card-bg);
       border-radius: var(--radius-card);
-      border: var(--border-light);
-      box-shadow: var(--shadow-card);
+      border: 1px solid var(--color-card-border);
+      box-shadow: var(--color-card-shadow),0 0 30px rgba(212,175,55,.15);
       padding: 1.5rem;
       backdrop-filter: blur(10px);
     }
@@ -129,11 +143,12 @@
     .flow-title {
       font-size: 1rem;
       font-weight: 600;
-      color: var(--color-dark);
+      color: var(--color-text-strong);
       letter-spacing: -0.03em;
       display: flex;
       align-items: center;
       gap: .5rem;
+      text-shadow:0 0 10px rgba(212,175,55,.4);
     }
 
     .step-indicator { display: flex; gap: .4rem; }
@@ -141,22 +156,25 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: rgba(214,51,132,.25);
-      border: 1px solid rgba(214,51,132,.6);
+      background: rgba(212,175,55,.2);
+      border: 1px solid rgba(212,175,55,.5);
+      box-shadow:0 0 8px rgba(212,175,55,.5);
     }
     .step-dot.active {
-      background: var(--color-primary);
-      border-color: var(--color-primary);
-      box-shadow: 0 0 12px rgba(214,51,132,.9);
+      background: var(--color-gold-main);
+      border-color: var(--color-gold-main);
+      box-shadow:0 0 12px rgba(212,175,55,.9),0 0 30px rgba(212,175,55,.5);
     }
 
     hr.line {
       border: 0;
-      border-top: 1px solid rgba(214,51,132,.3);
+      border-top: 1px solid rgba(212,175,55,.3);
       margin: 1rem 0 1.5rem;
     }
 
-    /* SERVICIOS GRID */
+    .hidden { display: none !important; }
+
+    /* PASO 1 SERVICIOS */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit,minmax(min(240px,100%),1fr));
@@ -165,16 +183,15 @@
 
     .service-card {
       border-radius: var(--radius-card);
-      border: var(--border-light);
-      background: rgba(255,255,255,0.95);
-      box-shadow: var(--shadow-card);
+      border: 1px solid var(--color-card-border);
+      background: rgba(15,15,15,0.9);
+      box-shadow: var(--color-card-shadow),0 0 30px rgba(212,175,55,.15);
       padding: 1rem 1rem 0.9rem;
       cursor: pointer;
-      position: relative;
       transition: all .15s;
     }
     .service-card:hover {
-      box-shadow: 0 24px 40px rgba(214,51,132,.45);
+      box-shadow:0 0 30px rgba(212,175,55,.5),0 40px 60px rgba(0,0,0,.9);
       transform: translateY(-2px);
     }
 
@@ -190,26 +207,28 @@
     .service-name {
       font-weight: 600;
       font-size: .95rem;
-      color: var(--color-dark);
+      color: var(--color-text-strong);
       letter-spacing: -0.03em;
+      text-shadow:0 0 10px rgba(212,175,55,.4);
     }
 
     .badge-price {
-      background: var(--color-primary);
-      color: #fff;
+      background: linear-gradient(to bottom right,var(--btn-grad-1),var(--btn-grad-2));
+      color: #000;
       font-size: .8rem;
       font-weight: 600;
       border-radius: 999px;
-      padding: .35rem .6rem;
+      padding: .4rem .6rem;
       line-height: 1.2;
       white-space: nowrap;
-      box-shadow: 0 16px 32px rgba(214,51,132,.4);
+      box-shadow:0 25px 40px rgba(212,175,55,.35),0 0 20px rgba(212,175,55,.7);
+      border:1px solid rgba(0,0,0,.6);
     }
 
     .service-desc {
       font-size: .8rem;
       line-height: 1.45;
-      color: var(--color-text);
+      color: var(--color-text-body);
       min-height: 3em;
     }
 
@@ -218,38 +237,37 @@
       justify-content: space-between;
       margin-top: .75rem;
       font-size: .75rem;
-      color: var(--color-text);
+      color: var(--color-text-body);
       flex-wrap: wrap;
       gap: .5rem;
     }
 
     .mini-label {
       font-weight: 500;
-      color: var(--color-dark);
+      color: var(--color-text-strong);
     }
 
     .choose-btn {
       border: none;
-      background: var(--color-primary);
-      color: #fff;
+      background: linear-gradient(to bottom right,var(--btn-grad-1),var(--btn-grad-2));
+      color: #000;
       font-size: .8rem;
       font-weight: 600;
       width: 100%;
       border-radius: var(--radius-btn);
       padding: .7rem .9rem;
       margin-top: 1rem;
-      box-shadow: 0 16px 32px rgba(214,51,132,.4);
+      box-shadow:0 25px 40px rgba(212,175,55,.35),0 0 20px rgba(212,175,55,.7);
+      border:1px solid rgba(0,0,0,.6);
       cursor: pointer;
       line-height: 1.2;
-      transition: box-shadow .15s, transform .15s;
+      transition: transform .15s;
     }
     .choose-btn:hover {
       transform: translateY(-1px) scale(1.01);
     }
 
     /* PASO 2 FECHA/HORA */
-    .hidden { display: none !important; }
-
     .calendar-wrap {
       display: grid;
       gap: 1rem;
@@ -262,21 +280,22 @@
     .date-select-card,
     .time-select-card {
       border-radius: var(--radius-card);
-      border: var(--border-light);
-      background: rgba(255,255,255,0.95);
-      box-shadow: var(--shadow-card);
+      border: 1px solid var(--color-card-border);
+      background: rgba(15,15,15,0.9);
+      box-shadow: var(--color-card-shadow),0 0 30px rgba(212,175,55,.15);
       padding: 1rem;
     }
 
     .block-title {
       font-size: .9rem;
       font-weight: 600;
-      color: var(--color-dark);
+      color: var(--color-text-strong);
       margin-bottom: .75rem;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap:.5rem;
+      text-shadow:0 0 10px rgba(212,175,55,.4);
     }
 
     .date-input,
@@ -290,10 +309,10 @@
       width: 100%;
       padding: .7rem .8rem;
       border-radius: var(--radius-btn);
-      border: 1px solid rgba(214,51,132,.4);
+      border: 1px solid var(--color-card-border);
       outline: none;
-      color: var(--color-dark);
-      background:#fff;
+      color: var(--color-text-strong);
+      background:#000;
       line-height:1.2;
     }
 
@@ -305,36 +324,38 @@
 
     .time-slot-btn {
       border-radius: var(--radius-btn);
-      border: 1px solid rgba(214,51,132,.4);
-      background:#fff;
-      color: var(--color-dark);
+      border: 1px solid var(--color-card-border);
+      background:#000;
+      color: var(--color-text-body);
       padding: .6rem .5rem;
       font-size: .8rem;
       font-weight: 500;
       cursor: pointer;
       line-height:1.2;
       text-align:center;
+      box-shadow:0 0 15px rgba(212,175,55,.2);
     }
     .time-slot-btn.active {
-      background: var(--color-primary);
-      color: #fff;
-      border-color: var(--color-primary);
-      box-shadow: 0 16px 32px rgba(214,51,132,.4);
+      background: linear-gradient(to bottom right,var(--btn-grad-1),var(--btn-grad-2));
+      color: #000;
+      border:1px solid rgba(0,0,0,.6);
+      box-shadow:0 25px 40px rgba(212,175,55,.35),0 0 20px rgba(212,175,55,.7);
+      font-weight:600;
     }
 
     .small-hint {
       font-size: .7rem;
       line-height:1.4;
-      color: #666;
+      color: var(--color-text-dim);
       margin-top: .4rem;
     }
 
-    /* PASO 3 CLIENTA */
+    /* PASO 3 DATOS CLIENTA */
     .client-card {
       border-radius: var(--radius-card);
-      border: var(--border-light);
-      background: rgba(255,255,255,0.95);
-      box-shadow: var(--shadow-card);
+      border: 1px solid var(--color-card-border);
+      background: rgba(15,15,15,0.9);
+      box-shadow: var(--color-card-shadow),0 0 30px rgba(212,175,55,.15);
       padding: 1rem;
       margin-top: 1rem;
     }
@@ -342,47 +363,49 @@
     .input-label {
       font-size: .8rem;
       font-weight: 500;
-      color: var(--color-dark);
+      color: var(--color-text-strong);
       margin-bottom: .4rem;
       display:block;
+      text-shadow:0 0 10px rgba(212,175,55,.4);
     }
 
     .input-field {
       width: 100%;
       padding: .7rem .8rem;
       border-radius: var(--radius-btn);
-      border: 1px solid rgba(214,51,132,.4);
+      border: 1px solid var(--color-card-border);
       outline: none;
-      color: var(--color-dark);
-      background:#fff;
+      color: var(--color-text-strong);
+      background:#000;
       line-height:1.2;
     }
 
     .confirm-btn {
       border: none;
-      background: var(--color-primary);
-      color: #fff;
+      background: linear-gradient(to bottom right,var(--btn-grad-1),var(--btn-grad-2));
+      color: #000;
       font-size: .9rem;
       font-weight: 600;
       width: 100%;
       border-radius: var(--radius-btn);
       padding: .8rem 1rem;
       margin-top: 1rem;
-      box-shadow: 0 16px 32px rgba(214,51,132,.4);
+      box-shadow:0 25px 40px rgba(212,175,55,.35),0 0 20px rgba(212,175,55,.7);
+      border:1px solid rgba(0,0,0,.6);
       cursor: pointer;
       line-height: 1.2;
-      transition: box-shadow .15s, transform .15s;
+      transition: transform .15s;
     }
     .confirm-btn:hover {
       transform: translateY(-1px) scale(1.01);
     }
 
-    /* PASO 4 FINAL */
+    /* PASO 4 CONFIRMACIÓN */
     .final-card {
       border-radius: var(--radius-card);
-      border: var(--border-light);
-      background: rgba(255,255,255,0.95);
-      box-shadow: var(--shadow-card);
+      border: 1px solid var(--color-card-border);
+      background: rgba(15,15,15,0.9);
+      box-shadow: var(--color-card-shadow),0 0 30px rgba(212,175,55,.15);
       padding: 1rem;
       margin-top: 1rem;
     }
@@ -391,36 +414,39 @@
       font-size: .8rem;
       margin-bottom: .5rem;
       line-height:1.4;
+      color: var(--color-text-body);
     }
     .summary-strong {
-      color: var(--color-dark);
+      color: var(--color-text-strong);
       font-weight: 600;
+      text-shadow:0 0 10px rgba(212,175,55,.4);
     }
 
     .deposit-box {
       border-radius: var(--radius-card);
-      background: var(--color-primary-soft);
-      border: 1px solid rgba(214,51,132,.3);
-      box-shadow: 0 24px 40px rgba(214,51,132,.4);
+      background: rgba(212,175,55,.07);
+      border: 1px solid var(--color-card-border);
+      box-shadow:0 0 30px rgba(212,175,55,.5),0 40px 60px rgba(0,0,0,.9);
       padding: .9rem 1rem;
       margin-top: 1rem;
       font-size: .8rem;
       line-height:1.5;
-      color: var(--color-dark);
+      color: var(--color-text-body);
     }
 
     .pay-btn {
       display: inline-block;
       text-align: center;
       text-decoration: none;
-      background: var(--color-primary);
-      color:#fff;
+      background: linear-gradient(to bottom right,var(--btn-grad-1),var(--btn-grad-2));
+      color:#000;
       font-size:.9rem;
       font-weight:600;
       border-radius: var(--radius-btn);
       padding:.8rem 1rem;
       width:100%;
-      box-shadow:0 16px 32px rgba(214,51,132,.4);
+      box-shadow:0 25px 40px rgba(212,175,55,.35),0 0 20px rgba(212,175,55,.7);
+      border:1px solid rgba(0,0,0,.6);
       margin-top:1rem;
     }
 
@@ -439,13 +465,13 @@
       box-shadow:0 20px 40px rgba(0,255,0,.25);
     }
 
-    /* PANEL DERECHA */
+    /* COLUMNA DERECHA */
     .side-panel {
       position: relative;
       background: var(--color-card-bg);
       border-radius: var(--radius-card);
-      border: var(--border-light);
-      box-shadow: var(--shadow-card);
+      border: 1px solid var(--color-card-border);
+      box-shadow: var(--color-card-shadow),0 0 30px rgba(212,175,55,.15);
       backdrop-filter: blur(10px);
       padding:1.25rem 1.25rem 5rem;
       display:flex;
@@ -457,18 +483,19 @@
     .side-title {
       font-size:.9rem;
       font-weight:600;
-      color:var(--color-dark);
+      color:var(--color-text-strong);
       letter-spacing:-0.03em;
       display:flex;
       justify-content:space-between;
       flex-wrap:wrap;
       gap:.5rem;
+      text-shadow:0 0 10px rgba(212,175,55,.4);
     }
 
     .side-summary-line {
       font-size:.8rem;
       line-height:1.4;
-      color:var(--color-text);
+      color:var(--color-text-body);
       display:flex;
       justify-content:space-between;
       flex-wrap:wrap;
@@ -477,16 +504,17 @@
 
     .side-hint {
       font-size:.7rem;
-      color:#666;
+      color:var(--color-text-dim);
       line-height:1.4;
     }
 
     .footer-note {
       font-size:.7rem;
       line-height:1.4;
-      color:#555;
+      color:var(--color-text-dim);
       text-align:center;
       margin-top:auto;
+      text-shadow:0 0 10px rgba(212,175,55,.4);
     }
   </style>
 </head>
@@ -501,17 +529,19 @@
         <div class="brand-row">
           <div class="brand-left">
             <div class="brand-name">Boutique Salón</div>
-            <div class="brand-sub">Agenda oficial con seña</div>
+            <div class="brand-sub">Agenda VIP con seña</div>
             <div class="slogan">
-              Tu turno en 2 clics. Tu seña pagada. Tu agenda asegurada.
+              Elegís tu servicio. Elegís tu hora. Pagás tu seña.
+              Ese turno queda blindado a tu nombre, reina 👑.
             </div>
           </div>
 
           <div class="pill-security">
             <span>💖</span>
             <span>
-              Sin seña no se confirma. Pagás por Mercado Pago / Ualá / Brubank / Naranja,
-              y tu horario queda bloqueado sólo para vos.
+              Pagás la seña (Mercado Pago / Ualá / Brubank / Naranja)
+              y tu horario queda reservado sólo para vos.
+              Si no hay seña, no se bloquea. Sin plantones.
             </span>
           </div>
         </div>
@@ -546,18 +576,18 @@
             <div class="date-select-card">
               <div class="block-title">
                 <span>Elegí la fecha</span>
-                <small id="chosenServiceLabel" style="font-size:.7rem;color:var(--color-primary);font-weight:600;"></small>
+                <small id="chosenServiceLabel" style="font-size:.7rem;color:var(--color-gold-main);font-weight:600;text-shadow:0 0 10px rgba(212,175,55,.6);"></small>
               </div>
               <input id="dateInput" class="date-input" type="date" />
               <div class="small-hint">
-                Sólo mostramos los horarios libres ese día.
+                Sólo mostramos horarios libres ese día.
               </div>
             </div>
 
             <div class="time-select-card">
               <div class="block-title">
                 <span>Horarios disponibles</span>
-                <small style="font-size:.7rem;color:#666;font-weight:500;">Elegí uno</small>
+                <small style="font-size:.7rem;color:var(--color-text-dim);font-weight:500;">Elegí uno</small>
               </div>
               <div class="times-grid" id="timesGrid"></div>
             </div>
@@ -574,7 +604,7 @@
             <input id="clientPhone" class="input-field" placeholder="Ej: +54 9 341 555 0000" />
 
             <div class="small-hint">
-              Te confirmamos tu turno y te recordamos el día anterior 💕
+              Te mandamos confirmación y recordatorio antes del turno 💕
             </div>
 
             <button class="confirm-btn" id="btnConfirmClient">
@@ -613,11 +643,11 @@
 
             <div class="deposit-box">
               Para asegurar este turno necesitás abonar tu seña:
-              <div style="font-size:1rem;font-weight:600;color:var(--color-primary);margin-top:.4rem;" id="sumSena"></div>
+              <div style="font-size:1rem;font-weight:600;color:var(--color-gold-main);margin-top:.4rem;text-shadow:0 0 10px rgba(212,175,55,.8);" id="sumSena"></div>
 
-              <div style="font-size:.7rem;color:#444;margin-top:.5rem;line-height:1.4;">
-                Pagás ahora por Mercado Pago / Ualá / Brubank / Naranja.
-                Ese horario queda bloqueado exclusivamente para vos 🩷
+              <div style="font-size:.7rem;color:var(--color-text-body);margin-top:.5rem;line-height:1.4;">
+                Pagás por Mercado Pago / Ualá / Brubank / Naranja.
+                Cuando la seña se acredita, tu horario queda bloqueado sólo para vos 👑
               </div>
             </div>
 
@@ -625,8 +655,8 @@
               Pagar mi seña ahora
             </a>
 
-            <div class="small-hint" style="margin-top:1rem;color:#666;">
-              Guardá tu comprobante. Si la seña no se acredita, el turno se libera automáticamente.
+            <div class="small-hint" style="margin-top:1rem;color:var(--color-text-dim);">
+              Guardá el comprobante. Si la seña no entra, el turno se libera y otra reina lo puede tomar.
             </div>
 
             <div class="whatsapp-preview" id="waPreview"></div>
@@ -640,7 +670,9 @@
     <aside class="side-panel">
       <div class="side-title">
         <span>Resumen en vivo</span>
-        <span style="font-size:.7rem;color:var(--color-primary);font-weight:600;">Boutique Salón</span>
+        <span style="font-size:.7rem;color:var(--color-gold-main);font-weight:600;text-shadow:0 0 10px rgba(212,175,55,.8);">
+          Boutique Salón
+        </span>
       </div>
 
       <div class="side-summary-line">
@@ -679,20 +711,17 @@
       </div>
 
       <div class="side-hint">
-        Si la clienta no paga la seña en unos minutos, el turno se libera solo.
+        Si no hay seña en unos minutos, el turno se libera automáticamente.
       </div>
 
       <div class="footer-note">
-        Boutique Salón · Turnos con seña 💖
+        Boutique Salón · Agenda VIP con seña 👑
       </div>
     </aside>
 
   </main>
 
   <script>
-    // -------------------------
-    // DATA DE SERVICIOS
-    // -------------------------
     const servicios = [
       {
         id: "unas_esculpidas",
@@ -707,7 +736,7 @@
       {
         id: "extension_pestanas",
         nombre: "Extensión de pestañas",
-        desc: "Volumen, curva y definición sin máscara.",
+        desc: "Volumen, curva y definición digna de cámara.",
         duracion: "75 min",
         profesional: "Sofi",
         precioTotal: 35000,
@@ -717,7 +746,7 @@
       {
         id: "lifting_pestanas_cejas",
         nombre: "Lifting Pestañas y Cejas",
-        desc: "Levanta y ordena tu mirada de forma natural.",
+        desc: "Mirada levantada, ordenada, lista para la selfie sin filtro.",
         duracion: "50 min",
         profesional: "Sofi",
         precioTotal: 22000,
@@ -737,7 +766,7 @@
       {
         id: "belleza_pies",
         nombre: "Belleza de pies",
-        desc: "Limpieza, forma, cutículas y esmaltado impecable.",
+        desc: "Limpieza, forma, cutículas y esmalte impecable.",
         duracion: "45 min",
         profesional: "Carla",
         precioTotal: 18000,
@@ -747,7 +776,7 @@
       {
         id: "depilacion_definitiva",
         nombre: "Depilación definitiva",
-        desc: "Piel suave y sin vello. Sesiones rápidas, resultado duradero.",
+        desc: "Piel suave y sin vello. Rápido, limpio, final boss.",
         duracion: "30 min",
         profesional: "Lau",
         precioTotal: 26000,
@@ -756,7 +785,6 @@
       }
     ];
 
-    // horarios dummy
     const horariosDisponibles = ["10:00", "11:30", "14:00", "15:30", "17:00"];
 
     const state = {
@@ -789,7 +817,7 @@
       }
       if (activeStep === 4) {
         $("step4_done").classList.remove("hidden");
-        $("flowTitleText").textContent = "Listo 💖 Pagá tu seña para confirmar";
+        $("flowTitleText").textContent = "Listo 👑 Pagá tu seña para confirmar";
       }
 
       document.querySelectorAll(".step-dot").forEach((dot, index) => {
@@ -832,7 +860,7 @@
       $("payBtn").setAttribute("href", srv.linkPago);
 
       const msg = [
-        `Hola ${state.nombre} 💕`,
+        `Hola ${state.nombre} 👑`,
         `Tu turno quedó reservado en Boutique Salón:`,
         `• Servicio: ${srv.nombre}`,
         `• Profesional: ${srv.profesional}`,
@@ -844,7 +872,7 @@
         `Podés pagar por Mercado Pago / Ualá / Brubank / Naranja.`,
         ``,
         `IMPORTANTE: si la seña no se acredita pronto, el turno se libera automáticamente.`,
-        `Gracias por elegirnos 🩷`
+        `Gracias por elegirnos 💖`
       ].join("\n");
 
       $("waPreview").textContent = msg;
