@@ -6,7 +6,6 @@
 
   <title>Boutique Salón | Reserva tu turno con seña segura</title>
 
-  <!-- SEO suave, amable -->
   <meta name="description" content="Boutique Salón. Agenda online con seña para que tu turno esté realmente guardado. Uñas esculpidas, pestañas, cejas, depilación definitiva. Elegís horario, dejás una seña pequeña y quedás tranquila: ese espacio es tuyo. Cuidado, respeto y belleza.">
   <meta name="keywords" content="turnos estética, agenda con seña, uñas esculpidas, pestañas, lifting, cejas, depilación definitiva, reservar turno belleza, cuidado personal, bienestar">
   <meta property="og:title" content="Boutique Salón • Tu turno reservado con cariño">
@@ -14,13 +13,13 @@
 
   <style>
     :root {
-      /* Paleta lila delicada */
       --lila-bg-1: #ffffff;
-      --lila-bg-2: #f9f7ff;   /* lila casi blanco */
-      --lila-bg-3: #efe9ff;   /* un poco más lila */
+      --lila-bg-2: #f9f7ff;
+      --lila-bg-3: #efe9ff;
       --lila-border: rgba(170,140,255,0.4);
       --lila-shadow: 0 32px 64px rgba(130,80,255,.12);
-      --lila-strong: #9b6bff;  /* lila más intenso */
+
+      --lila-strong: #9b6bff;
       --lila-soft-text: #b399ff;
 
       --text-dark: #2b2b2b;
@@ -33,7 +32,7 @@
 
       --btn-grad-1: #9b6bff;
       --btn-grad-2: #d5c5ff;
-      --btn-shadow: 0 24px 48px rgba(130,80,255,.35);
+      --btn-shadow: 0 24px 48px rgba(130,80,255,.35), 0 0 30px rgba(160,120,255,.7);
 
       --pill-bg: rgba(255,255,255,0.8);
       --pill-border: 1px solid rgba(170,140,255,0.5);
@@ -52,8 +51,6 @@
       font-family: var(--font-stack);
       color: var(--text-body);
       line-height: 1.45;
-
-      /* fondo blanco con bruma lila suave */
       background:
         radial-gradient(circle at 20% 15%, var(--lila-bg-2) 0%, var(--lila-bg-3) 40%, rgba(255,255,255,0) 70%),
         radial-gradient(circle at 80% 20%, rgba(212,197,255,.4) 0%, rgba(255,255,255,0) 60%),
@@ -64,10 +61,9 @@
     .max {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 2rem 1rem 4rem;
+      padding: 1.5rem 1rem 4rem;
     }
 
-    /* ===== Bloques principales ===== */
     .glass-card {
       background: var(--card-bg);
       backdrop-filter: blur(10px);
@@ -77,66 +73,65 @@
     }
 
     header.hero-box {
-      padding: 2rem 1.5rem;
+      padding: 1.5rem 1rem;
       text-align: center;
     }
 
     .brand {
       color: var(--text-dark);
       font-weight: 600;
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       letter-spacing: -0.03em;
       text-shadow: 0 10px 30px rgba(130,80,255,.18);
     }
 
     .tagline {
       color: var(--lila-strong);
-      font-size: .85rem;
+      font-size: .8rem;
       font-weight: 500;
       margin-top: .4rem;
       letter-spacing: .02em;
     }
 
     .hero-h1 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 600;
       color: var(--text-dark);
-      line-height: 1.35;
+      line-height: 1.4;
       letter-spacing: -0.03em;
       margin-top: 1rem;
       text-shadow: 0 20px 40px rgba(130,80,255,.15);
     }
 
     .hero-p {
-      font-size: .95rem;
+      font-size: .9rem;
       max-width: 520px;
       margin: .75rem auto 1.25rem;
       color: var(--text-body);
     }
 
     .cta-main {
-      display: inline-block;
-      background: linear-gradient(
-        to bottom right,
-        var(--btn-grad-1),
-        var(--btn-grad-2)
-      );
+      display: block;
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+      background: linear-gradient(to bottom right,#9b6bff,#d5c5ff);
       color: #fff;
       font-weight: 600;
-      font-size: .9rem;
+      font-size: 1rem;
       text-decoration: none;
-      padding: .9rem 1.2rem;
+      text-align: center;
+      padding: 1rem 1.2rem;
       border-radius: 12px;
       border: 0;
-      box-shadow: var(--btn-shadow), 0 0 30px rgba(160,120,255,.7);
-      min-width: 210px;
+      box-shadow: var(--btn-shadow);
       line-height:1.2;
-      text-align:center;
     }
 
     .safety-pill {
-      display:inline-flex;
+      display:flex;
       align-items:flex-start;
+      justify-content:center;
       gap:.6rem;
       background: var(--pill-bg);
       color: var(--lila-strong);
@@ -147,28 +142,25 @@
       line-height:1.3;
       padding:.7rem 1rem;
       box-shadow: var(--pill-shadow);
-      margin-top:1rem;
-      text-align:left;
+      margin:1rem auto 0;
       max-width: 520px;
-      justify-content:center;
+      text-align:left;
     }
 
-    /* ===== Títulos de sección ===== */
     .sec-title {
       text-align:center;
       font-size:1rem;
       font-weight:600;
       color:var(--text-dark);
       letter-spacing:-0.03em;
-      margin:3rem 0 1rem;
+      margin:2.5rem 0 1rem;
       text-shadow:0 20px 40px rgba(130,80,255,.15);
     }
 
-    /* ===== Servicios ===== */
     .services-grid {
       display:grid;
       gap:1rem;
-      grid-template-columns: repeat(auto-fit,minmax(min(260px,100%),1fr));
+      grid-template-columns:1fr;
     }
 
     .service-card {
@@ -177,7 +169,6 @@
       border: var(--card-border);
       box-shadow: var(--lila-shadow), 0 0 40px rgba(180,150,255,.25);
       padding:1rem 1rem 1.25rem;
-      position:relative;
     }
 
     .service-head-row {
@@ -198,26 +189,20 @@
     }
 
     .price-pill {
-      background: linear-gradient(
-        to bottom right,
-        var(--btn-grad-1),
-        var(--btn-grad-2)
-      );
+      background: linear-gradient(to bottom right,#9b6bff,#d5c5ff);
       color:#fff;
       font-size:.8rem;
       font-weight:600;
       border-radius:999px;
-      padding:.4rem .7rem;
+      padding:.45rem .7rem;
       line-height:1.2;
-      white-space:nowrap;
-      box-shadow: var(--btn-shadow), 0 0 25px rgba(160,120,255,.7);
+      box-shadow: var(--btn-shadow);
     }
 
     .service-desc {
-      font-size:.8rem;
+      font-size:.85rem;
       line-height:1.45;
       color:var(--text-body);
-      min-height:3em;
     }
 
     .service-extra {
@@ -227,22 +212,23 @@
       line-height:1.4;
     }
 
-    /* ===== Cómo funciona ===== */
     .how-grid {
       display:grid;
       gap:1rem;
-      grid-template-columns: repeat(auto-fit,minmax(min(260px,100%),1fr));
+      grid-template-columns:1fr;
     }
+
     .how-card {
       background: rgba(255,255,255,0.9);
       border-radius: var(--card-radius);
       border: var(--card-border);
       box-shadow: var(--lila-shadow), 0 0 40px rgba(180,150,255,.25);
       padding:1rem 1rem 1.25rem;
-      font-size:.85rem;
+      font-size:.9rem;
       line-height:1.45;
       color:var(--text-body);
     }
+
     .how-num {
       font-weight:600;
       color:var(--lila-strong);
@@ -250,6 +236,7 @@
       margin-bottom:.4rem;
       text-shadow:0 20px 40px rgba(130,80,255,.25);
     }
+
     .how-tit {
       font-weight:600;
       color:var(--text-dark);
@@ -257,13 +244,13 @@
       margin-bottom:.4rem;
       letter-spacing:-0.03em;
     }
+
     .how-p {
       font-size:.8rem;
       color:var(--text-body);
       line-height:1.4;
     }
 
-    /* ===== Testimonio ===== */
     .testi-card {
       max-width:800px;
       margin:0 auto;
@@ -273,7 +260,7 @@
       border-radius: var(--card-radius);
       border: var(--card-border);
       box-shadow: var(--lila-shadow), 0 0 40px rgba(180,150,255,.25);
-      font-size:.85rem;
+      font-size:.9rem;
       line-height:1.5;
       color:var(--text-body);
     }
@@ -292,11 +279,10 @@
       line-height:1.4;
     }
 
-    /* ===== FAQ ===== */
     .faq-grid {
       display:grid;
       gap:1rem;
-      grid-template-columns: repeat(auto-fit,minmax(min(320px,100%),1fr));
+      grid-template-columns:1fr;
     }
 
     .faq-card {
@@ -321,17 +307,41 @@
       line-height:1.4;
     }
 
-    /* ===== FOOTER ===== */
     footer {
       text-align:center;
-      font-size:.7rem;
+      font-size:.75rem;
       color:var(--text-body);
       line-height:1.4;
-      padding:3rem 1rem 4rem;
+      padding:2.5rem 1rem 4rem;
     }
 
     .footer-cta {
       margin-bottom:1.5rem;
+    }
+
+    /* ----- Desktop / tablets grandes ----- */
+    @media(min-width:600px){
+      header.hero-box { padding:2rem 1.5rem; }
+      .brand { font-size:1.5rem; }
+      .hero-h1 { font-size:1.3rem; line-height:1.35; }
+      .hero-p { font-size:1rem; }
+
+      .cta-main {
+        font-size:.9rem;
+        max-width:260px;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(auto-fit,minmax(min(260px,100%),1fr));
+      }
+
+      .how-grid {
+        grid-template-columns: repeat(auto-fit,minmax(min(260px,100%),1fr));
+      }
+
+      .faq-grid {
+        grid-template-columns: repeat(auto-fit,minmax(min(320px,100%),1fr));
+      }
     }
   </style>
 </head>
