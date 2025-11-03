@@ -42,21 +42,21 @@
 
     * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
 
-    body {
-      margin: 0;
-      font-family: var(--font-stack);
-      color: var(--text-body);
-      line-height: 1.4;
-      padding: 1rem 1rem 5rem;
-      display: block;
-      background:
-  radial-gradient(circle at 20% 15%, rgba(255,255,255,.8) 0%, rgba(249,247,255,.8) 40%, rgba(239,233,255,.7) 60%, rgba(255,255,255,.6) 80%),
-  linear-gradient(to bottom right, rgba(255,255,255,.6) 0%, rgba(249,247,255,.6) 50%, rgba(255,255,255,.5) 100%),
-  url("./img/bg-booking.png?v=2"),
-  url("./img/bg-booking.jpg?v=2");
-background-size: cover;
-background-position: center;
-background-attachment: fixed;
+    body{
+  margin:0;
+  font-family:var(--font-stack);
+  color:var(--text-body);
+  line-height:1.4;
+  padding:1rem 1rem 5rem;
+  display:block;
+  /* Fondo casi sin velo */
+  background:
+    linear-gradient(to bottom, rgba(255,255,255,.08), rgba(249,247,255,.04)),
+    url("./img/bg-booking.png?v=3") center / cover no-repeat;
+}
+@media (min-width:900px){ body{ background-attachment: fixed; } }
+@media (max-width:899px){ body{ background-attachment: scroll; } }
+
 
     }
 
