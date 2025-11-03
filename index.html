@@ -3,344 +3,241 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Boutique Salón | Agenda con seña</title>
 
-  <title>Boutique Salón | Reserva tu turno con seña segura</title>
-
-  <meta name="description" content="Boutique Salón. Agenda online con seña para que tu turno esté realmente guardado. Uñas esculpidas, pestañas, cejas, depilación definitiva. Elegís horario, dejás una seña pequeña y quedás tranquila: ese espacio es tuyo. Cuidado, respeto y belleza.">
-  <meta name="keywords" content="turnos estética, agenda con seña, uñas esculpidas, pestañas, lifting, cejas, depilación definitiva, reservar turno belleza, cuidado personal, bienestar">
-  <meta property="og:title" content="Boutique Salón • Tu turno reservado con cariño">
-  <meta property="og:description" content="Elegís el servicio, elegís el horario y dejás una seña segura. Nosotras te guardamos ese momento sólo para vos.">
+  <meta name="description" content="Boutique Salón. Agenda online con seña para que tu turno esté realmente guardado. Uñas esculpidas, pestañas, cejas y más. Elegís horario, dejás una seña pequeña y listo: ese espacio queda bloqueado sólo para vos. Cuidado, respeto y belleza.">
+  <meta name="keywords" content="turnos estética, agenda con seña, uñas esculpidas, extensión de pestañas, lifting, microblading, belleza de pies, depilación definitiva, reservar turno belleza, bienestar">
+  <meta property="og:title" content="Boutique Salón • Tu turno en 2 clics" />
+  <meta property="og:description" content="Elegí servicio y horario, dejá una seña segura y listo. Tu agenda asegurada." />
 
   <style>
-    :root {
-      --lila-bg-1: #ffffff;
-      --lila-bg-2: #f9f7ff;
-      --lila-bg-3: #efe9ff;
-      --lila-border: rgba(170,140,255,0.4);
-      --lila-shadow: 0 32px 64px rgba(130,80,255,.12);
+    :root{
+      --lila1:#ffffff;
+      --lila2:#f9f7ff;
+      --lila3:#efe9ff;
+      --violeta:#9b6bff;
 
-      --lila-strong: #9b6bff;
-      --lila-soft-text: #b399ff;
+      --text-dark:#2b2b2b;
+      --text:#555;
+      --dim:#777;
 
-      --text-dark: #2b2b2b;
-      --text-body: #555;
-      --text-dim: #777;
+      --card-bg:rgba(255,255,255,.86);
+      --border:1px solid rgba(170,140,255,.4);
+      --radius:20px;
+      --shadow:0 32px 64px rgba(130,80,255,.14), 0 0 40px rgba(180,150,255,.22);
 
-      --card-bg: rgba(255,255,255,0.82);
-      --card-border: 1px solid rgba(170,140,255,0.4);
-      --card-radius: 20px;
+      --btn-shadow:0 24px 48px rgba(130,80,255,.35), 0 0 30px rgba(160,120,255,.65);
 
-      --btn-grad-1: #9b6bff;
-      --btn-grad-2: #d5c5ff;
-      --btn-shadow: 0 24px 48px rgba(130,80,255,.35), 0 0 30px rgba(160,120,255,.7);
+      --font:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    }
+    *{box-sizing:border-box;-webkit-font-smoothing:antialiased}
+    body{
+      margin:0; font-family:var(--font); color:var(--text); line-height:1.45;
+      background:
+        radial-gradient(circle at 20% 15%, var(--lila2) 0%, var(--lila3) 40%, rgba(255,255,255,0) 70%),
+        radial-gradient(circle at 80% 20%, rgba(212,197,255,.45) 0%, rgba(255,255,255,0) 60%),
+        linear-gradient(to bottom right, var(--lila1) 0%, var(--lila2) 60%, var(--lila1) 100%),
+        url("./img/bg-landing.png");
+      background-size:cover; background-attachment:fixed; background-position:center;
+    }
+    .max{max-width:1200px;margin:0 auto;padding:1.5rem 1rem 4rem}
 
-      --pill-bg: rgba(255,255,255,0.86);
-      --pill-border: 1px solid rgba(170,140,255,0.5);
-      --pill-shadow: 0 24px 48px rgba(130,80,255,.18);
-
-      --font-stack: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    .glass{background:var(--card-bg);backdrop-filter:blur(10px);border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    header.hero{padding:1.5rem 1rem;text-align:center}
+    .brand{color:var(--text-dark);font-weight:700;font-size:1.25rem;letter-spacing:-.02em}
+    .tag{color:var(--violeta);font-size:.85rem;font-weight:600;margin-top:.35rem}
+    h1{margin:1rem auto .6rem;font-size:1.25rem;line-height:1.35;color:var(--text-dark);letter-spacing:-.02em}
+    .lead{max-width:560px;margin:.5rem auto 1.25rem;color:var(--text)}
+    .cta{
+      display:inline-block;background:linear-gradient(to bottom right,#9b6bff,#d5c5ff);color:#fff;
+      text-decoration:none;font-weight:700;border-radius:12px;padding:1rem 1.2rem;box-shadow:var(--btn-shadow)
+    }
+    .pill{display:flex;gap:.6rem;justify-content:center;align-items:flex-start;
+      margin:1rem auto 0;max-width:560px;padding:.7rem 1rem;border-radius:999px;background:rgba(255,255,255,.9);
+      border:1px solid rgba(170,140,255,.45);color:var(--violeta);font-weight:600;box-shadow:0 24px 48px rgba(130,80,255,.18)
     }
 
-    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+    .sec-title{text-align:center;color:var(--text-dark);font-weight:700;margin:2.2rem 0 1rem;letter-spacing:-.02em}
 
-   body{
-  margin:0;
-  font-family:var(--font-stack);
-  color:var(--text-body);
-  line-height:1.45;
-  /* Fondo casi sin velo */
-  background:
-    linear-gradient(to bottom, rgba(255,255,255,.10), rgba(249,247,255,.06)),
-    url("./img/bg-landing.png?v=3") center / cover no-repeat;
-}
-@media (min-width:900px){ body{ background-attachment: fixed; } }
-@media (max-width:899px){ body{ background-attachment: scroll; } }
+    /* Servicios */
+    .grid{display:grid;gap:1rem}
+    @media(min-width:600px){.grid{grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))}}
+    .card{background:#fff;border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:1rem}
+    .thumb{width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#f5f5f8;border:1px solid rgba(170,140,255,.35);box-shadow:0 10px 24px rgba(130,80,255,.12);margin-bottom:.75rem}
+    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .row{display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem;flex-wrap:wrap}
+    .name{font-weight:700;color:var(--text-dark)}
+    .price{background:linear-gradient(to bottom right,#9b6bff,#d5c5ff);color:#fff;font-weight:700;border-radius:999px;padding:.4rem .7rem;box-shadow:var(--btn-shadow);font-size:.85rem}
+    .desc{font-size:.9rem;margin:.4rem 0 .6rem}
+    .meta{font-size:.8rem;color:#666}
+    .btn{display:block;width:100%;margin-top:.8rem;text-align:center;background:linear-gradient(to bottom right,#9b6bff,#d5c5ff);color:#fff;font-weight:700;padding:.8rem;border-radius:12px;box-shadow:var(--btn-shadow);text-decoration:none}
 
+    /* Cómo funciona */
+    .how .card{padding:1rem 1rem 1.1rem}
+    .num{color:var(--violeta);font-weight:800;font-size:.85rem}
+    .ht{color:var(--text-dark);font-weight:700;margin:.25rem 0 .2rem}
 
+    /* Mini-capturas (mocks sin imágenes externas) */
+    .mocks{display:grid;gap:1rem}
+    @media(min-width:700px){.mocks{grid-template-columns:repeat(3,1fr)}}
+    .mock{border-radius:18px;border:var(--border);background:linear-gradient(180deg,#fff,rgba(255,255,255,.9));box-shadow:var(--shadow);padding:1rem}
+    .mock .bar{height:10px;border-radius:6px;background:linear-gradient(90deg,#d9cffd,#f0eaff)}
+    .mock .block{height:54px;border-radius:12px;margin:.6rem 0;background:linear-gradient(180deg,#fbfaff,#efe9ff)}
+    .mock .line{height:10px;border-radius:6px;background:#ece7ff;margin:.35rem 0}
 
-    /* En desktop podemos fijar el fondo */
-    @media (min-width: 900px){
-      body { background-attachment: fixed; }
-    }
-    /* En mobile evitamos el fixed para que no “salte” en iOS */
-    @media (max-width: 899px){
-      body { background-attachment: scroll; }
-    }
-
-    .max { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
-    .glass-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(10px);
-      border-radius: var(--card-radius);
-      border: var(--card-border);
-      box-shadow: var(--lila-shadow), 0 0 40px rgba(180,150,255,.25);
-    }
-
-    header.hero-box { padding: 1.5rem 1rem; text-align: center; }
-
-    .brand { color: var(--text-dark); font-weight: 600; font-size: 1.25rem; letter-spacing: -0.03em; text-shadow: 0 10px 30px rgba(130,80,255,.18); }
-    .tagline { color: var(--lila-strong); font-size: .8rem; font-weight: 500; margin-top: .4rem; letter-spacing: .02em; }
-    .hero-h1 { font-size: 1.1rem; font-weight: 600; color: var(--text-dark); line-height: 1.4; letter-spacing: -0.03em; margin-top: 1rem; text-shadow: 0 20px 40px rgba(130,80,255,.15); }
-    .hero-p { font-size: .9rem; max-width: 520px; margin: .75rem auto 1.25rem; color: var(--text-body); }
-
-    .cta-main {
-      display: block; width: 100%; max-width: 320px; margin: 0 auto;
-      background: linear-gradient(to bottom right,#9b6bff,#d5c5ff);
-      color: #fff; font-weight: 600; font-size: 1rem; text-decoration: none; text-align: center;
-      padding: 1rem 1.2rem; border-radius: 12px; border: 0; box-shadow: var(--btn-shadow); line-height:1.2;
-    }
-
-    .safety-pill {
-      display:flex; align-items:flex-start; justify-content:center; gap:.6rem;
-      background: var(--pill-bg); color: var(--lila-strong); font-size: .8rem; font-weight:500;
-      border-radius: 999px; border: var(--pill-border); line-height:1.3; padding:.7rem 1rem;
-      box-shadow: var(--pill-shadow); margin:1rem auto 0; max-width: 520px; text-align:left;
-    }
-
-    .sec-title { text-align:center; font-size:1rem; font-weight:600; color:var(--text-dark); letter-spacing:-0.03em; margin:2.5rem 0 1rem; text-shadow:0 20px 40px rgba(130,80,255,.15); }
-
-    .services-grid { display:grid; gap:1rem; grid-template-columns:1fr; }
-    .service-card {
-      background: rgba(255,255,255,0.9);
-      border-radius: var(--card-radius);
-      border: var(--card-border);
-      box-shadow: var(--lila-shadow), 0 0 40px rgba(180,150,255,.25);
-      padding:1rem 1rem 1.25rem;
-    }
-    .service-head-row { display:flex; justify-content:space-between; flex-wrap:wrap; gap:.5rem; margin-bottom:.5rem; align-items:flex-start; }
-    .service-name { font-weight:600; font-size:.95rem; color:var(--text-dark); letter-spacing:-0.03em; text-shadow: 0 20px 40px rgba(130,80,255,.15); }
-    .price-pill {
-      background: linear-gradient(to bottom right,#9b6bff,#d5c5ff);
-      color:#fff; font-size:.8rem; font-weight:600; border-radius:999px; padding:.45rem .7rem; line-height:1.2; box-shadow: var(--btn-shadow);
-    }
-    .service-desc { font-size:.85rem; line-height:1.45; color:var(--text-body); }
-    .service-extra { font-size:.75rem; color:var(--text-dim); margin-top:.75rem; line-height:1.4; }
-
-    .how-grid { display:grid; gap:1rem; grid-template-columns:1fr; }
-    .how-card {
-      background: rgba(255,255,255,0.9);
-      border-radius: var(--card-radius);
-      border: var(--card-border);
-      box-shadow: var(--lila-shadow), 0 0 40px rgba(180,150,255,.25);
-      padding:1rem 1rem 1.25rem; font-size:.9rem; line-height:1.45; color:var(--text-body);
-    }
-    .how-num { font-weight:600; color:var(--lila-strong); font-size:.8rem; margin-bottom:.4rem; text-shadow:0 20px 40px rgba(130,80,255,.25); }
-    .how-tit { font-weight:600; color:var(--text-dark); font-size:.9rem; margin-bottom:.4rem; letter-spacing:-0.03em; }
-    .how-p { font-size:.8rem; color:var(--text-body); line-height:1.4; }
-
-    .testi-card {
-      max-width:800px; margin:0 auto; text-align:center;
-      padding:1rem 1rem 1.25rem;
-      background: rgba(255,255,255,0.9);
-      border-radius: var(--card-radius);
-      border: var(--card-border);
-      box-shadow: var(--lila-shadow), 0 0 40px rgba(180,150,255,.25);
-      font-size:.9rem; line-height:1.5; color:var(--text-body);
-    }
-    .testi-quote { font-size:.9rem; color:var(--text-dark); font-weight:500; line-height:1.4; }
-    .testi-note { margin-top:1rem; font-size:.7rem; color:var(--text-dim); line-height:1.4; }
-
-    .faq-grid { display:grid; gap:1rem; grid-template-columns:1fr; }
-    .faq-card {
-      background: rgba(255,255,255,0.9);
-      border-radius:var(--card-radius);
-      border: var(--card-border);
-      box-shadow:var(--lila-shadow), 0 0 40px rgba(180,150,255,.25);
-      padding:1rem 1rem 1.25rem;
-    }
-    .faq-q { font-size:.9rem; font-weight:600; color:var(--text-dark); letter-spacing:-0.03em; margin-bottom:.4rem; }
-    .faq-a { font-size:.8rem; color:var(--text-body); line-height:1.4; }
-
-    footer { text-align:center; font-size:.75rem; color:var(--text-body); line-height:1.4; padding:2.5rem 1rem 4rem; }
-    .footer-cta { margin-bottom:1.5rem; }
-
-    @media(min-width:600px){
-      header.hero-box { padding:2rem 1.5rem; }
-      .brand { font-size:1.5rem; }
-      .hero-h1 { font-size:1.3rem; line-height:1.35; }
-      .hero-p { font-size:1rem; }
-      .cta-main { font-size:.9rem; max-width:260px; }
-      .services-grid { grid-template-columns: repeat(auto-fit,minmax(min(260px,100%),1fr)); }
-      .how-grid { grid-template-columns: repeat(auto-fit,minmax(min(260px,100%),1fr)); }
-      .faq-grid { grid-template-columns: repeat(auto-fit,minmax(min(320px,100%),1fr)); }
-    }
+    /* FAQ + footer */
+    .faq .card{padding:1rem}
+    .q{font-weight:700;color:var(--text-dark)}
+    .a{font-size:.9rem;margin-top:.25rem}
+    footer{text-align:center;color:#666;font-size:.85rem;margin-top:2rem}
+    .foot-cta{margin:.8rem 0 1.4rem}
   </style>
 </head>
 <body>
-
   <div class="max">
 
     <!-- HERO -->
-    <header class="hero-box glass-card">
+    <header class="hero glass">
       <div class="brand">Boutique Salón</div>
-      <div class="tagline">Reserva con seña · Tu espacio cuidado</div>
+      <div class="tag">Agenda oficial con seña</div>
+      <h1>Tu turno en 2 clics. Tu seña pagada. Tu agenda asegurada.</h1>
+      <p class="lead">
+        Elegís el servicio y el horario. Pagás una seña chiquita y listo: tu espacio queda
+        bloqueado sólo para vos. Amor, respeto y belleza para reinas como vos 👑
+      </p>
+      <a class="cta" href="./booking.html">Reservar mi turno ahora</a>
 
-      <h1 class="hero-h1">
-        Tu momento merece estar guardado.<br/>
-        Elegís tu servicio, elegís tu horario,<br/>
-        dejás una seña segura y listo.
-      </h1>
-
-      <p class="hero-p">
-        Nosotras bloqueamos ese espacio sólo para vos, con todo preparado.
-        Sin corridas. Sin “la anterior no vino”. Tranquila:
-        tu cita queda realmente reservada.
+      <!-- BOTÓN DEMO LINK DE PAGO -->
+      <p style="margin:.8rem 0 0;text-align:center">
+        <a href="https://link.mercadopago.com.ar/abraxasgroup" target="_blank" rel="noopener"
+           style="display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:.6rem .9rem;border:1px solid rgba(170,140,255,.45);background:rgba(255,255,255,.9);box-shadow:0 8px 18px rgba(130,80,255,.15);color:#6b4cff">
+          🔗 Ver ejemplo de link de pago (DEMO)
+        </a>
       </p>
 
-      <a class="cta-main" href="./booking.html">Reservar mi turno ahora</a>
-
-      <div class="safety-pill">
-        <span>💅</span>
-        <span>
-          La seña es pequeña y protege tu turno y el tiempo de la profesional.
-          Es respeto mutuo, y es tranquilidad para vos ♥
-        </span>
-      </div>
+      <div class="pill">💅 Sin seña no se confirma. Cuidamos tu lugar y el tiempo de nuestras profesionales.</div>
     </header>
 
     <!-- SERVICIOS -->
-    <div class="sec-title">Elegí tu servicio</div>
+    <h2 class="sec-title">Nuestros servicios más pedidos</h2>
+    <section class="grid">
+      <article class="card">
+        <div class="thumb"><img src="./img/services/unas_esculpidas.webp" alt="Uñas esculpidas" loading="lazy" decoding="async"></div>
+        <div class="row"><div class="name">Uñas esculpidas</div><div class="price">Desde $30.000</div></div>
+        <p class="desc">Uñas definidas, resistentes y prolijas. Terminación impecable.</p>
+        <div class="meta">Seña desde $5.000 · ~60 min</div>
+        <a class="btn" href="./booking.html">Elegir y reservar</a>
+      </article>
 
-    <section id="servicios">
-      <div class="services-grid">
+      <article class="card">
+        <div class="thumb"><img src="./img/services/extension_pestanas.webp" alt="Extensión de pestañas" loading="lazy" decoding="async"></div>
+        <div class="row"><div class="name">Extensión de pestañas</div><div class="price">Desde $35.000</div></div>
+        <p class="desc">Volumen y curva sin máscara. Levanta tu mirada.</p>
+        <div class="meta">Seña desde $6.000 · ~75 min</div>
+        <a class="btn" href="./booking.html">Elegir y reservar</a>
+      </article>
 
-        <div class="service-card">
-          <div class="service-head-row">
-            <div class="service-name">Uñas esculpidas</div>
-            <div class="price-pill">Desde $30.000</div>
-          </div>
-          <div class="service-desc">Uñas definidas, resistentes y prolijas. Terminación impecable.</div>
-          <div class="service-extra">Seña desde $5.000 · ~60 min</div>
-        </div>
+      <article class="card">
+        <div class="thumb"><img src="./img/services/lifting_pestanas_cejas.webp" alt="Lifting de pestañas y cejas" loading="lazy" decoding="async"></div>
+        <div class="row"><div class="name">Lifting Pestañas y Cejas</div><div class="price">Desde $22.000</div></div>
+        <p class="desc">Realza pestañas y ordena cejas de forma natural.</p>
+        <div class="meta">Seña desde $4.000 · ~50 min</div>
+        <a class="btn" href="./booking.html">Elegir y reservar</a>
+      </article>
 
-        <div class="service-card">
-          <div class="service-head-row">
-            <div class="service-name">Extensión de pestañas</div>
-            <div class="price-pill">Desde $35.000</div>
-          </div>
-          <div class="service-desc">Mirada con volumen y curva sin máscara. Levanta todo el rostro.</div>
-          <div class="service-extra">Seña desde $6.000 · ~75 min</div>
-        </div>
+      <article class="card">
+        <div class="thumb"><img src="./img/services/microblading.webp" alt="Microblading" loading="lazy" decoding="async"></div>
+        <div class="row"><div class="name">Microblading</div><div class="price">Desde $50.000</div></div>
+        <p class="desc">Cejas definidas 24/7. Te levantás lista, sin lápiz.</p>
+        <div class="meta">Seña desde $10.000 · ~90 min</div>
+        <a class="btn" href="./booking.html">Elegir y reservar</a>
+      </article>
 
-        <div class="service-card">
-          <div class="service-head-row">
-            <div class="service-name">Lifting Pestañas y Cejas</div>
-            <div class="price-pill">Desde $22.000</div>
-          </div>
-          <div class="service-desc">Realza pestañas y ordena cejas de forma natural, sin maquillaje.</div>
-          <div class="service-extra">Seña desde $4.000 · ~50 min</div>
-        </div>
+      <article class="card">
+        <div class="thumb"><img src="./img/services/belleza_pies.webp" alt="Belleza de pies" loading="lazy" decoding="async"></div>
+        <div class="row"><div class="name">Belleza de pies</div><div class="price">Desde $18.000</div></div>
+        <p class="desc">Limpieza profunda, forma perfecta y esmaltado impecable.</p>
+        <div class="meta">Seña desde $3.000 · ~45 min</div>
+        <a class="btn" href="./booking.html">Elegir y reservar</a>
+      </article>
 
-        <div class="service-card">
-          <div class="service-head-row">
-            <div class="service-name">Microblading</div>
-            <div class="price-pill">Desde $50.000</div>
-          </div>
-          <div class="service-desc">Cejas definidas y con forma 24/7. Te levantás lista, sin lápiz.</div>
-          <div class="service-extra">Seña desde $10.000 · ~90 min</div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-head-row">
-            <div class="service-name">Belleza de pies</div>
-            <div class="price-pill">Desde $18.000</div>
-          </div>
-          <div class="service-desc">Limpieza profunda, forma perfecta y esmaltado impecable.</div>
-          <div class="service-extra">Seña desde $3.000 · ~45 min</div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-head-row">
-            <div class="service-name">Depilación definitiva</div>
-            <div class="price-pill">Desde $26.000</div>
-          </div>
-          <div class="service-desc">Suave, práctica y duradera. Menos preocupación diaria.</div>
-          <div class="service-extra">Seña desde $5.000 · ~30 min</div>
-        </div>
-
-      </div>
+      <article class="card">
+        <div class="thumb"><img src="./img/services/depilacion_definitiva.webp" alt="Depilación definitiva" loading="lazy" decoding="async"></div>
+        <div class="row"><div class="name">Depilación definitiva</div><div class="price">Desde $26.000</div></div>
+        <p class="desc">Suave, práctica y duradera. Menos preocupación diaria.</p>
+        <div class="meta">Seña desde $5.000 · ~30 min</div>
+        <a class="btn" href="./booking.html">Elegir y reservar</a>
+      </article>
     </section>
 
     <!-- CÓMO FUNCIONA -->
-    <div class="sec-title">¿Cómo funciona?</div>
-
-    <section id="como-funciona">
-      <div class="how-grid">
-        <div class="how-card">
-          <div class="how-num">01</div>
-          <div class="how-tit">Elegís el servicio</div>
-          <div class="how-p">Uñas, pestañas, cejas, depilación definitiva… lo que necesitás para sentirte bien.</div>
-        </div>
-
-        <div class="how-card">
-          <div class="how-num">02</div>
-          <div class="how-tit">Elegís día y hora</div>
-          <div class="how-p">Ves disponibilidad real. Sin mensajes de ida y vuelta. Sin estrés.</div>
-        </div>
-
-        <div class="how-card">
-          <div class="how-num">03</div>
-          <div class="how-tit">Dejás una seña segura</div>
-          <div class="how-p">Mercado Pago / Ualá / Brubank / Naranja. Rápido y transparente.</div>
-        </div>
-
-        <div class="how-card">
-          <div class="how-num">04</div>
-          <div class="how-tit">Tu turno queda reservado</div>
-          <div class="how-p">Ese espacio queda bloqueado sólo para vos. Te recordamos por WhatsApp antes del turno.</div>
-        </div>
-      </div>
+    <h2 class="sec-title">¿Cómo funciona?</h2>
+    <section class="grid how">
+      <article class="card">
+        <div class="num">01</div>
+        <div class="ht">Elegís el servicio</div>
+        <div>Uñas, pestañas, cejas, depilación… Lo que te haga sentir divina.</div>
+      </article>
+      <article class="card">
+        <div class="num">02</div>
+        <div class="ht">Elegís día y hora</div>
+        <div>Disponibilidad real. Sin mensajes eternos. Sin estrés.</div>
+      </article>
+      <article class="card">
+        <div class="num">03</div>
+        <div class="ht">Dejás una seña segura</div>
+        <div>Mercado Pago / Ualá / Brubank / Naranja. Rápido y transparente.</div>
+      </article>
+      <article class="card">
+        <div class="num">04</div>
+        <div class="ht">Tu turno queda reservado</div>
+        <div>Ese espacio es sólo para vos. Te recordamos por WhatsApp.</div>
+      </article>
     </section>
 
-    <!-- TESTIMONIO -->
-    <div class="sec-title">Nos importa tu tiempo</div>
-    <section id="confianza">
-      <div class="testi-card">
-        <div class="testi-quote">
-          “Antes alguien reservaba y no venía, y la próxima clienta esperaba.
-          Ahora cada turno llega confirmado con seña. Todas son atendidas tranquilas y a horario.”
-        </div>
-        <div class="testi-note">Boutique Salón · Agenda con seña y respeto mutuo</div>
+    <!-- MINI-CAPTURAS -->
+    <h2 class="sec-title">Un vistazo al sistema</h2>
+    <section class="mocks">
+      <div class="mock">
+        <div class="bar"></div>
+        <div class="block"></div>
+        <div class="line"></div><div class="line"></div><div class="line"></div>
+      </div>
+      <div class="mock">
+        <div class="bar"></div>
+        <div class="block"></div>
+        <div class="line"></div><div class="line"></div><div class="line"></div>
+      </div>
+      <div class="mock">
+        <div class="bar"></div>
+        <div class="block"></div>
+        <div class="line"></div><div class="line"></div><div class="line"></div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <div class="sec-title">Preguntas comunes</div>
-    <section id="faq">
-      <div class="faq-grid">
-        <div class="faq-card">
-          <div class="faq-q">¿Por qué dejo una seña?</div>
-          <div class="faq-a">Porque te guardamos cabina, productos y profesional sólo para vos.
-            Así sabés que cuando llegues, todo está listo.</div>
-        </div>
-
-        <div class="faq-card">
-          <div class="faq-q">¿Y si no puedo ir?</div>
-          <div class="faq-a">Si no venís o avisás tarde la seña se usa para cubrir ese espacio perdido.
-            Nos ayuda a cuidar el tiempo de todas.</div>
-        </div>
-
-        <div class="faq-card">
-          <div class="faq-q">¿Puedo reprogramar?</div>
-          <div class="faq-a">Sí, si avisás con tiempo y hay lugar libre te movemos sin drama.</div>
-        </div>
-
-        <div class="faq-card">
-          <div class="faq-q">¿Cómo pago la seña?</div>
-          <div class="faq-a">Te mandamos un link seguro. Podés pagar con Mercado Pago, Ualá, Brubank o Naranja.</div>
-        </div>
-      </div>
+    <h2 class="sec-title">Preguntas comunes</h2>
+    <section class="grid faq">
+      <article class="card">
+        <div class="q">¿Por qué dejamos una seña?</div>
+        <div class="a">Porque te guardamos cabina, productos y profesional sólo para vos. Así cuando llegás, todo está listo.</div>
+      </article>
+      <article class="card">
+        <div class="q">¿Qué pasa si no puedo ir?</div>
+        <div class="a">Si no venís o avisás tarde, la seña cubre ese espacio perdido. Cuidamos el tiempo de todas.</div>
+      </article>
+      <article class="card">
+        <div class="q">¿Cómo pago?</div>
+        <div class="a">Te mandamos un link seguro. Aceptamos Mercado Pago, Ualá, Brubank y Naranja.</div>
+      </article>
     </section>
 
+    <footer>
+      <div class="foot-cta">
+        <a class="cta" href="./booking.html">Reservar mi turno ahora</a>
+      </div>
+      Powered by Abraxas 💜
+    </footer>
   </div>
-
-  <footer>
-    <div class="footer-cta">
-      <a class="cta-main" href="./booking.html">Reservar mi turno ahora</a>
-    </div>
-    Boutique Salón · Tu momento reservado 💖<br/>
-    Powered by Abraxas 💜
-  </footer>
-
 </body>
 </html>
