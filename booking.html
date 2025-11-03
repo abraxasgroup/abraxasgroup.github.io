@@ -11,247 +11,143 @@
   <meta property="og:description" content="Tu turno queda bloqueado cuando dejás la seña. Sin corridas. Sin estrés. Todo listo cuando llegás.">
 
   <style>
-    :root {
-      --lila-bg-1: #ffffff;
-      --lila-bg-2: #f9f7ff;
-      --lila-bg-3: #efe9ff;
+    :root{
+      --lila-bg-1:#ffffff;
+      --lila-bg-2:#f9f7ff;
+      --lila-bg-3:#efe9ff;
 
-      --text-dark: #2b2b2b;
-      --text-body: #555;
-      --text-dim: #777;
-      --text-soft: #9b6bff;
+      --text-dark:#2b2b2b;
+      --text-body:#555;
+      --text-dim:#777;
+      --text-soft:#9b6bff;
 
-      --card-bg: rgba(255,255,255,0.82);
-      --card-solid-bg: rgba(255,255,255,0.9);
-      --card-border: 1px solid rgba(170,140,255,0.4);
-      --card-radius: 20px;
+      --card-bg:rgba(255,255,255,.82);
+      --card-solid-bg:rgba(255,255,255,.9);
+      --card-border:1px solid rgba(170,140,255,.4);
+      --card-radius:20px;
 
-      --shadow-card: 0 32px 64px rgba(130,80,255,.15), 0 0 40px rgba(180,150,255,.25);
+      --shadow-card:0 32px 64px rgba(130,80,255,.15),0 0 40px rgba(180,150,255,.25);
 
-      --btn-grad-1: #9b6bff;
-      --btn-grad-2: #d5c5ff;
-      --btn-shadow: 0 24px 48px rgba(130,80,255,.35), 0 0 30px rgba(160,120,255,.7);
+      --btn-grad-1:#9b6bff;
+      --btn-grad-2:#d5c5ff;
+      --btn-shadow:0 24px 48px rgba(130,80,255,.35),0 0 30px rgba(160,120,255,.7);
 
-      --input-border: 1px solid rgba(170,140,255,0.5);
-      --input-bg: #fff;
+      --input-border:1px solid rgba(170,140,255,.5);
+      --input-bg:#fff;
 
-      --radius-btn: 12px;
+      --radius-btn:12px;
 
-      --font-stack: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-stack:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
     }
-
-    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-
+    *{box-sizing:border-box;-webkit-font-smoothing:antialiased}
     body{
-  margin:0;
-  font-family:var(--font-stack);
-  color:var(--text-body);
-  line-height:1.4;
-  padding:1rem 1rem 5rem;
-  display:block;
-  /* Fondo casi sin velo */
-  background:
-    linear-gradient(to bottom, rgba(255,255,255,.08), rgba(249,247,255,.04)),
-    url("./img/bg-booking.png?v=3") center / cover no-repeat;
-}
-@media (min-width:900px){ body{ background-attachment: fixed; } }
-@media (max-width:899px){ body{ background-attachment: scroll; } }
-
-
+      margin:0;font-family:var(--font-stack);color:var(--text-body);line-height:1.4;
+      padding:1rem 1rem 5rem;display:block;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(255,255,255,.8) 0%, rgba(249,247,255,.8) 40%, rgba(239,233,255,.7) 60%, rgba(255,255,255,.6) 80%),
+        linear-gradient(to bottom right, rgba(255,255,255,.6) 0%, rgba(249,247,255,.6) 50%, rgba(255,255,255,.5) 100%),
+        url("./img/bg-booking.png");
+      background-size:cover; background-position:center; background-attachment:fixed;
     }
-
-    .app-shell {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
+    .app-shell{width:100%;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:1.5rem}
 
     /* HERO CARD */
-    .hero-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(10px);
-      border-radius: var(--card-radius);
-      border: var(--card-border);
-      box-shadow: var(--shadow-card);
-      padding: 1.25rem 1rem 1rem;
-    }
+    .hero-card{background:var(--card-bg);backdrop-filter:blur(10px);border-radius:var(--card-radius);border:var(--card-border);box-shadow:var(--shadow-card);padding:1.25rem 1rem 1rem}
+    .brand-row{display:flex;flex-direction:column;gap:1rem}
+    @media(min-width:600px){.brand-row{flex-direction:row;justify-content:space-between;align-items:flex-start}}
+    .brand-left{min-width:200px}
+    .brand-name{font-size:1.2rem;font-weight:600;color:var(--text-dark);letter-spacing:-.03em;text-shadow:0 20px 40px rgba(130,80,255,.18)}
+    .brand-sub{font-size:.8rem;color:var(--text-soft);font-weight:500}
+    .slogan{margin-top:.75rem;font-size:.9rem;line-height:1.4;color:var(--text-body);font-weight:500}
 
-    .brand-row { display: flex; flex-direction: column; gap: 1rem; }
-    @media(min-width:600px){
-      .brand-row { flex-direction: row; justify-content: space-between; align-items: flex-start; }
-    }
-
-    .brand-left { min-width: 200px; }
-    .brand-name { font-size: 1.2rem; font-weight: 600; color: var(--text-dark); letter-spacing: -0.03em; text-shadow: 0 20px 40px rgba(130,80,255,.18); }
-    .brand-sub { font-size: 0.8rem; color: var(--text-soft); font-weight: 500; }
-    .slogan { margin-top: .75rem; font-size: .9rem; line-height: 1.4; color: var(--text-body); font-weight: 500; }
-
-    .pill-security{
-      display:flex; align-items:flex-start; gap:.6rem;
-      background: rgba(255,255,255,.85); color: var(--text-soft);
-      font-size: .8rem; font-weight: 500; border-radius: 999px; padding: .75rem 1rem;
-      border: 1px solid rgba(170,140,255,0.5);
-      box-shadow: 0 24px 48px rgba(130,80,255,.18), 0 0 30px rgba(160,120,255,.4);
-      line-height: 1.3; text-align:left;
-    }
+    .pill-security{display:flex;align-items:flex-start;gap:.6rem;background:rgba(255,255,255,.85);color:var(--text-soft);font-size:.8rem;font-weight:500;border-radius:999px;padding:.75rem 1rem;border:1px solid rgba(170,140,255,.5);box-shadow:0 24px 48px rgba(130,80,255,.18),0 0 30px rgba(160,120,255,.4);line-height:1.3;text-align:left}
 
     /* FLOW CARD */
-    .flow-card {
-      background: var(--card-bg);
-      border-radius: var(--card-radius);
-      border: var(--card-border);
-      box-shadow: var(--shadow-card);
-      padding: 1.25rem 1rem;
-      backdrop-filter: blur(10px);
-    }
+    .flow-card{background:var(--card-bg);border-radius:var(--card-radius);border:var(--card-border);box-shadow:var(--shadow-card);padding:1.25rem 1rem;backdrop-filter:blur(10px)}
+    .flow-header{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:.75rem}
+    .flow-title{font-size:1rem;font-weight:600;color:var(--text-dark);letter-spacing:-.03em;display:flex;align-items:center;gap:.5rem;text-shadow:0 20px 40px rgba(130,80,255,.18)}
+    .step-indicator{display:flex;gap:.4rem}
+    .step-dot{width:10px;height:10px;border-radius:50%;background:rgba(155,107,255,.18);border:1px solid rgba(155,107,255,.5);box-shadow:0 0 10px rgba(155,107,255,.4)}
+    .step-dot.active{background:#9b6bff;border-color:#9b6bff;box-shadow:0 0 12px rgba(155,107,255,.8),0 0 30px rgba(155,107,255,.4)}
+    hr.line{border:0;border-top:1px solid rgba(170,140,255,.4);margin:1rem 0 1.25rem}
+    .hidden{display:none!important}
 
-    .flow-header { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: .75rem; }
-    .flow-title { font-size: 1rem; font-weight: 600; color: var(--text-dark); letter-spacing: -0.03em; display:flex; align-items:center; gap:.5rem; text-shadow: 0 20px 40px rgba(130,80,255,.18); }
+    /* SERVICIOS */
+    .services-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+    @media(min-width:600px){.services-grid{grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr))}}
+    .service-card{border-radius:var(--card-radius);border:var(--card-border);background:var(--card-solid-bg);box-shadow:var(--shadow-card);padding:1rem 1rem .9rem;cursor:pointer;transition:box-shadow .15s,transform .15s}
+    .service-card:hover{box-shadow:0 32px 64px rgba(130,80,255,.28),0 0 40px rgba(160,120,255,.55);transform:translateY(-2px)}
+    .service-header-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;flex-wrap:wrap;row-gap:.5rem}
+    .service-name{font-weight:600;font-size:.95rem;color:var(--text-dark);letter-spacing:-.03em;text-shadow:0 20px 40px rgba(130,80,255,.18)}
+    .badge-price{background:linear-gradient(to bottom right,#9b6bff,#d5c5ff);color:#fff;font-size:.8rem;font-weight:600;border-radius:999px;padding:.5rem .7rem;line-height:1.2;box-shadow:var(--btn-shadow);border:0}
+    .service-desc{font-size:.85rem;line-height:1.45;color:var(--text-body);min-height:2.5em}
+    .service-meta-row{display:flex;justify-content:space-between;margin-top:.75rem;font-size:.8rem;color:var(--text-body);flex-wrap:wrap;row-gap:.5rem}
+    .mini-label{font-weight:500;color:var(--text-dark)}
+    .choose-btn{border:none;background:linear-gradient(to bottom right,#9b6bff,#d5c5ff);color:#fff;font-size:.9rem;font-weight:600;width:100%;border-radius:var(--radius-btn);padding:.9rem 1rem;margin-top:1rem;box-shadow:var(--btn-shadow);cursor:pointer;line-height:1.2;text-align:center;transition:box-shadow .15s,transform .15s}
+    .choose-btn:hover{transform:translateY(-1px) scale(1.01)}
 
-    .step-indicator { display: flex; gap: .4rem; }
-    .step-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(155,107,255,.18); border: 1px solid rgba(155,107,255,.5); box-shadow: 0 0 10px rgba(155,107,255,.4); }
-    .step-dot.active { background: #9b6bff; border-color: #9b6bff; box-shadow: 0 0 12px rgba(155,107,255,.8), 0 0 30px rgba(155,107,255,.4); }
+    /* THUMBNAIL */
+    .service-thumb{width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#f5f5f8;border:1px solid rgba(170,140,255,.35);box-shadow:0 10px 24px rgba(130,80,255,.12);margin-bottom:.75rem}
+    .service-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 
-    hr.line { border: 0; border-top: 1px solid rgba(170,140,255,0.4); margin: 1rem 0 1.25rem; }
-    .hidden { display: none !important; }
+    /* FECHA/HORA */
+    .calendar-wrap{display:grid;grid-template-columns:1fr;gap:1rem}
+    @media(min-width:600px){.calendar-wrap{grid-template-columns:1fr 1fr}}
+    .date-select-card,.time-select-card{border-radius:var(--card-radius);border:var(--card-border);background:var(--card-solid-bg);box-shadow:var(--shadow-card);padding:1rem}
+    .block-title{font-size:.9rem;font-weight:600;color:var(--text-dark);margin-bottom:.75rem;display:flex;justify-content:space-between;flex-wrap:wrap;row-gap:.5rem;text-shadow:0 20px 40px rgba(130,80,255,.18)}
+    .date-input{width:100%;padding:.8rem .9rem;border-radius:var(--radius-btn);border:var(--input-border);outline:none;color:var(--text-dark);background:var(--input-bg);font-size:.95rem;line-height:1.2}
+    .times-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem}
+    @media(min-width:400px){.times-grid{grid-template-columns:repeat(auto-fit,minmax(min(90px,100%),1fr))}}
+    .time-slot-btn{border-radius:var(--radius-btn);border:var(--input-border);background:#fff;color:var(--text-body);padding:.8rem .6rem;font-size:.9rem;font-weight:500;cursor:pointer;line-height:1.2;text-align:center;box-shadow:0 20px 40px rgba(130,80,255,.15);transition:box-shadow .15s,transform .15s;min-height:44px}
+    .time-slot-btn.active{background:linear-gradient(to bottom right,#9b6bff,#d5c5ff);color:#fff;border:0;box-shadow:var(--btn-shadow);font-weight:600;transform:translateY(-1px) scale(1.01)}
+    .small-hint{font-size:.75rem;line-height:1.4;color:var(--text-dim);margin-top:.4rem}
 
-    /* PASO 1: SERVICIOS */
-    .services-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
-    @media(min-width:600px){ .services-grid { grid-template-columns: repeat(auto-fit,minmax(min(240px,100%),1fr)); } }
+    /* DATOS */
+    .client-card{border-radius:var(--card-radius);border:var(--card-border);background:var(--card-solid-bg);box-shadow:var(--shadow-card);padding:1rem;margin-top:1rem}
+    .input-label{font-size:.8rem;font-weight:500;color:var(--text-dark);margin-bottom:.4rem;display:block;text-shadow:0 20px 40px rgba(130,80,255,.18)}
+    .input-field{width:100%;padding:.8rem .9rem;border-radius:var(--radius-btn);border:var(--input-border);outline:none;color:var(--text-dark);background:#fff;line-height:1.2;font-size:.95rem}
+    .confirm-btn{border:none;background:linear-gradient(to bottom right,#9b6bff,#d5c5ff);color:#fff;font-size:1rem;font-weight:600;width:100%;border-radius:var(--radius-btn);padding:1rem 1rem;margin-top:1rem;box-shadow:var(--btn-shadow);cursor:pointer;line-height:1.2;text-align:center;transition:transform .15s,box-shadow .15s}
+    .confirm-btn:hover{transform:translateY(-1px) scale(1.01)}
 
-    .service-card {
-      border-radius: var(--card-radius);
-      border: var(--card-border);
-      background: var(--card-solid-bg);
-      box-shadow: var(--shadow-card);
-      padding: 1rem 1rem .9rem;
-      cursor: pointer;
-      transition: box-shadow .15s, transform .15s;
-    }
-    .service-card:hover { box-shadow: 0 32px 64px rgba(130,80,255,.28), 0 0 40px rgba(160,120,255,.55); transform: translateY(-2px); }
+    /* RESUMEN */
+    .final-card{border-radius:var(--card-radius);border:var(--card-border);background:var(--card-solid-bg);box-shadow:var(--shadow-card);padding:1rem;margin-top:1rem}
+    .summary-line{font-size:.85rem;margin-bottom:.6rem;line-height:1.4;color:var(--text-body)}
+    .summary-strong{color:var(--text-dark);font-weight:600;text-shadow:0 20px 40px rgba(130,80,255,.18)}
+    .deposit-box{border-radius:var(--card-radius);background:rgba(155,107,255,.07);border:1px solid rgba(155,107,255,.4);box-shadow:0 32px 64px rgba(130,80,255,.22),0 0 40px rgba(160,120,255,.4);padding:.9rem 1rem;margin-top:1rem;font-size:.85rem;line-height:1.5;color:var(--text-body)}
+    .pay-btn{display:block;text-align:center;text-decoration:none;background:linear-gradient(to bottom right,#9b6bff,#d5c5ff);color:#fff;font-size:1rem;font-weight:600;border-radius:var(--radius-btn);padding:1rem 1rem;width:100%;box-shadow:var(--btn-shadow);margin-top:1rem}
 
-    .service-header-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .5rem; flex-wrap: wrap; row-gap: .5rem; }
-    .service-name { font-weight: 600; font-size: .95rem; color: var(--text-dark); letter-spacing: -0.03em; text-shadow: 0 20px 40px rgba(130,80,255,.18); }
-    .badge-price { background: linear-gradient(to bottom right,#9b6bff,#d5c5ff); color: #fff; font-size: .8rem; font-weight: 600; border-radius: 999px; padding: .5rem .7rem; line-height: 1.2; box-shadow: var(--btn-shadow); border: 0; }
-    .service-desc { font-size: .85rem; line-height: 1.45; color: var(--text-body); min-height: 2.5em; }
+    /* Preview WhatsApp (femenino) */
+    .whatsapp-preview{background:linear-gradient(to bottom right,rgba(255,255,255,.9),rgba(249,247,255,.9));color:var(--text-dark);font-size:.9rem;line-height:1.5;border-radius:16px;padding:1rem 1rem 1.25rem;margin-top:1rem;white-space:pre-wrap;word-break:break-word;border:1px solid rgba(170,140,255,.4);box-shadow:0 24px 48px rgba(130,80,255,.18),0 0 30px rgba(160,120,255,.4)}
+    .whatsapp-preview:before{content:"💌 Mensaje listo para WhatsApp";display:block;font-size:.7rem;font-weight:600;color:var(--text-soft);margin-bottom:.75rem;line-height:1.3;text-shadow:0 20px 40px rgba(130,80,255,.18)}
 
-    .service-meta-row { display: flex; justify-content: space-between; margin-top: .75rem; font-size: .8rem; color: var(--text-body); flex-wrap: wrap; row-gap: .5rem; }
-    .mini-label { font-weight: 500; color: var(--text-dark); }
-
-    .choose-btn {
-      border: none; background: linear-gradient(to bottom right,#9b6bff,#d5c5ff);
-      color: #fff; font-size: .9rem; font-weight: 600; width: 100%;
-      border-radius: var(--radius-btn); padding: .9rem 1rem; margin-top: 1rem;
-      box-shadow: var(--btn-shadow); cursor: pointer; line-height:1.2; text-align: center; transition: box-shadow .15s, transform .15s;
-    }
-    .choose-btn:hover { transform: translateY(-1px) scale(1.01); }
-
-    /* PASO 2: FECHA/HORA */
-    .calendar-wrap { display: grid; grid-template-columns: 1fr; gap: 1rem; }
-    @media(min-width:600px){ .calendar-wrap { grid-template-columns: 1fr 1fr; } }
-
-    .date-select-card,.time-select-card {
-      border-radius: var(--card-radius); border: var(--card-border);
-      background: var(--card-solid-bg); box-shadow: var(--shadow-card);
-      padding: 1rem;
-    }
-
-    .block-title {
-      font-size: .9rem; font-weight: 600; color: var(--text-dark);
-      margin-bottom: .75rem; display:flex; justify-content:space-between; flex-wrap:wrap; row-gap:.5rem;
-      text-shadow: 0 20px 40px rgba(130,80,255,.18);
-    }
-
-    .date-input {
-      width: 100%; padding: .8rem .9rem; border-radius: var(--radius-btn);
-      border: var(--input-border); outline: none; color: var(--text-dark);
-      background: var(--input-bg); font-size: .95rem; line-height:1.2;
-    }
-
-    .times-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .5rem; }
-    @media(min-width:400px){ .times-grid { grid-template-columns: repeat(auto-fit,minmax(min(90px,100%),1fr)); } }
-
-    .time-slot-btn {
-      border-radius: var(--radius-btn); border: var(--input-border); background:#fff;
-      color: var(--text-body); padding: .8rem .6rem; font-size: .9rem; font-weight: 500;
-      cursor: pointer; line-height:1.2; text-align:center; box-shadow: 0 20px 40px rgba(130,80,255,.15);
-      transition: box-shadow .15s, transform .15s; min-height: 44px;
-    }
-    .time-slot-btn[disabled]{ opacity:.5; cursor:not-allowed; filter:grayscale(0.2); }
-    .time-slot-btn.active { background: linear-gradient(to bottom right,#9b6bff,#d5c5ff); color: #fff; border: 0; box-shadow: var(--btn-shadow); font-weight:600; transform: translateY(-1px) scale(1.01); }
-
-    .small-hint { font-size: .75rem; line-height:1.4; color: var(--text-dim); margin-top: .4rem; }
-
-    /* PASO 3: DATOS */
-    .client-card { border-radius: var(--card-radius); border: var(--card-border); background: var(--card-solid-bg); box-shadow: var(--shadow-card); padding: 1rem; margin-top: 1rem; }
-    .input-label { font-size: .8rem; font-weight: 500; color: var(--text-dark); margin-bottom: .4rem; display:block; text-shadow: 0 20px 40px rgba(130,80,255,.18); }
-    .input-field { width: 100%; padding: .8rem .9rem; border-radius: var(--radius-btn); border: var(--input-border); outline: none; color: var(--text-dark); background:#fff; line-height:1.2; font-size: .95rem; }
-
-    .confirm-btn {
-      border: none; background: linear-gradient(to bottom right,#9b6bff,#d5c5ff);
-      color: #fff; font-size: 1rem; font-weight: 600; width: 100%;
-      border-radius: var(--radius-btn); padding: 1rem 1rem; margin-top: 1rem;
-      box-shadow: var(--btn-shadow); cursor: pointer; line-height: 1.2; text-align:center; transition: transform .15s, box-shadow .15s;
-    }
-    .confirm-btn:hover { transform: translateY(-1px) scale(1.01); }
-
-    /* PASO 4: RESUMEN */
-    .final-card { border-radius: var(--card-radius); border: var(--card-border); background: var(--card-solid-bg); box-shadow: var(--shadow-card); padding: 1rem; margin-top: 1rem; }
-    .summary-line { font-size: .85rem; margin-bottom: .6rem; line-height:1.4; color: var(--text-body); }
-    .summary-strong { color: var(--text-dark); font-weight: 600; text-shadow: 0 20px 40px rgba(130,80,255,.18); }
-
-    .deposit-box {
-      border-radius: var(--card-radius); background: rgba(155,107,255,.07);
-      border: 1px solid rgba(155,107,255,.4);
-      box-shadow: 0 32px 64px rgba(130,80,255,.22), 0 0 40px rgba(160,120,255,.4);
-      padding: .9rem 1rem; margin-top: 1rem; font-size: .85rem; line-height:1.5; color: var(--text-body);
-    }
-    .pay-btn { display: block; text-align: center; text-decoration: none; background: linear-gradient(to bottom right,#9b6bff,#d5c5ff); color:#fff; font-size:1rem; font-weight:600; border-radius: var(--radius-btn); padding:1rem 1rem; width:100%; box-shadow: var(--btn-shadow); margin-top:1rem; }
-
-    .whatsapp-preview {
-      background: linear-gradient(to bottom right, rgba(255,255,255,0.9), rgba(249,247,255,0.9));
-      color: var(--text-dark); font-family: var(--font-stack); font-size:.9rem; line-height:1.5;
-      border-radius: 16px; padding:1rem 1rem 1.25rem; margin-top:1rem; white-space:pre-wrap; word-break:break-word;
-      border:1px solid rgba(170,140,255,0.4); box-shadow: 0 24px 48px rgba(130,80,255,.18), 0 0 30px rgba(160,120,255,.4); position: relative;
-    }
-    .whatsapp-preview:before { content: "💌 Mensaje listo para WhatsApp"; display:block; font-size:.7rem; font-weight:600; color: var(--text-soft); margin-bottom:.75rem; line-height:1.3; text-shadow:0 20px 40px rgba(130,80,255,.18); }
-
-    .mimo-line {
-      margin-top:1rem; padding: .9rem 1rem; font-size:.8rem; line-height:1.4; color: var(--text-soft); font-weight:500;
-      background: rgba(155,107,255,.07); border:1px solid rgba(155,107,255,.35); border-radius:12px;
-      box-shadow: 0 24px 48px rgba(130,80,255,.18), 0 0 30px rgba(160,120,255,.4); text-align:center;
-    }
-    .mimo-big { font-size:.85rem; color: var(--text-dark); font-weight:600; line-height:1.4; display:block; margin-bottom:.4rem; }
+    .mimo-line{margin-top:1rem;padding:.9rem 1rem;font-size:.8rem;line-height:1.4;color:var(--text-soft);font-weight:500;background:rgba(155,107,255,.07);border:1px solid rgba(155,107,255,.35);border-radius:12px;box-shadow:0 24px 48px rgba(130,80,255,.18),0 0 30px rgba(160,120,255,.4);text-align:center}
+    .mimo-big{font-size:.85rem;color:var(--text-dark);font-weight:600;line-height:1.4;display:block;margin-bottom:.4rem}
 
     /* SIDE PANEL */
-    .side-panel { background: var(--card-bg); border-radius: var(--card-radius); border: var(--card-border); box-shadow: var(--shadow-card); backdrop-filter: blur(10px); padding:1.25rem 1rem 2rem; display:flex; flex-direction:column; gap:1rem; min-height:240px; }
-    .side-title { font-size:.9rem; font-weight:600; color:var(--text-dark); letter-spacing:-0.03em; display:flex; justify-content:space-between; flex-wrap:wrap; row-gap:.5rem; text-shadow:0 20px 40px rgba(130,80,255,.18); }
-    .side-summary-line { font-size:.85rem; line-height:1.4; color:var(--text-body); display:flex; justify-content:space-between; flex-wrap:wrap; row-gap:.4rem; }
-    .side-hint { font-size:.75rem; color:var(--text-dim); line-height:1.4; }
-    .footer-note { font-size:.75rem; line-height:1.4; color:var(--text-dim); text-align:center; margin-top:auto; text-shadow:0 20px 40px rgba(130,80,255,.18); }
+    .side-panel{background:var(--card-bg);border-radius:var(--card-radius);border:var(--card-border);box-shadow:var(--shadow-card);backdrop-filter:blur(10px);padding:1.25rem 1rem 2rem;display:flex;flex-direction:column;gap:1rem;min-height:240px}
+    .side-title{font-size:.9rem;font-weight:600;color:var(--text-dark);letter-spacing:-.03em;display:flex;justify-content:space-between;flex-wrap:wrap;row-gap:.5rem;text-shadow:0 20px 40px rgba(130,80,255,.18)}
+    .side-summary-line{font-size:.85rem;line-height:1.4;color:var(--text-body);display:flex;justify-content:space-between;flex-wrap:wrap;row-gap:.4rem}
+    .side-hint{font-size:.75rem;color:var(--text-dim);line-height:1.4}
+    .footer-note{font-size:.75rem;line-height:1.4;color:var(--text-dim);text-align:center;margin-top:auto;text-shadow:0 20px 40px rgba(130,80,255,.18)}
 
-    .made-by { text-align:center; font-size:.7rem; line-height:1.4; color:var(--text-dim); margin-top:2rem; margin-bottom:3rem; font-weight:500; }
+    /* Powered by */
+    .made-by{text-align:center;font-size:.7rem;line-height:1.4;color:var(--text-dim);margin-top:2rem;margin-bottom:3rem;font-weight:500}
 
     /* Desktop */
     @media(min-width:900px){
-      body { padding: 2rem 2rem 6rem; display: flex; justify-content: center; }
-      .app-shell { grid-template-columns: 1fr 360px; gap: 2rem; }
-      .brand-name { font-size: 1.3rem; }
-      .slogan { font-size: .95rem; }
-      .flow-card { padding:1.5rem; }
-      .choose-btn { font-size:.8rem; padding:.7rem .9rem; }
-      .time-slot-btn { font-size:.8rem; min-height:40px; padding:.6rem .5rem; }
-      .confirm-btn, .pay-btn { font-size:.9rem; padding:.8rem 1rem; max-width:320px; }
+      body{padding:2rem 2rem 6rem;display:flex;justify-content:center}
+      .app-shell{grid-template-columns:1fr 360px;gap:2rem}
+      .brand-name{font-size:1.3rem}
+      .slogan{font-size:.95rem}
+      .flow-card{padding:1.5rem}
+      .choose-btn{font-size:.8rem;padding:.7rem .9rem}
+      .time-slot-btn{font-size:.8rem;min-height:40px;padding:.6rem .5rem}
+      .confirm-btn,.pay-btn{font-size:.9rem;padding:.8rem 1rem;max-width:320px}
     }
   </style>
 </head>
-
 <body>
   <main class="app-shell">
-
     <!-- IZQUIERDA -->
     <section>
       <!-- HERO -->
@@ -261,18 +157,16 @@
             <div class="brand-name">Boutique Salón</div>
             <div class="brand-sub">Agenda con seña segura</div>
             <div class="slogan">
-              Elegís tu servicio. Elegís tu horario. Dejás una seña pequeña.<br/>
+              Elegís tu servicio. Elegís tu horario. Dejás una seña pequeña.<br>
               Ese turno queda preparado sólo para vos, con todo listo.
             </div>
           </div>
-
           <div class="pill-security">
             <span>💗</span>
             <span>
               Pagás la seña (Mercado Pago / Ualá / Brubank / Naranja)
-              y tu lugar queda reservado. Si no se deja seña,
-              el horario no se bloquea. Así cuidamos tu tiempo
-              y el de todas.
+              y tu lugar queda reservado. Si no se deja seña, el horario no se bloquea.
+              Así cuidamos tu tiempo y el de todas.
             </span>
           </div>
         </div>
@@ -280,12 +174,8 @@
 
       <!-- FLUJO -->
       <article class="flow-card">
-
         <header class="flow-header">
-          <div class="flow-title">
-            <span id="flowTitleText">Paso 1 · Elegí tu servicio</span>
-          </div>
-
+          <div class="flow-title"><span id="flowTitleText">Paso 1 · Elegí tu servicio</span></div>
           <div class="step-indicator">
             <div class="step-dot step-dot-1 active"></div>
             <div class="step-dot step-dot-2"></div>
@@ -293,8 +183,7 @@
             <div class="step-dot step-dot-4"></div>
           </div>
         </header>
-
-        <hr class="line" />
+        <hr class="line"/>
 
         <!-- PASO 1 -->
         <section id="step1_services">
@@ -312,7 +201,6 @@
               <input id="dateInput" class="date-input" type="date" />
               <div class="small-hint">Mostramos sólo los horarios disponibles ese día.</div>
             </div>
-
             <div class="time-select-card">
               <div class="block-title">
                 <span>Horarios disponibles</span>
@@ -327,13 +215,10 @@
         <section id="step3_client" class="hidden">
           <div class="client-card">
             <label class="input-label" for="clientName">Tu nombre</label>
-            <input id="clientName" class="input-field" placeholder="Ej: Sofía González" />
-
+            <input id="clientName" class="input-field" placeholder="Ej: Sofía González">
             <label class="input-label" for="clientPhone" style="margin-top:1rem;">Tu WhatsApp</label>
-            <input id="clientPhone" class="input-field" placeholder="Ej: +54 9 341 555 0000" />
-
+            <input id="clientPhone" class="input-field" placeholder="Ej: +54 9 341 555 0000">
             <div class="small-hint">Te vamos a confirmar el turno y recordarte antes de venir 💕</div>
-
             <button class="confirm-btn" id="btnConfirmClient">Confirmar mis datos</button>
           </div>
         </section>
@@ -357,22 +242,12 @@
             </div>
 
             <a class="pay-btn" id="payBtn" href="#" target="_blank" rel="noopener noreferrer">Pagar mi seña ahora</a>
-
-            <div class="small-hint" style="margin-top:1rem;color:var(--text-dim);">
-              Guardá tu comprobante. Si la seña no se acredita pronto,
-              el turno puede liberarse para otra persona.
-            </div>
+            <div class="small-hint" style="margin-top:1rem;color:var(--text-dim);">Guardá tu comprobante. Si la seña no se acredita pronto, el turno puede liberarse para otra persona.</div>
 
             <div class="whatsapp-preview" id="waPreview"></div>
-
-            <div class="mimo-line">
-              <span class="mimo-big">Este ratito es para vos 💕</span>
-              Cuidarte no es un lujo. Es mirarte al espejo y decir:
-              “sí, estoy linda y estoy tranquila hoy”. ✨
-            </div>
+            <div class="mimo-line"><span class="mimo-big">Este ratito es para vos 💕</span> Cuidarte no es un lujo. Es mirarte al espejo y decir: “sí, estoy linda y estoy tranquila hoy”. ✨</div>
           </div>
         </section>
-
       </article>
     </section>
 
@@ -382,7 +257,6 @@
         <span>Resumen de tu reserva</span>
         <span style="font-size:.75rem;color:var(--text-soft);font-weight:600;">Boutique Salón</span>
       </div>
-
       <div class="side-summary-line"><span>Servicio</span><span id="liveServicio">—</span></div>
       <div class="side-summary-line"><span>Profesional</span><span id="livePro">—</span></div>
       <div class="side-summary-line"><span>Seña requerida</span><span id="liveSena">—</span></div>
@@ -390,66 +264,41 @@
       <div class="side-summary-line"><span>Hora</span><span id="liveHora">—</span></div>
       <div class="side-summary-line"><span>Nombre</span><span id="liveNombre">—</span></div>
       <div class="side-summary-line"><span>WhatsApp</span><span id="liveTel">—</span></div>
-
       <div class="side-hint">Si la seña no se paga, el turno no queda guardado. Es para que siempre llegues y podamos atenderte tranquila y a horario.</div>
       <div class="footer-note">Boutique Salón · Gracias por confiar 💐</div>
     </aside>
-
   </main>
 
   <footer class="made-by">Powered by Abraxas 💜</footer>
 
   <script>
+    /* ---- DATA ---- */
     const servicios = [
-      { id:"unas_esculpidas", nombre:"Uñas esculpidas", desc:"Uñas definidas, resistentes, terminación prolija y elegante.", duracion:"60 min", profesional:"Carla", precioTotal:30000, sena:5000, linkPago:"https://pago.ejemplo/unas-esculpidas" },
-      { id:"extension_pestanas", nombre:"Extensión de pestañas", desc:"Volumen, curva y definición sin máscara.", duracion:"75 min", profesional:"Sofi", precioTotal:35000, sena:6000, linkPago:"https://pago.ejemplo/extension-pestanas" },
-      { id:"lifting_pestanas_cejas", nombre:"Lifting Pestañas y Cejas", desc:"Levanta y ordena tu mirada de forma natural.", duracion:"50 min", profesional:"Sofi", precioTotal:22000, sena:4000, linkPago:"https://pago.ejemplo/lifting" },
-      { id:"microblading", nombre:"Microblading", desc:"Cejas con forma y relleno efecto make-up 24/7.", duracion:"90 min", profesional:"Belu", precioTotal:50000, sena:10000, linkPago:"https://pago.ejemplo/microblading" },
-      { id:"belleza_pies", nombre:"Belleza de pies", desc:"Limpieza, forma, cutículas y esmalte impecable.", duracion:"45 min", profesional:"Carla", precioTotal:18000, sena:3000, linkPago:"https://pago.ejemplo/belleza-pies" },
-      { id:"depilacion_definitiva", nombre:"Depilación definitiva", desc:"Piel suave y sin vello. Sesiones rápidas, resultado duradero.", duracion:"30 min", profesional:"Lau", precioTotal:26000, sena:5000, linkPago:"https://pago.ejemplo/depilacion-definitiva" }
+      { id:"unas_esculpidas", nombre:"Uñas esculpidas", desc:"Uñas definidas, resistentes, terminación prolija y elegante.", duracion:"60 min", profesional:"Carla", precioTotal:30000, sena:5000, linkPago:"https://pago.ejemplo/unas-esculpidas", img:"./img/services/unas_esculpidas.webp", imgAlt:"Uñas esculpidas terminación impecable" },
+      { id:"extension_pestanas", nombre:"Extensión de pestañas", desc:"Volumen, curva y definición sin máscara.", duracion:"75 min", profesional:"Sofi", precioTotal:35000, sena:6000, linkPago:"https://pago.ejemplo/extension-pestanas", img:"./img/services/extension_pestanas.webp", imgAlt:"Extensión de pestañas efecto natural" },
+      { id:"lifting_pestanas_cejas", nombre:"Lifting Pestañas y Cejas", desc:"Levanta y ordena tu mirada de forma natural.", duracion:"50 min", profesional:"Sofi", precioTotal:22000, sena:4000, linkPago:"https://pago.ejemplo/lifting", img:"./img/services/lifting_pestanas_cejas.webp", imgAlt:"Lifting de pestañas y cejas" },
+      { id:"microblading", nombre:"Microblading", desc:"Cejas con forma y relleno efecto make-up 24/7.", duracion:"90 min", profesional:"Belu", precioTotal:50000, sena:10000, linkPago:"https://pago.ejemplo/microblading", img:"./img/services/microblading.webp", imgAlt:"Microblading de cejas" },
+      { id:"belleza_pies", nombre:"Belleza de pies", desc:"Limpieza, forma, cutículas y esmalte impecable.", duracion:"45 min", profesional:"Carla", precioTotal:18000, sena:3000, linkPago:"https://pago.ejemplo/belleza-pies", img:"./img/services/belleza_pies.webp", imgAlt:"Belleza de pies y esmaltado" },
+      { id:"depilacion_definitiva", nombre:"Depilación definitiva", desc:"Piel suave y sin vello. Sesiones rápidas, resultado duradero.", duracion:"30 min", profesional:"Lau", precioTotal:26000, sena:5000, linkPago:"https://pago.ejemplo/depilacion-definitiva", img:"./img/services/depilacion_definitiva.webp", imgAlt:"Depilación definitiva en cabina" }
     ];
+    const horariosDisponibles = ["10:00","11:30","14:00","15:30","17:00"];
 
-    const horariosDisponibles = ["10:00", "11:30", "14:00", "15:30", "17:00"];
-
+    /* ---- STATE ---- */
     const state = { servicioId:null, fecha:"", hora:"", nombre:"", tel:"" };
 
+    /* ---- HELPERS ---- */
     const $ = id => document.getElementById(id);
+    const getServicioSel = () => servicios.find(s => s.id === state.servicioId);
+    const formatearPrecio = num => "$ " + Number(num).toLocaleString("es-AR");
 
-    function setStep(activeStep) {
-      $("step1_services").classList.add("hidden");
-      $("step2_datetime").classList.add("hidden");
-      $("step3_client").classList.add("hidden");
-      $("step4_done").classList.add("hidden");
-
-      if (activeStep === 1) { $("step1_services").classList.remove("hidden"); $("flowTitleText").textContent = "Paso 1 · Elegí tu servicio"; }
-      if (activeStep === 2) { $("step2_datetime").classList.remove("hidden"); $("flowTitleText").textContent = "Paso 2 · Elegí la fecha y el horario"; }
-      if (activeStep === 3) { $("step3_client").classList.remove("hidden"); $("flowTitleText").textContent = "Paso 3 · Tus datos de contacto"; }
-      if (activeStep === 4) { $("step4_done").classList.remove("hidden"); $("flowTitleText").textContent = "Último paso · Pagar seña para reservar"; }
-
-      document.querySelectorAll(".step-dot").forEach((dot, index) => {
-        if (index < activeStep) dot.classList.add("active"); else dot.classList.remove("active");
-      });
+    function setStep(activeStep){
+      ["step1_services","step2_datetime","step3_client","step4_done"].forEach(s => $(s).classList.add("hidden"));
+      if(activeStep===1){$("step1_services").classList.remove("hidden");$("flowTitleText").textContent="Paso 1 · Elegí tu servicio";}
+      if(activeStep===2){$("step2_datetime").classList.remove("hidden");$("flowTitleText").textContent="Paso 2 · Elegí la fecha y el horario";}
+      if(activeStep===3){$("step3_client").classList.remove("hidden");$("flowTitleText").textContent="Paso 3 · Tus datos de contacto";}
+      if(activeStep===4){$("step4_done").classList.remove("hidden");$("flowTitleText").textContent="Último paso · Pagar seña para reservar";}
+      document.querySelectorAll(".step-dot").forEach((dot,i)=> i<activeStep ? dot.classList.add("active") : dot.classList.remove("active"));
     }
-
-    const ymd = (d) => {
-      const y = d.getFullYear();
-      const m = String(d.getMonth()+1).padStart(2,"0");
-      const da = String(d.getDate()).padStart(2,"0");
-      return `${y}-${m}-${da}`;
-    };
-
-    function initDateLimits(){
-      const dateEl = $("dateInput");
-      const today = new Date();
-      const max = new Date();
-      max.setDate(today.getDate() + 120); // reservar hasta 120 días adelante
-      dateEl.min = ymd(today);
-      dateEl.max = ymd(max);
-      dateEl.value = ""; // no forzamos hoy
-    }
-
-    function getServicioSel(){ return servicios.find(s => s.id === state.servicioId); }
-    function formatearPrecio(num){ return "$ " + num.toLocaleString("es-AR"); }
 
     function syncSidePanel(){
       const srv = getServicioSel();
@@ -463,7 +312,7 @@
     }
 
     function renderPaso4(){
-      const srv = getServicioSel(); if (!srv) return;
+      const srv = getServicioSel(); if(!srv) return;
       $("sumServicio").textContent = srv.nombre;
       $("sumPro").textContent = srv.profesional;
       $("sumFechaHora").textContent = `${state.fecha} ${state.hora}`;
@@ -493,12 +342,14 @@
     }
 
     function renderServicios(){
-      const cont = $("servicesGrid");
-      cont.innerHTML = "";
-      servicios.forEach(srv => {
+      const cont = $("servicesGrid"); cont.innerHTML="";
+      servicios.forEach(srv=>{
         const card = document.createElement("div");
         card.className = "service-card";
         card.innerHTML = `
+          <div class="service-thumb">
+            <img src="${srv.img}" alt="${srv.imgAlt || srv.nombre}" loading="lazy" decoding="async">
+          </div>
           <div class="service-header-row">
             <div class="service-name">${srv.nombre}</div>
             <div class="badge-price">${formatearPrecio(srv.precioTotal)}</div>
@@ -513,64 +364,66 @@
         cont.appendChild(card);
       });
 
-      cont.querySelectorAll(".choose-btn").forEach(btn => {
-        btn.addEventListener("click", e => {
+      cont.querySelectorAll(".choose-btn").forEach(btn=>{
+        btn.addEventListener("click", e=>{
           state.servicioId = e.currentTarget.getAttribute("data-id");
-          state.fecha = "";
-          state.hora = "";
-          syncSidePanel();
-
+          state.fecha = ""; state.hora = "";
+          // limpiar seleccion de horarios
+          $("timesGrid").innerHTML = "";
+          document.querySelectorAll(".time-slot-btn").forEach(x=>x.classList.remove("active"));
           const srv = getServicioSel();
           $("chosenServiceLabel").textContent = srv ? srv.nombre : "";
-
-          initDateLimits();          // <<< límites de calendario
-          renderHorarios();          // <<< render con botones deshabilitados (sin fecha)
+          initDateLimits(); // <<< fija min/max del calendario (bug fix)
+          syncSidePanel();
           setStep(2);
         });
       });
     }
 
     function renderHorarios(){
-      const wrap = $("timesGrid");
-      wrap.innerHTML = "";
-      horariosDisponibles.forEach(h => {
+      const wrap = $("timesGrid"); wrap.innerHTML = "";
+      horariosDisponibles.forEach(h=>{
         const b = document.createElement("button");
         b.className = "time-slot-btn";
         b.textContent = h;
-        // Deshabilitado hasta que elija fecha
-        if (!state.fecha) b.setAttribute("disabled","disabled");
-        b.addEventListener("click", () => {
-          if (!state.fecha) return; // seguridad extra
-          document.querySelectorAll(".time-slot-btn").forEach(x => x.classList.remove("active"));
+        b.addEventListener("click", ()=>{
+          document.querySelectorAll(".time-slot-btn").forEach(x=>x.classList.remove("active"));
           b.classList.add("active");
-          state.hora = h;
-          syncSidePanel();
-          setStep(3);
+          state.hora = h; syncSidePanel();
+          if(state.fecha){ setStep(3); }
         });
         wrap.appendChild(b);
       });
     }
 
+    // BUG FIX: inicializa límites del input date y no autoselecciona fecha
+    function initDateLimits(){
+      const el = $("dateInput");
+      const today = new Date(); today.setHours(0,0,0,0);
+      const max = new Date(today); max.setDate(max.getDate()+90); // 90 días adelante
+      const toYMD = d => d.toISOString().slice(0,10);
+      el.min = toYMD(today);
+      el.max = toYMD(max);
+      el.value = ""; // importante: no autoseleccionar hoy
+      $("timesGrid").innerHTML = ""; // hasta elegir fecha no mostramos horarios
+    }
+
     $("dateInput").addEventListener("change", (e)=>{
-      state.fecha = e.target.value;
-      // al cambiar fecha, limpiar hora y re-render para habilitar botones
-      state.hora = "";
-      document.querySelectorAll(".time-slot-btn").forEach(x => x.classList.remove("active"));
+      state.fecha = e.target.value; syncSidePanel();
+      // al elegir fecha, mostramos horarios
       renderHorarios();
-      syncSidePanel();
+      // pasamos a paso 3 solo si también ya eligió hora
+      if(state.hora){ setStep(3); }
     });
 
     $("btnConfirmClient").addEventListener("click", ()=>{
       state.nombre = $("clientName").value.trim() || state.nombre;
       state.tel = $("clientPhone").value.trim() || state.tel;
-      syncSidePanel();
-      renderPaso4();
-      setStep(4);
+      syncSidePanel(); renderPaso4(); setStep(4);
     });
 
-    // Init
+    // INIT
     renderServicios();
-    renderHorarios();
     syncSidePanel();
     setStep(1);
   </script>
