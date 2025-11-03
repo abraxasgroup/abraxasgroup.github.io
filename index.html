@@ -34,36 +34,38 @@
       --btn-grad-2: #d5c5ff;
       --btn-shadow: 0 24px 48px rgba(130,80,255,.35), 0 0 30px rgba(160,120,255,.7);
 
-      --pill-bg: rgba(255,255,255,0.8);
+      --pill-bg: rgba(255,255,255,0.86);
       --pill-border: 1px solid rgba(170,140,255,0.5);
       --pill-shadow: 0 24px 48px rgba(130,80,255,.18);
 
       --font-stack: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-      -webkit-font-smoothing: antialiased;
-    }
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
 
     body {
       margin: 0;
       font-family: var(--font-stack);
       color: var(--text-body);
       line-height: 1.45;
+
+      /* FONDO PNG desde Canva + velos lila para legibilidad */
       background:
-        radial-gradient(circle at 20% 15%, var(--lila-bg-2) 0%, var(--lila-bg-3) 40%, rgba(255,255,255,0) 70%),
-        radial-gradient(circle at 80% 20%, rgba(212,197,255,.4) 0%, rgba(255,255,255,0) 60%),
-        linear-gradient(to bottom right, var(--lila-bg-1) 0%, var(--lila-bg-2) 60%, var(--lila-bg-1) 100%);
-      background-attachment: fixed;
+        radial-gradient(circle at 20% 15%, rgba(249,247,255,.85) 0%, rgba(239,233,255,.65) 40%, rgba(255,255,255,0) 70%),
+        linear-gradient(to bottom right, rgba(255,255,255,.82), rgba(249,247,255,.82)),
+        url("./img/bg-landing.png") center / cover no-repeat;
     }
 
-    .max {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.5rem 1rem 4rem;
+    /* En desktop podemos fijar el fondo */
+    @media (min-width: 900px){
+      body { background-attachment: fixed; }
+    }
+    /* En mobile evitamos el fixed para que no “salte” en iOS */
+    @media (max-width: 899px){
+      body { background-attachment: scroll; }
     }
 
+    .max { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
     .glass-card {
       background: var(--card-bg);
       backdrop-filter: blur(10px);
@@ -72,97 +74,30 @@
       box-shadow: var(--lila-shadow), 0 0 40px rgba(180,150,255,.25);
     }
 
-    header.hero-box {
-      padding: 1.5rem 1rem;
-      text-align: center;
-    }
+    header.hero-box { padding: 1.5rem 1rem; text-align: center; }
 
-    .brand {
-      color: var(--text-dark);
-      font-weight: 600;
-      font-size: 1.25rem;
-      letter-spacing: -0.03em;
-      text-shadow: 0 10px 30px rgba(130,80,255,.18);
-    }
-
-    .tagline {
-      color: var(--lila-strong);
-      font-size: .8rem;
-      font-weight: 500;
-      margin-top: .4rem;
-      letter-spacing: .02em;
-    }
-
-    .hero-h1 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text-dark);
-      line-height: 1.4;
-      letter-spacing: -0.03em;
-      margin-top: 1rem;
-      text-shadow: 0 20px 40px rgba(130,80,255,.15);
-    }
-
-    .hero-p {
-      font-size: .9rem;
-      max-width: 520px;
-      margin: .75rem auto 1.25rem;
-      color: var(--text-body);
-    }
+    .brand { color: var(--text-dark); font-weight: 600; font-size: 1.25rem; letter-spacing: -0.03em; text-shadow: 0 10px 30px rgba(130,80,255,.18); }
+    .tagline { color: var(--lila-strong); font-size: .8rem; font-weight: 500; margin-top: .4rem; letter-spacing: .02em; }
+    .hero-h1 { font-size: 1.1rem; font-weight: 600; color: var(--text-dark); line-height: 1.4; letter-spacing: -0.03em; margin-top: 1rem; text-shadow: 0 20px 40px rgba(130,80,255,.15); }
+    .hero-p { font-size: .9rem; max-width: 520px; margin: .75rem auto 1.25rem; color: var(--text-body); }
 
     .cta-main {
-      display: block;
-      width: 100%;
-      max-width: 320px;
-      margin: 0 auto;
+      display: block; width: 100%; max-width: 320px; margin: 0 auto;
       background: linear-gradient(to bottom right,#9b6bff,#d5c5ff);
-      color: #fff;
-      font-weight: 600;
-      font-size: 1rem;
-      text-decoration: none;
-      text-align: center;
-      padding: 1rem 1.2rem;
-      border-radius: 12px;
-      border: 0;
-      box-shadow: var(--btn-shadow);
-      line-height:1.2;
+      color: #fff; font-weight: 600; font-size: 1rem; text-decoration: none; text-align: center;
+      padding: 1rem 1.2rem; border-radius: 12px; border: 0; box-shadow: var(--btn-shadow); line-height:1.2;
     }
 
     .safety-pill {
-      display:flex;
-      align-items:flex-start;
-      justify-content:center;
-      gap:.6rem;
-      background: var(--pill-bg);
-      color: var(--lila-strong);
-      font-size: .8rem;
-      font-weight:500;
-      border-radius: 999px;
-      border: var(--pill-border);
-      line-height:1.3;
-      padding:.7rem 1rem;
-      box-shadow: var(--pill-shadow);
-      margin:1rem auto 0;
-      max-width: 520px;
-      text-align:left;
+      display:flex; align-items:flex-start; justify-content:center; gap:.6rem;
+      background: var(--pill-bg); color: var(--lila-strong); font-size: .8rem; font-weight:500;
+      border-radius: 999px; border: var(--pill-border); line-height:1.3; padding:.7rem 1rem;
+      box-shadow: var(--pill-shadow); margin:1rem auto 0; max-width: 520px; text-align:left;
     }
 
-    .sec-title {
-      text-align:center;
-      font-size:1rem;
-      font-weight:600;
-      color:var(--text-dark);
-      letter-spacing:-0.03em;
-      margin:2.5rem 0 1rem;
-      text-shadow:0 20px 40px rgba(130,80,255,.15);
-    }
+    .sec-title { text-align:center; font-size:1rem; font-weight:600; color:var(--text-dark); letter-spacing:-0.03em; margin:2.5rem 0 1rem; text-shadow:0 20px 40px rgba(130,80,255,.15); }
 
-    .services-grid {
-      display:grid;
-      gap:1rem;
-      grid-template-columns:1fr;
-    }
-
+    .services-grid { display:grid; gap:1rem; grid-template-columns:1fr; }
     .service-card {
       background: rgba(255,255,255,0.9);
       border-radius: var(--card-radius);
@@ -170,121 +105,40 @@
       box-shadow: var(--lila-shadow), 0 0 40px rgba(180,150,255,.25);
       padding:1rem 1rem 1.25rem;
     }
-
-    .service-head-row {
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:.5rem;
-      margin-bottom:.5rem;
-      align-items:flex-start;
-    }
-
-    .service-name {
-      font-weight:600;
-      font-size:.95rem;
-      color:var(--text-dark);
-      letter-spacing:-0.03em;
-      text-shadow:0 20px 40px rgba(130,80,255,.15);
-    }
-
+    .service-head-row { display:flex; justify-content:space-between; flex-wrap:wrap; gap:.5rem; margin-bottom:.5rem; align-items:flex-start; }
+    .service-name { font-weight:600; font-size:.95rem; color:var(--text-dark); letter-spacing:-0.03em; text-shadow: 0 20px 40px rgba(130,80,255,.15); }
     .price-pill {
       background: linear-gradient(to bottom right,#9b6bff,#d5c5ff);
-      color:#fff;
-      font-size:.8rem;
-      font-weight:600;
-      border-radius:999px;
-      padding:.45rem .7rem;
-      line-height:1.2;
-      box-shadow: var(--btn-shadow);
+      color:#fff; font-size:.8rem; font-weight:600; border-radius:999px; padding:.45rem .7rem; line-height:1.2; box-shadow: var(--btn-shadow);
     }
+    .service-desc { font-size:.85rem; line-height:1.45; color:var(--text-body); }
+    .service-extra { font-size:.75rem; color:var(--text-dim); margin-top:.75rem; line-height:1.4; }
 
-    .service-desc {
-      font-size:.85rem;
-      line-height:1.45;
-      color:var(--text-body);
-    }
-
-    .service-extra {
-      font-size:.75rem;
-      color:var(--text-dim);
-      margin-top:.75rem;
-      line-height:1.4;
-    }
-
-    .how-grid {
-      display:grid;
-      gap:1rem;
-      grid-template-columns:1fr;
-    }
-
+    .how-grid { display:grid; gap:1rem; grid-template-columns:1fr; }
     .how-card {
       background: rgba(255,255,255,0.9);
       border-radius: var(--card-radius);
       border: var(--card-border);
       box-shadow: var(--lila-shadow), 0 0 40px rgba(180,150,255,.25);
-      padding:1rem 1rem 1.25rem;
-      font-size:.9rem;
-      line-height:1.45;
-      color:var(--text-body);
+      padding:1rem 1rem 1.25rem; font-size:.9rem; line-height:1.45; color:var(--text-body);
     }
-
-    .how-num {
-      font-weight:600;
-      color:var(--lila-strong);
-      font-size:.8rem;
-      margin-bottom:.4rem;
-      text-shadow:0 20px 40px rgba(130,80,255,.25);
-    }
-
-    .how-tit {
-      font-weight:600;
-      color:var(--text-dark);
-      font-size:.9rem;
-      margin-bottom:.4rem;
-      letter-spacing:-0.03em;
-    }
-
-    .how-p {
-      font-size:.8rem;
-      color:var(--text-body);
-      line-height:1.4;
-    }
+    .how-num { font-weight:600; color:var(--lila-strong); font-size:.8rem; margin-bottom:.4rem; text-shadow:0 20px 40px rgba(130,80,255,.25); }
+    .how-tit { font-weight:600; color:var(--text-dark); font-size:.9rem; margin-bottom:.4rem; letter-spacing:-0.03em; }
+    .how-p { font-size:.8rem; color:var(--text-body); line-height:1.4; }
 
     .testi-card {
-      max-width:800px;
-      margin:0 auto;
-      text-align:center;
+      max-width:800px; margin:0 auto; text-align:center;
       padding:1rem 1rem 1.25rem;
       background: rgba(255,255,255,0.9);
       border-radius: var(--card-radius);
       border: var(--card-border);
       box-shadow: var(--lila-shadow), 0 0 40px rgba(180,150,255,.25);
-      font-size:.9rem;
-      line-height:1.5;
-      color:var(--text-body);
+      font-size:.9rem; line-height:1.5; color:var(--text-body);
     }
+    .testi-quote { font-size:.9rem; color:var(--text-dark); font-weight:500; line-height:1.4; }
+    .testi-note { margin-top:1rem; font-size:.7rem; color:var(--text-dim); line-height:1.4; }
 
-    .testi-quote {
-      font-size:.9rem;
-      color:var(--text-dark);
-      font-weight:500;
-      line-height:1.4;
-    }
-
-    .testi-note {
-      margin-top:1rem;
-      font-size:.7rem;
-      color:var(--text-dim);
-      line-height:1.4;
-    }
-
-    .faq-grid {
-      display:grid;
-      gap:1rem;
-      grid-template-columns:1fr;
-    }
-
+    .faq-grid { display:grid; gap:1rem; grid-template-columns:1fr; }
     .faq-card {
       background: rgba(255,255,255,0.9);
       border-radius:var(--card-radius);
@@ -292,56 +146,21 @@
       box-shadow:var(--lila-shadow), 0 0 40px rgba(180,150,255,.25);
       padding:1rem 1rem 1.25rem;
     }
+    .faq-q { font-size:.9rem; font-weight:600; color:var(--text-dark); letter-spacing:-0.03em; margin-bottom:.4rem; }
+    .faq-a { font-size:.8rem; color:var(--text-body); line-height:1.4; }
 
-    .faq-q {
-      font-size:.9rem;
-      font-weight:600;
-      color:var(--text-dark);
-      letter-spacing:-0.03em;
-      margin-bottom:.4rem;
-    }
+    footer { text-align:center; font-size:.75rem; color:var(--text-body); line-height:1.4; padding:2.5rem 1rem 4rem; }
+    .footer-cta { margin-bottom:1.5rem; }
 
-    .faq-a {
-      font-size:.8rem;
-      color:var(--text-body);
-      line-height:1.4;
-    }
-
-    footer {
-      text-align:center;
-      font-size:.75rem;
-      color:var(--text-body);
-      line-height:1.4;
-      padding:2.5rem 1rem 4rem;
-    }
-
-    .footer-cta {
-      margin-bottom:1.5rem;
-    }
-
-    /* ----- Desktop / tablets grandes ----- */
     @media(min-width:600px){
       header.hero-box { padding:2rem 1.5rem; }
       .brand { font-size:1.5rem; }
       .hero-h1 { font-size:1.3rem; line-height:1.35; }
       .hero-p { font-size:1rem; }
-
-      .cta-main {
-        font-size:.9rem;
-        max-width:260px;
-      }
-
-      .services-grid {
-        grid-template-columns: repeat(auto-fit,minmax(min(260px,100%),1fr));
-      }
-
-      .how-grid {
-        grid-template-columns: repeat(auto-fit,minmax(min(260px,100%),1fr));
-      }
-
-      .faq-grid {
-        grid-template-columns: repeat(auto-fit,minmax(min(320px,100%),1fr));
-      }
+      .cta-main { font-size:.9rem; max-width:260px; }
+      .services-grid { grid-template-columns: repeat(auto-fit,minmax(min(260px,100%),1fr)); }
+      .how-grid { grid-template-columns: repeat(auto-fit,minmax(min(260px,100%),1fr)); }
+      .faq-grid { grid-template-columns: repeat(auto-fit,minmax(min(320px,100%),1fr)); }
     }
   </style>
 </head>
@@ -366,9 +185,7 @@
         tu cita queda realmente reservada.
       </p>
 
-      <a class="cta-main" href="./booking.html">
-        Reservar mi turno ahora
-      </a>
+      <a class="cta-main" href="./booking.html">Reservar mi turno ahora</a>
 
       <div class="safety-pill">
         <span>💅</span>
@@ -390,12 +207,8 @@
             <div class="service-name">Uñas esculpidas</div>
             <div class="price-pill">Desde $30.000</div>
           </div>
-          <div class="service-desc">
-            Uñas definidas, resistentes y prolijas. Terminación impecable.
-          </div>
-          <div class="service-extra">
-            Seña desde $5.000 · ~60 min
-          </div>
+          <div class="service-desc">Uñas definidas, resistentes y prolijas. Terminación impecable.</div>
+          <div class="service-extra">Seña desde $5.000 · ~60 min</div>
         </div>
 
         <div class="service-card">
@@ -403,12 +216,8 @@
             <div class="service-name">Extensión de pestañas</div>
             <div class="price-pill">Desde $35.000</div>
           </div>
-          <div class="service-desc">
-            Mirada con volumen y curva sin máscara. Levanta todo el rostro.
-          </div>
-          <div class="service-extra">
-            Seña desde $6.000 · ~75 min
-          </div>
+          <div class="service-desc">Mirada con volumen y curva sin máscara. Levanta todo el rostro.</div>
+          <div class="service-extra">Seña desde $6.000 · ~75 min</div>
         </div>
 
         <div class="service-card">
@@ -416,12 +225,8 @@
             <div class="service-name">Lifting Pestañas y Cejas</div>
             <div class="price-pill">Desde $22.000</div>
           </div>
-          <div class="service-desc">
-            Realza pestañas y ordena cejas de forma natural, sin maquillaje.
-          </div>
-          <div class="service-extra">
-            Seña desde $4.000 · ~50 min
-          </div>
+          <div class="service-desc">Realza pestañas y ordena cejas de forma natural, sin maquillaje.</div>
+          <div class="service-extra">Seña desde $4.000 · ~50 min</div>
         </div>
 
         <div class="service-card">
@@ -429,12 +234,8 @@
             <div class="service-name">Microblading</div>
             <div class="price-pill">Desde $50.000</div>
           </div>
-          <div class="service-desc">
-            Cejas definidas y con forma 24/7. Te levantás lista, sin lápiz.
-          </div>
-          <div class="service-extra">
-            Seña desde $10.000 · ~90 min
-          </div>
+          <div class="service-desc">Cejas definidas y con forma 24/7. Te levantás lista, sin lápiz.</div>
+          <div class="service-extra">Seña desde $10.000 · ~90 min</div>
         </div>
 
         <div class="service-card">
@@ -442,12 +243,8 @@
             <div class="service-name">Belleza de pies</div>
             <div class="price-pill">Desde $18.000</div>
           </div>
-          <div class="service-desc">
-            Limpieza profunda, forma perfecta y esmaltado impecable.
-          </div>
-          <div class="service-extra">
-            Seña desde $3.000 · ~45 min
-          </div>
+          <div class="service-desc">Limpieza profunda, forma perfecta y esmaltado impecable.</div>
+          <div class="service-extra">Seña desde $3.000 · ~45 min</div>
         </div>
 
         <div class="service-card">
@@ -455,12 +252,8 @@
             <div class="service-name">Depilación definitiva</div>
             <div class="price-pill">Desde $26.000</div>
           </div>
-          <div class="service-desc">
-            Suave, práctica y duradera. Menos preocupación diaria.
-          </div>
-          <div class="service-extra">
-            Seña desde $5.000 · ~30 min
-          </div>
+          <div class="service-desc">Suave, práctica y duradera. Menos preocupación diaria.</div>
+          <div class="service-extra">Seña desde $5.000 · ~30 min</div>
         </div>
 
       </div>
@@ -471,90 +264,68 @@
 
     <section id="como-funciona">
       <div class="how-grid">
-
         <div class="how-card">
           <div class="how-num">01</div>
           <div class="how-tit">Elegís el servicio</div>
-          <div class="how-p">
-            Uñas, pestañas, cejas, depilación definitiva… lo que necesitás para sentirte bien.
-          </div>
+          <div class="how-p">Uñas, pestañas, cejas, depilación definitiva… lo que necesitás para sentirte bien.</div>
         </div>
 
         <div class="how-card">
           <div class="how-num">02</div>
           <div class="how-tit">Elegís día y hora</div>
-          <div class="how-p">
-            Ves disponibilidad real. Sin mensajes de ida y vuelta. Sin estrés.
-          </div>
+          <div class="how-p">Ves disponibilidad real. Sin mensajes de ida y vuelta. Sin estrés.</div>
         </div>
 
         <div class="how-card">
           <div class="how-num">03</div>
           <div class="how-tit">Dejás una seña segura</div>
-          <div class="how-p">
-            Mercado Pago / Ualá / Brubank / Naranja. Rápido y transparente.
-          </div>
+          <div class="how-p">Mercado Pago / Ualá / Brubank / Naranja. Rápido y transparente.</div>
         </div>
 
         <div class="how-card">
           <div class="how-num">04</div>
           <div class="how-tit">Tu turno queda reservado</div>
-          <div class="how-p">
-            Ese espacio queda bloqueado sólo para vos. Te recordamos por WhatsApp antes del turno.
-          </div>
+          <div class="how-p">Ese espacio queda bloqueado sólo para vos. Te recordamos por WhatsApp antes del turno.</div>
         </div>
-
       </div>
     </section>
 
     <!-- TESTIMONIO -->
     <div class="sec-title">Nos importa tu tiempo</div>
-
     <section id="confianza">
       <div class="testi-card">
         <div class="testi-quote">
           “Antes alguien reservaba y no venía, y la próxima clienta esperaba.
           Ahora cada turno llega confirmado con seña. Todas son atendidas tranquilas y a horario.”
         </div>
-        <div class="testi-note">
-          Boutique Salón · Agenda con seña y respeto mutuo
-        </div>
+        <div class="testi-note">Boutique Salón · Agenda con seña y respeto mutuo</div>
       </div>
     </section>
 
     <!-- FAQ -->
     <div class="sec-title">Preguntas comunes</div>
-
     <section id="faq">
       <div class="faq-grid">
         <div class="faq-card">
           <div class="faq-q">¿Por qué dejo una seña?</div>
-          <div class="faq-a">
-            Porque te guardamos cabina, productos y profesional sólo para vos.
-            Así sabés que cuando llegues, todo está listo.
-          </div>
+          <div class="faq-a">Porque te guardamos cabina, productos y profesional sólo para vos.
+            Así sabés que cuando llegues, todo está listo.</div>
         </div>
 
         <div class="faq-card">
           <div class="faq-q">¿Y si no puedo ir?</div>
-          <div class="faq-a">
-            Si no venís o avisás tarde la seña se usa para cubrir ese espacio perdido.
-            Nos ayuda a cuidar el tiempo de todas.
-          </div>
+          <div class="faq-a">Si no venís o avisás tarde la seña se usa para cubrir ese espacio perdido.
+            Nos ayuda a cuidar el tiempo de todas.</div>
         </div>
 
         <div class="faq-card">
           <div class="faq-q">¿Puedo reprogramar?</div>
-          <div class="faq-a">
-            Sí, si avisás con tiempo y hay lugar libre te movemos sin drama.
-          </div>
+          <div class="faq-a">Sí, si avisás con tiempo y hay lugar libre te movemos sin drama.</div>
         </div>
 
         <div class="faq-card">
           <div class="faq-q">¿Cómo pago la seña?</div>
-          <div class="faq-a">
-            Te mandamos un link seguro. Podés pagar con Mercado Pago, Ualá, Brubank o Naranja.
-          </div>
+          <div class="faq-a">Te mandamos un link seguro. Podés pagar con Mercado Pago, Ualá, Brubank o Naranja.</div>
         </div>
       </div>
     </section>
@@ -563,11 +334,10 @@
 
   <footer>
     <div class="footer-cta">
-      <a class="cta-main" href="./booking.html">
-        Reservar mi turno ahora
-      </a>
+      <a class="cta-main" href="./booking.html">Reservar mi turno ahora</a>
     </div>
-    Boutique Salón · Tu momento reservado 💖
+    Boutique Salón · Tu momento reservado 💖<br/>
+    Powered by Abraxas 💜
   </footer>
 
 </body>
