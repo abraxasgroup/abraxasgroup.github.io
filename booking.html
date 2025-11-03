@@ -272,6 +272,10 @@
   <footer class="made-by">Powered by Abraxas 💜</footer>
 
   <script>
+    /* ---------- DEMO PAGO ---------- */
+    const IS_DEMO = true; // poner false en producción
+    const DEMO_PAYMENT_LINK = "https://link.mercadopago.com.ar/abraxasgroup";
+
     /* ---- DATA ---- */
     const servicios = [
       { id:"unas_esculpidas", nombre:"Uñas esculpidas", desc:"Uñas definidas, resistentes, terminación prolija y elegante.", duracion:"60 min", profesional:"Carla", precioTotal:30000, sena:5000, linkPago:"https://pago.ejemplo/unas-esculpidas", img:"./img/services/unas_esculpidas.webp", imgAlt:"Uñas esculpidas terminación impecable" },
@@ -319,7 +323,9 @@
       $("sumNombre").textContent = state.nombre;
       $("sumTel").textContent = state.tel;
       $("sumSena").textContent = formatearPrecio(srv.sena);
-      $("payBtn").setAttribute("href", srv.linkPago);
+
+      const payLink = IS_DEMO ? DEMO_PAYMENT_LINK : srv.linkPago;
+      $("payBtn").setAttribute("href", payLink);
 
       const msg = [
         `Hola ${state.nombre} 💖`,
@@ -330,7 +336,7 @@
         `Día y hora: ${state.fecha} ${state.hora}`,
         ``,
         `Para dejar tu turno reservado necesitamos la seña de ${formatearPrecio(srv.sena)}:`,
-        srv.linkPago,
+        payLink,
         ``,
         `Podés pagar por Mercado Pago / Ualá / Brubank / Naranja 💳`,
         ``,
@@ -368,12 +374,11 @@
         btn.addEventListener("click", e=>{
           state.servicioId = e.currentTarget.getAttribute("data-id");
           state.fecha = ""; state.hora = "";
-          // limpiar seleccion de horarios
           $("timesGrid").innerHTML = "";
           document.querySelectorAll(".time-slot-btn").forEach(x=>x.classList.remove("active"));
           const srv = getServicioSel();
           $("chosenServiceLabel").textContent = srv ? srv.nombre : "";
-          initDateLimits(); // <<< fija min/max del calendario (bug fix)
+          initDateLimits(); // fija min/max del calendario (bug fix)
           syncSidePanel();
           setStep(2);
         });
@@ -410,9 +415,7 @@
 
     $("dateInput").addEventListener("change", (e)=>{
       state.fecha = e.target.value; syncSidePanel();
-      // al elegir fecha, mostramos horarios
       renderHorarios();
-      // pasamos a paso 3 solo si también ya eligió hora
       if(state.hora){ setStep(3); }
     });
 
