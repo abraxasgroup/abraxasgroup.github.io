@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Boutique Salón | Agenda con seña</title>
 
-  <meta name="description" content="Boutique Salón. Agenda online con seña para que tu turno esté realmente guardado. Uñas esculpidas, pestañas, cejas y más. Elegís horario, dejás una seña pequeña y listo: ese espacio queda bloqueado sólo para vos. Cuidado, respeto y belleza.">
+  <meta name="description" content="Boutique Salón. Agenda online con seña para que tu turno esté realmente guardado. Uñas esculpidas, pestañas, cejas y más. Elegís horario, dejás una seña y listo: ese espacio queda bloqueado sólo para vos. Cuidado, respeto y belleza.">
   <meta name="keywords" content="turnos estética, agenda con seña, uñas esculpidas, extensión de pestañas, lifting, microblading, belleza de pies, depilación definitiva, reservar turno belleza, bienestar">
   <meta property="og:title" content="Boutique Salón • Tu turno en 2 clics" />
   <meta property="og:description" content="Elegí servicio y horario, dejá una seña segura y listo. Tu agenda asegurada." />
@@ -77,13 +77,16 @@
     .num{color:var(--violeta);font-weight:800;font-size:.85rem}
     .ht{color:var(--text-dark);font-weight:700;margin:.25rem 0 .2rem}
 
-    /* Mini-capturas (mocks sin imágenes externas) */
-    .mocks{display:grid;gap:1rem}
-    @media(min-width:700px){.mocks{grid-template-columns:repeat(3,1fr)}}
-    .mock{border-radius:18px;border:var(--border);background:linear-gradient(180deg,#fff,rgba(255,255,255,.9));box-shadow:var(--shadow);padding:1rem}
-    .mock .bar{height:10px;border-radius:6px;background:linear-gradient(90deg,#d9cffd,#f0eaff)}
-    .mock .block{height:54px;border-radius:12px;margin:.6rem 0;background:linear-gradient(180deg,#fbfaff,#efe9ff)}
-    .mock .line{height:10px;border-radius:6px;background:#ece7ff;margin:.35rem 0}
+    /* PREVIEW EN VIVO (reemplaza mocks) */
+    .previews-grid{display:grid;gap:1rem}
+    @media(min-width:900px){.previews-grid{grid-template-columns:1fr 380px}}
+    .device-card{background:#fff;border:1px solid rgba(170,140,255,.35);border-radius:18px;box-shadow:0 24px 48px rgba(130,80,255,.14);padding:1rem}
+    .device-label{font-weight:700;color:#2b2b2b;margin-bottom:.6rem;letter-spacing:-.02em}
+    .device-frame{border-radius:14px;overflow:hidden;background:#fff;border:1px solid rgba(170,140,255,.3)}
+    .device-frame.desktop{height:520px}
+    .device-frame.mobile{height:720px}
+    .device-frame iframe{width:100%;height:100%;border:0;background:#fff}
+    .small-hint{font-size:.75rem;color:#777;margin-top:.5rem}
 
     /* FAQ + footer */
     .faq .card{padding:1rem}
@@ -102,7 +105,7 @@
       <div class="tag">Agenda oficial con seña</div>
       <h1>Tu turno en 2 clics. Tu seña pagada. Tu agenda asegurada.</h1>
       <p class="lead">
-        Elegís el servicio y el horario. Pagás una seña chiquita y listo: tu espacio queda
+        Elegís el servicio y el horario. Pagás una seña y listo: tu espacio queda
         bloqueado sólo para vos. Amor, respeto y belleza para reinas como vos 👑
       </p>
       <a class="cta" href="./booking.html">Reservar mi turno ahora</a>
@@ -195,24 +198,27 @@
       </article>
     </section>
 
-    <!-- MINI-CAPTURAS -->
+    <!-- PREVIEW EN VIVO -->
     <h2 class="sec-title">Un vistazo al sistema</h2>
-    <section class="mocks">
-      <div class="mock">
-        <div class="bar"></div>
-        <div class="block"></div>
-        <div class="line"></div><div class="line"></div><div class="line"></div>
-      </div>
-      <div class="mock">
-        <div class="bar"></div>
-        <div class="block"></div>
-        <div class="line"></div><div class="line"></div><div class="line"></div>
-      </div>
-      <div class="mock">
-        <div class="bar"></div>
-        <div class="block"></div>
-        <div class="line"></div><div class="line"></div><div class="line"></div>
-      </div>
+    <section class="previews-grid">
+      <!-- Desktop -->
+      <article class="device-card">
+        <div class="device-label">Vista escritorio (booking.html)</div>
+        <div class="device-frame desktop">
+          <iframe src="./booking.html" title="Demo Booking Desktop" loading="lazy"></iframe>
+        </div>
+        <p class="small-hint">¿No se ve el preview? Abrilo directo:
+          <a href="./booking.html" target="_blank" rel="noopener">booking.html</a>
+        </p>
+      </article>
+
+      <!-- Móvil -->
+      <article class="device-card">
+        <div class="device-label">Vista móvil (booking.html)</div>
+        <div class="device-frame mobile">
+          <iframe src="./booking.html" title="Demo Booking Mobile" loading="lazy"></iframe>
+        </div>
+      </article>
     </section>
 
     <!-- FAQ -->
