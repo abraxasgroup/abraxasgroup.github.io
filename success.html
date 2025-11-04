@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>¡Listo! Turno pre-reservado | Boutique Salón</title>
+  <title>Confirmación de seña | Boutique Salón</title>
 
-  <meta name="description" content="Confirmación de seña y envío de comprobante por WhatsApp para bloquear tu turno en Boutique Salón.">
+  <meta name="description" content="Simulación automática de acreditación de seña y confirmación de turno. Enviá tu comprobante por WhatsApp.">
   <style>
     :root{
-      --violeta:#9b6bff;
-      --text:#444; --dark:#1f1f1f;
-      --card: rgba(255,255,255,.9);
+      --vio:#9b6bff; --vio2:#d5c5ff;
+      --txt:#444; --dark:#1f1f1f;
+      --card: rgba(255,255,255,.92);
       --b: 1px solid rgba(170,140,255,.35);
       --r: 18px;
       --sh: 0 30px 60px rgba(130,80,255,.18), 0 0 40px rgba(180,150,255,.25);
       --font:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+      --ok:#1e9e5c; --pend:#b38bff; --err:#d64545;
     }
     *{box-sizing:border-box;-webkit-font-smoothing:antialiased}
     body{
-      margin:0; font-family:var(--font); color:var(--text);
+      margin:0; font-family:var(--font); color:var(--txt);
       background:
         radial-gradient(circle at 20% 15%, rgba(249,247,255,.9) 0%, rgba(239,233,255,.7) 40%, rgba(255,255,255,.6) 70%),
         linear-gradient(to bottom right, rgba(255,255,255,.6), rgba(249,247,255,.6)),
@@ -26,35 +27,70 @@
       background-size:cover; background-position:center; background-attachment:fixed;
       padding: 2rem 1rem 4rem; display:flex; justify-content:center;
     }
-    .wrap{width:100%; max-width:720px}
+    .wrap{width:100%; max-width:760px}
     .card{background:var(--card); border:var(--b); border-radius:var(--r); box-shadow:var(--sh); padding:1.25rem}
-    .h1{font-weight:800; color:var(--dark); letter-spacing:-.02em; margin:.25rem 0 0}
-    .lead{margin:.6rem 0 1rem}
-    .sum{display:grid; gap:.5rem; margin:.75rem 0 1rem}
+    .brand{font-weight:700; color:var(--dark)}
+    .h1{font-weight:800; color:var(--dark); letter-spacing:-.02em; margin:.25rem 0 .25rem}
+    .lead{margin:.4rem 0 1rem}
+    .status{
+      display:flex; align-items:center; gap:.6rem;
+      padding:.7rem 1rem; border-radius:12px; border:1px solid rgba(170,140,255,.4);
+      background:linear-gradient(180deg,#fff,rgba(249,247,255,.95));
+      box-shadow:0 24px 48px rgba(130,80,255,.18);
+      font-weight:600;
+    }
+    .dot{width:10px;height:10px;border-radius:50%}
+    .dot.pend{background:var(--pend); box-shadow:0 0 12px var(--pend)}
+    .dot.ok{background:var(--ok); box-shadow:0 0 12px var(--ok)}
+    .sum{display:grid; gap:.5rem; margin:1rem 0 1.2rem}
     .row{display:flex; justify-content:space-between; gap:.75rem; flex-wrap:wrap}
     .k{font-weight:600; color:var(--dark)}
     .cta{display:block; width:100%; text-align:center; text-decoration:none; color:#fff; font-weight:700;
-         background:linear-gradient(to bottom right,#9b6bff,#d5c5ff); border-radius:12px; padding:1rem; box-shadow:0 24px 48px rgba(130,80,255,.35)}
-    .sec{margin-top:1rem}
-    .ghost{display:block; text-align:center; text-decoration:none; font-weight:600; color:var(--violeta);
+         background:linear-gradient(to bottom right,var(--vio),var(--vio2)); border-radius:12px; padding:1rem; box-shadow:0 24px 48px rgba(130,80,255,.35)}
+    .ghost{display:block; text-align:center; text-decoration:none; font-weight:600; color:var(--vio);
            border:1px solid rgba(170,140,255,.5); padding:.8rem 1rem; border-radius:12px; background:#fff}
+    .gridBtns{display:grid; gap:.6rem; margin-top:1rem}
     .foot{margin-top:1.25rem; text-align:center; font-size:.8rem; color:#777}
+
+    /* loader */
+    .loader{
+      width:100%; height:6px; background:#eee; border-radius:999px; overflow:hidden; margin:.6rem 0 .2rem;
+      border:1px solid rgba(170,140,255,.35)
+    }
+    .bar{
+      width:0%; height:100%; background:linear-gradient(90deg,var(--vio),var(--vio2));
+      animation: prog 6s ease-out forwards;
+    }
+    @keyframes prog{
+      0%{width:0%} 100%{width:100%}
+    }
+    .okbox{
+      display:none; margin-top:.6rem; font-size:.9rem; color:var(--ok); font-weight:700;
+    }
+    .pendbox{
+      margin-top:.4rem; font-size:.85rem; color:#666;
+    }
   </style>
 </head>
 <body>
   <main class="wrap">
     <article class="card">
-      <div>💜 Boutique Salón</div>
-      <h1 class="h1">¡Gracias! Si la seña ya está hecha, enviá el comprobante 💌</h1>
-      <p class="lead">Con el comprobante bloqueamos tu turno definitivamente y te confirmamos por WhatsApp.</p>
+      <div class="brand">💜 Boutique Salón</div>
+      <h1 class="h1">Confirmación de seña</h1>
+      <p class="lead">Simularemos la acreditación automáticamente. Cuando esté acreditada, tu turno quedará confirmado.</p>
 
-      <div class="sum" id="summary">
-        <!-- se completa por JS -->
+      <div class="status" id="statusBox">
+        <span class="dot pend" id="stDot"></span>
+        <span id="stText">Estado: procesando seña…</span>
       </div>
+      <div class="loader"><div class="bar"></div></div>
+      <div class="pendbox" id="pendBox">Esperando confirmación del medio de pago…</div>
+      <div class="okbox" id="okBox">¡Listo! Seña acreditada ✅ Tu turno quedó confirmado.</div>
 
-      <a id="waBtn" class="cta" target="_blank" rel="noopener">Enviar comprobante por WhatsApp</a>
+      <div class="sum" id="summary"></div>
 
-      <div class="sec">
+      <div class="gridBtns">
+        <a id="waBtn" class="cta" target="_blank" rel="noopener">Enviar comprobante / confirmación por WhatsApp</a>
         <a href="./booking.html" class="ghost">Volver a la agenda</a>
       </div>
 
@@ -63,8 +99,8 @@
   </main>
 
   <script>
-    // 👉 Cambiá esto por el WhatsApp de la estética (solo números, con país, ej: 5493415550000)
-    const SALON_WA = ""; // si queda vacío, abre selector de contacto
+    // WhatsApp del salón (solo números, con país)
+    const SALON_WA = "5492226512253";
 
     const qp = new URLSearchParams(location.search);
     const svc = qp.get("svc") || "—";
@@ -73,37 +109,51 @@
     const h   = qp.get("h")   || "—";
     const n   = qp.get("n")   || "—";
     const t   = qp.get("t")   || "—";
-    const a   = qp.get("a")   || "—";
-    const pay = qp.get("pay") || "—";
+    const a   = Number(qp.get("a") || 0);
+    const pay = qp.get("pay") || "";
+
+    const $ = sel => document.querySelector(sel);
 
     // Resumen
-    const $ = sel => document.querySelector(sel);
     $("#summary").innerHTML = `
       <div class="row"><span class="k">Servicio</span><span>${svc}</span></div>
       <div class="row"><span class="k">Profesional</span><span>${pro}</span></div>
       <div class="row"><span class="k">Fecha y hora</span><span>${f} ${h}</span></div>
       <div class="row"><span class="k">Tu nombre</span><span>${n}</span></div>
       <div class="row"><span class="k">WhatsApp</span><span>${t}</span></div>
-      <div class="row"><span class="k">Seña</span><span>$ {a}</span></div>
+      <div class="row"><span class="k">Seña</span><span>$ ${a.toLocaleString("es-AR")}</span></div>
+      ${pay ? `<div class="row"><span class="k">Link de pago</span><span><a href="${pay}" target="_blank" rel="noopener">Abrir</a></span></div>` : ``}
     `;
 
-    // Mensaje para WhatsApp
-    const msg = [
-      `Hola! Te envío mi comprobante de seña para confirmar el turno ✨`,
+    // Mensaje para WhatsApp (se actualiza al acreditar)
+    const baseMsg = [
+      `Hola! Te envío confirmación de mi turno ✨`,
       ``,
       `• Nombre: ${n}`,
       `• WhatsApp: ${t}`,
       `• Servicio: ${svc}`,
       `• Profesional: ${pro}`,
       `• Día y hora: ${f} ${h}`,
-      `• Seña enviada: $ ${a}`,
-      pay && pay !== "—" ? `• Link de pago: ${pay}` : ``,
+      `• Seña: $ ${a.toLocaleString("es-AR")}`,
+      pay ? `• Link de pago: ${pay}` : ``,
       ``,
-      `Gracias 💜`
     ].filter(Boolean).join("\n");
 
-    const waBase = SALON_WA ? `https://wa.me/${SALON_WA}?text=` : `https://wa.me/?text=`;
-    $("#waBtn").href = waBase + encodeURIComponent(msg);
+    function setWaLink(text){
+      const waBase = SALON_WA ? `https://wa.me/${SALON_WA}?text=` : `https://wa.me/?text=`;
+      $("#waBtn").href = waBase + encodeURIComponent(text);
+    }
+
+    // Estado: simulación automática (6s)
+    setWaLink(baseMsg + "Estado: ⏳ En proceso de acreditación.");
+    setTimeout(()=>{
+      // marcar OK
+      $("#stText").textContent = "Estado: seña acreditada";
+      $("#stDot").classList.remove("pend"); $("#stDot").classList.add("ok");
+      $("#pendBox").style.display = "none";
+      $("#okBox").style.display = "block";
+      setWaLink(baseMsg + "Estado: ✅ Acreditada. ¡Gracias!");
+    }, 6000);
   </script>
 </body>
 </html>
