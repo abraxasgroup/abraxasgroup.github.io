@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>¡Listo! Turno pre-reservado | Boutique Salón</title>
+
+  <meta name="description" content="Confirmación de seña y envío de comprobante por WhatsApp para bloquear tu turno en Boutique Salón.">
+  <style>
+    :root{
+      --violeta:#9b6bff;
+      --text:#444; --dark:#1f1f1f;
+      --card: rgba(255,255,255,.9);
+      --b: 1px solid rgba(170,140,255,.35);
+      --r: 18px;
+      --sh: 0 30px 60px rgba(130,80,255,.18), 0 0 40px rgba(180,150,255,.25);
+      --font:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    }
+    *{box-sizing:border-box;-webkit-font-smoothing:antialiased}
+    body{
+      margin:0; font-family:var(--font); color:var(--text);
+      background:
+        radial-gradient(circle at 20% 15%, rgba(249,247,255,.9) 0%, rgba(239,233,255,.7) 40%, rgba(255,255,255,.6) 70%),
+        linear-gradient(to bottom right, rgba(255,255,255,.6), rgba(249,247,255,.6)),
+        url("./img/bg-booking.png");
+      background-size:cover; background-position:center; background-attachment:fixed;
+      padding: 2rem 1rem 4rem; display:flex; justify-content:center;
+    }
+    .wrap{width:100%; max-width:720px}
+    .card{background:var(--card); border:var(--b); border-radius:var(--r); box-shadow:var(--sh); padding:1.25rem}
+    .h1{font-weight:800; color:var(--dark); letter-spacing:-.02em; margin:.25rem 0 0}
+    .lead{margin:.6rem 0 1rem}
+    .sum{display:grid; gap:.5rem; margin:.75rem 0 1rem}
+    .row{display:flex; justify-content:space-between; gap:.75rem; flex-wrap:wrap}
+    .k{font-weight:600; color:var(--dark)}
+    .cta{display:block; width:100%; text-align:center; text-decoration:none; color:#fff; font-weight:700;
+         background:linear-gradient(to bottom right,#9b6bff,#d5c5ff); border-radius:12px; padding:1rem; box-shadow:0 24px 48px rgba(130,80,255,.35)}
+    .sec{margin-top:1rem}
+    .ghost{display:block; text-align:center; text-decoration:none; font-weight:600; color:var(--violeta);
+           border:1px solid rgba(170,140,255,.5); padding:.8rem 1rem; border-radius:12px; background:#fff}
+    .foot{margin-top:1.25rem; text-align:center; font-size:.8rem; color:#777}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <article class="card">
+      <div>💜 Boutique Salón</div>
+      <h1 class="h1">¡Gracias! Si la seña ya está hecha, enviá el comprobante 💌</h1>
+      <p class="lead">Con el comprobante bloqueamos tu turno definitivamente y te confirmamos por WhatsApp.</p>
+
+      <div class="sum" id="summary">
+        <!-- se completa por JS -->
+      </div>
+
+      <a id="waBtn" class="cta" target="_blank" rel="noopener">Enviar comprobante por WhatsApp</a>
+
+      <div class="sec">
+        <a href="./booking.html" class="ghost">Volver a la agenda</a>
+      </div>
+
+      <div class="foot">Powered by Abraxas 💜</div>
+    </article>
+  </main>
+
+  <script>
+    // 👉 Cambiá esto por el WhatsApp de la estética (solo números, con país, ej: 5493415550000)
+    const SALON_WA = ""; // si queda vacío, abre selector de contacto
+
+    const qp = new URLSearchParams(location.search);
+    const svc = qp.get("svc") || "—";
+    const pro = qp.get("pro") || "—";
+    const f   = qp.get("f")   || "—";
+    const h   = qp.get("h")   || "—";
+    const n   = qp.get("n")   || "—";
+    const t   = qp.get("t")   || "—";
+    const a   = qp.get("a")   || "—";
+    const pay = qp.get("pay") || "—";
+
+    // Resumen
+    const $ = sel => document.querySelector(sel);
+    $("#summary").innerHTML = `
+      <div class="row"><span class="k">Servicio</span><span>${svc}</span></div>
+      <div class="row"><span class="k">Profesional</span><span>${pro}</span></div>
+      <div class="row"><span class="k">Fecha y hora</span><span>${f} ${h}</span></div>
+      <div class="row"><span class="k">Tu nombre</span><span>${n}</span></div>
+      <div class="row"><span class="k">WhatsApp</span><span>${t}</span></div>
+      <div class="row"><span class="k">Seña</span><span>$ {a}</span></div>
+    `;
+
+    // Mensaje para WhatsApp
+    const msg = [
+      `Hola! Te envío mi comprobante de seña para confirmar el turno ✨`,
+      ``,
+      `• Nombre: ${n}`,
+      `• WhatsApp: ${t}`,
+      `• Servicio: ${svc}`,
+      `• Profesional: ${pro}`,
+      `• Día y hora: ${f} ${h}`,
+      `• Seña enviada: $ ${a}`,
+      pay && pay !== "—" ? `• Link de pago: ${pay}` : ``,
+      ``,
+      `Gracias 💜`
+    ].filter(Boolean).join("\n");
+
+    const waBase = SALON_WA ? `https://wa.me/${SALON_WA}?text=` : `https://wa.me/?text=`;
+    $("#waBtn").href = waBase + encodeURIComponent(msg);
+  </script>
+</body>
+</html>
