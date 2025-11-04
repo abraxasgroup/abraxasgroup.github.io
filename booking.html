@@ -243,13 +243,15 @@
 
             <a class="pay-btn" id="payBtn" href="#" target="_blank" rel="noopener noreferrer">Pagar mi seña ahora</a>
             <div class="small-hint" style="margin-top:1rem;color:var(--text-dim);">Guardá tu comprobante. Si la seña no se acredita pronto, el turno puede liberarse para otra persona.</div>
-<a class="pay-btn" id="waSendBtn" href="#" target="_blank" rel="noopener noreferrer">
-  Enviar datos por WhatsApp
-</a>
 
-<a class="pay-btn" id="iPaidBtn" href="./success.html" >
-  Ya hice mi seña (ir a confirmación)
-</a>
+            <!-- Botones añadidos -->
+            <a class="pay-btn" id="waSendBtn" href="#" target="_blank" rel="noopener noreferrer">
+              Enviar datos por WhatsApp
+            </a>
+
+            <a class="pay-btn" id="iPaidBtn" href="./success.html">
+              Ya hice mi seña (ir a confirmación)
+            </a>
 
             <div class="whatsapp-preview" id="waPreview"></div>
             <div class="mimo-line"><span class="mimo-big">Este ratito es para vos 💕</span> Cuidarte no es un lujo. Es mirarte al espejo y decir: “sí, estoy linda y estoy tranquila hoy”. ✨</div>
@@ -282,6 +284,9 @@
     /* ---------- DEMO PAGO ---------- */
     const IS_DEMO = true; // poner false en producción
     const DEMO_PAYMENT_LINK = "https://link.mercadopago.com.ar/abraxasgroup";
+
+    /* ---------- WhatsApp del salón (solo números, con país) ---------- */
+    const SALON_WA = "5492226512253"; // demo pedido
 
     /* ---- DATA ---- */
     const servicios = [
@@ -352,6 +357,23 @@
         `Gracias por elegirnos, este momento es tuyo 🫶`
       ].join("\n");
       $("waPreview").textContent = msg;
+
+      // 1) Deep link WhatsApp
+      const waBase = SALON_WA ? `https://wa.me/${SALON_WA}?text=` : `https://wa.me/?text=`;
+      $("waSendBtn").setAttribute("href", waBase + encodeURIComponent(msg));
+
+      // 2) Link a success.html con datos por querystring
+      const qs = new URLSearchParams({
+        svc: srv.nombre,
+        pro: srv.profesional,
+        f: state.fecha,
+        h: state.hora,
+        n: state.nombre || "",
+        t: state.tel || "",
+        a: srv.sena,
+        pay: payLink
+      }).toString();
+      $("iPaidBtn").setAttribute("href", `./success.html?${qs}`);
     }
 
     function renderServicios(){
@@ -384,7 +406,7 @@
           $("timesGrid").innerHTML = "";
           const srv = getServicioSel();
           $("chosenServiceLabel").textContent = srv ? srv.nombre : "";
-          initDateLimits(); // fija min/max del calendario (bug fix)
+          initDateLimits(); // fija min/max del calendario
           syncSidePanel();
           setStep(2);
         });
@@ -407,7 +429,7 @@
       });
     }
 
-    // BUG FIX: inicializa límites del input date y no autoselecciona fecha
+    // límites del input date y no autoselecciona fecha
     function initDateLimits(){
       const el = $("dateInput");
       const today = new Date(); today.setHours(0,0,0,0);
@@ -415,18 +437,17 @@
       const toYMD = d => d.toISOString().slice(0,10);
       el.min = toYMD(today);
       el.max = toYMD(max);
-      el.value = "";              // no auto-seleccionar hoy
-      state.fecha = "";           // limpia fecha
-      state.hora = "";            // limpia hora (clave para evitar salto)
+      el.value = "";
+      state.fecha = "";
+      state.hora = "";
       $("timesGrid").innerHTML = "";
     }
 
     $("dateInput").addEventListener("change", (e)=>{
       state.fecha = e.target.value;
-      state.hora = "";            // limpia selección previa al cambiar fecha
+      state.hora = "";
       syncSidePanel();
-      renderHorarios();           // muestra horarios recién cuando hay fecha
-      // no avanzamos hasta que elija una hora
+      renderHorarios();
     });
 
     $("btnConfirmClient").addEventListener("click", ()=>{
